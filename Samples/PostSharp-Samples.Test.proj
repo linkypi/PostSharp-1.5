@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Test" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+		<TestCommands>
+			PostSharp.Samples.Trace\PostSharp.Samples.Trace.Test\bin\$(Configuration)\PostSharp.Samples.Trace.Test.exe;
+			PostSharp.Samples.Binding\bin\$(Configuration)\PostSharp.Samples.Binding.exe;
+			PostSharp.Samples.Cache\bin\$(Configuration)\PostSharp.Samples.Cache.exe;
+			PostSharp.Samples.Composition\bin\$(Configuration)\PostSharp.Samples.Composition.exe;
+			PostSharp.Samples.Transaction\bin\$(Configuration)\PostSharp.Samples.Transaction.exe		 
+		</TestCommands>
+	</PropertyGroup>
+	<Target Name="Build">
+		<MSBuild Projects="PostSharp-Samples.sln" Properties="Configuration=$(Configuration)" StopOnFirstFailure="true"/>
+	</Target>
+	<Target Name="Test" DependsOnTargets="Build">
+		<CreateItem Include="$(TestCommands)">
+			<Output TaskParameter="Include" ItemName="_TestCommands"/>
+		</CreateItem>
+		<Exec Command="%(_TestCommands.Identity)"/>
+	 </Target>
+	
+</Project>

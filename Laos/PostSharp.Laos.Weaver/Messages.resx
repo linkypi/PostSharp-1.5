@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LA0001" xml:space="preserve">
+    <value>Cannot serialize the aspects: {0}.</value>
+  </data>
+  <data name="LA0002" xml:space="preserve">
+    <value>The method {0}.GetAggregatedInterface() returned the type {1}, which is not an interface.</value>
+  </data>
+  <data name="LA0003" xml:space="preserve">
+    <value>Cannot find a weaver for the aspect type {0}. Are you sure it implements one of the supported interfaces?</value>
+  </data>
+  <data name="LA0004" xml:space="preserve">
+    <value>Cannot compose the public interface {0} into the type {1}, because this interface is already implemented in this type.</value>
+  </data>
+  <data name="LA0005" xml:space="preserve">
+    <value>Cannot compose the interface {0} into the type {1} because the derived interface {2} is already implemented by this type.</value>
+  </data>
+  <data name="LA0006" xml:space="preserve">
+    <value>Some PostSharp Laos aspects were invalid.</value>
+  </data>
+  <data name="LA0007" xml:space="preserve">
+    <value>Cannot compose the protected interface {0} into the type {1}, because this interface is already implemented in this type.</value>
+  </data>
+  <data name="LA0008" xml:space="preserve">
+    <value>Inconsistence scope of the instance tag {0} (friendly name '{1}') on type {2}: all requests for the same tag should be have either static either instance scope.</value>
+  </data>
+  <data name="LA0009" xml:space="preserve">
+    <value>Cannot apply aspects to the type {0} because it is itself an aspect.</value>
+  </data>
+  <data name="LA0010" xml:space="preserve">
+    <value>Cannot apply the aspect {0} to the method "{1}" because it has no implementation. This method was ignored.</value>
+  </data>
+  <data name="LA0011" xml:space="preserve">
+    <value>Cannot apply the aspect {0} to the field "{1}" because this field is visible outside the current module. Make the field private or internal.</value>
+  </data>
+  <data name="LA0012" xml:space="preserve">
+    <value>You cannot apply more than one OnMethodInvocaton aspect on a single method ({0}).</value>
+  </data>
+  <data name="LA0013" xml:space="preserve">
+    <value>The aspect class {0} has {1} visibility. It should have at least internal visibility.</value>
+  </data>
+  <data name="LA0014" xml:space="preserve">
+    <value>{0}</value>
+    <comment>Error during custom attribute construction.</comment>
+  </data>
+  <data name="LA0015" xml:space="preserve">
+    <value>Cannot apply an OnMethodInvocation aspect ({0}) with target-site weaving on the abstract or external method "{1}". Consider excluding the aspect from this method or use call-site weaving.</value>
+  </data>
+  <data name="LA0016" xml:space="preserve">
+    <value>Cannot apply a CompositionAspect ({0}) to an interface ({1}).</value>
+  </data>
+  <data name="LA0017" xml:space="preserve">
+    <value>Cannot apply an OnFieldAccess aspect ({0}) to a constant field ({1}).</value>
+  </data>
+  <data name="LA0018" xml:space="preserve">
+    <value>Cannot apply an OnMethodInvocation aspect ({0}) to a constructor ({1}).</value>
+  </data>
+  <data name="LA0019" xml:space="preserve">
+    <value>Cannot get the instance credentials of type {0} from type {1} because the method InstanceCredentials.GetCredentials has protected visibility with regards to its generic parameter T.</value>
+  </data>
+  <data name="LA0020" xml:space="preserve">
+    <value>The type {0} has no instance credentials.</value>
+  </data>
+  <data name="LA0021" xml:space="preserve">
+    <value>The type {0} cannot be used as an argument of the [LaosSerializer] custom attribute for aspect {1}, because it is not derived from class PostSharp.Laos.LaosSerializer.</value>
+  </data>
+  <data name="LA0022" xml:space="preserve">
+    <value>The type {0} cannot be used as an argument of the [LaosSerializer] custom attribute for aspect {1}, because it has no public parameterless constructor.</value>
+  </data>
+  <data name="LA0024" xml:space="preserve">
+    <value>Cannot create an instance of the type "{0}" implementing the aspect "{1}": {2}</value>
+  </data>
+  <data name="LA0025" xml:space="preserve">
+    <value>Missing ExternalAspectConfiguration custom attribute on class {0}.</value>
+  </data>
+  <data name="LA0026" xml:space="preserve">
+    <value>The implementation type name specified in the ExternalAspectConfiguration on class {0} cannot be empty or null.</value>
+  </data>
+  <data name="LA0027" xml:space="preserve">
+    <value>Cannot find a constructor of the type {0} compatible with the constructor parameters received in the ObjectConstruction object.</value>
+  </data>
+  <data name="LA0028" xml:space="preserve">
+    <value>Cannot find in type {0} a property or field named "{1}" specified in the ObjectConstruction object</value>
+  </data>
+  <data name="LA0029" xml:space="preserve">
+    <value>Cannot find the type "{0}", implementation of the external aspect "{1}". Verify that the implementation assembly is reachable in the search path. The error was: {2}</value>
+  </data>
+  <data name="LA0030" xml:space="preserve">
+    <value>Cannot serialize the custom attribute of type {0} on {1} {2}: error on {3}: {4}.</value>
+  </data>
+  <data name="LA0031" xml:space="preserve">
+    <value>Cannot find the type {0} to a property of an event of which the aspect {1} is applied. Property- or event-level aspects can be only applied in the current assembly.</value>
+  </data>
+  <data name="LA0032" xml:space="preserve">
+    <value>Cannot apply the aspect {0} to a parameter of member {1}.{2}, because this member is not a method.</value>
+  </data>
+  <data name="LA0033" xml:space="preserve">
+    <value>Cannot apply the aspect {0} to a parameter of method {1}.{2}. Parameter-level aspects can only be applied in the current assemblies.</value>
+  </data>
+  <data name="LA0034" xml:space="preserve">
+    <value>Cannot add aspects to a {0}.</value>
+  </data>
+  <data name="LA0035" xml:space="preserve">
+    <value>The aspect {0} has no serializer, but it has been provided to element {1} by instance and not by construction. Non-serialized aspects should be given by construction.</value>
+  </data>
+  <data name="LA0040" xml:space="preserve">
+    <value>The method "{0}" should be "public virtual" or "protected virtual" and may not be sealed because its declaring type is visible outside the assembly.</value>
+  </data>
+  <data name="LA0041" xml:space="preserve">
+    <value>The type "{0}" cannot define a method named "void InitializeAspects(bool)".</value>
+  </data>
+  <data name="LA0042" xml:space="preserve">
+    <value>The method {0} cannot be invoked from static method "{1}", because the calling method cannot be static.</value>
+  </data>
+  <data name="LA0043" xml:space="preserve">
+    <value>The method "{0}" must be virtual or abstract, because it needs to be overridden in type "{1}".</value>
+  </data>
+  <data name="LA0044" xml:space="preserve">
+    <value>The method "{0}" cannot be static.</value>
+  </data>
+  <data name="LA0045" xml:space="preserve">
+    <value>Cannot invoke method "{0}" from type "{1}" because this method is private.</value>
+  </data>
+  <data name="LA0046" xml:space="preserve">
+    <value>The plug-in "{0}" required by the custom attribute [EnableLaosAwareness] applied on "{1}" was not found.</value>
+  </data>
+  <data name="LA0056" xml:space="preserve">
+    <value>Adding a call-site OnMethodInvocation method "{0}" may lead to unintended behavior; call-site aspects applied to virtual methods (including interface methods or interface implementation methods) may not be invoked if the call instructions refers to a base or derived methods, even if the call is finally dispatched to the method to which the aspect has been applied.</value>
+  </data>
+</root>

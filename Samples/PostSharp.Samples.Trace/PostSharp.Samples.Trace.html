@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+  <title>Low-Level Trace Aspect Sample</title>
+
+
+  <link rel="stylesheet" type="text/css" href="../UserGuide.css">
+
+</head>
+
+
+<body dir="ltr" lang="en-US">
+
+<h1>Low-Level Trace Aspect Sample</h1>
+
+<span class="openfloat"><a href="PostSharp.Samples.Trace.sln"><img src="../vs.png" border="0" alt="">Open this sample in Visual Studio</a> </span>
+
+<p>The <code>PostSharp.Samples.Trace</code> family
+of projects illustrates the
+implementation of a simple low-level aspect using the PostSharp Class
+Library
+and its low-level Code Weaver. It implements the&nbsp;"trace"
+aspect by
+injecting MSIL instructions into the method body. The result is a very
+effective way to trace an application.</p>
+
+<p>The solution is composed of three projects:</p>
+
+<ul>
+
+  <li><code>PostSharp.Samples.Trace</code> is the
+Public Interface.</li>
+
+  <li><code>PostSharp.Samples.Trace.Weaver</code> is
+the implementation.</li>
+
+  <li><code>PostSharp.Samples.Trace.Test</code> is a
+sample project using the "Trace" aspect.</li>
+
+</ul>
+
+<h2>Public Interface</h2>
+
+<p>The reason what we define the public interface in a different
+assembly than the implementation is that the implementation needs to
+reference <code>PostSharp.Core.dll</code>, and we do not
+want our
+project to depend on this assembly. The public interface will be
+deployed with each application that use our aspect.</p>
+
+<p>We want our aspect to be represented as a multicast custom
+attribute. This will allow users to apply our trace aspect on method
+using wildcards. So we define a new class <code>TraceAttribute</code>
+that derives the <code>MulticastAttribute</code>
+from <code>PostSharp.Public.dll</code>.</p>
+
+<p>In order to make the thing a little more complex, we want to
+give
+the possibility to set a trace category. This will be the property <code>Category</code>
+of our custom attribute.</p>
+
+<p>We have to tell PostSharp what to load and execute our plug-in
+when
+it encounters our custom attribute. This is done by implementing the <code>IRequirePostSharp</code>
+interface, which defines the <code>GetPostSharpRequirements</code>
+method.</p>
+
+<pre>[AttributeUsage( AttributeTargets.Assembly | AttributeTargets.Module |<br>   AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Method | <br>   AttributeTargets.Constructor,<br>   AllowMultiple = true, Inherited = false )]<br>[MulticastAttributeUsage( MulticastTargets.Method | MulticastTargets.Constructor, 
+  AllowMultiple=true )]<br>public sealed class TraceAttribute : MulticastAttribute, IRequirePostSharp<br>{<br> string category = null;<br><br> public string Category<br> {<br> get { return category; }<br> set { category = value; }<br> }<br><br><br> PostSharpRequirements IRequirePostSharp.GetPostSharpRequirements()<br> {<br> PostSharpRequirements requirements = new PostSharpRequirements();<br> requirements.PlugIns.Add("PostSharp.Samples.Trace");<br> requirements.Tasks.Add("PostSharp.Samples.Trace");<br> return requirements;<br> }<br>}</pre>
+
+<p>Note that we have decorated the <code>TraceAttribute</code>
+class with two custom attributes:</p>
+
+<ul>
+
+  <li><code>AttributeUsage</code> is an information
+for the compiler:
+it specifies that Trace custom attribute can be defined on the level
+of&nbsp;assemblies, modules, types and methods.</li>
+
+  <li><code>MulticastAttributeUsage</code> is for the
+post-compiler: it
+specifies that the custom attribute should be propagated up to the
+level of methods. For instance, it tells that when the attribute is
+defined on a type, it will be propagated to all the methods of this
+time.</li>
+
+</ul>
+
+<h2>Implementation</h2>
+
+<h3>Overview</h3>
+
+<p>The implementation assembly will be deployed on the machine of
+each
+developer that works on an application using our aspect. It contains
+the logic that modifies these applications to add our tracing behavior.</p>
+
+<p>Our implementation will rely on the Low-Level Code Weaver
+implemented in the <code>PostSharp.CodeWeaver</code>
+namespace. What we would like to do is to add some instructions before
+and after each targeted method.</p>
+
+<p>For instance, we want the method to be modified like this:</p>
+
+<pre>void MyMethod()<br>{<br> <b>Trace.WriteLine( "MyCategory - Entering MyClass.MyMethod" );<br> Trace.Indent();</b><br> try<br> {<br> // Initial method body here.<br> }<br> finally<br> {<br> <b>Trace.Unindent();<br> Trace.WriteLine( "MyCategory - Leaving MyClass.MyMethod" );</b> <br> }<br>}</pre>
+
+<p>Each plug-in should have:</p>
+
+<ul>
+
+  <li>At least one task, which will be invoked during the
+post-compilation process. Our task will be named <code>TraceTask</code>,
+which derives the <code>Task</code>
+class.</li>
+
+  <li>A configuration file, which informs PostSharp which task
+should be executed and when.</li>
+
+</ul>
+
+<p>We will describe these artifacts in the sections below.</p>
+
+<h3>Providing New Aspects</h3>
+
+<p>If we want to add aspects to the code, we could create a
+weaver, add
+advices to this weaver and execute it. But this is not a very
+responsible approach: if many plug-ins want to add aspects and execute
+their own weaver, this would result in suboptimal code generation and
+higher post-compiling time.</p>
+
+<p>The recommended approach is to add the <code>CodeWeaver</code>
+task in the project and to implement the <code>IAdviceProvider</code>
+interface. This way, the module will be woven a single time, but every
+task has the possibility to provide the aspects it needs.</p>
+
+<p>So our strategy will be to define a task (<code>TraceTask</code>)
+that implements the <code>IAdviceProvider</code>
+interface, and this task will be configured to require the <code>CodeWeaver</code>
+task.</p>
+
+<p>Here is the configuration file:</p>
+
+<pre>&lt;PlugIn xmlns="http://schemas.postsharp.org/1.0/configuration"&gt;<br> &lt;SearchPath Directory="bin/{$Configuration}"/&gt;<br> &lt;TaskType Name="PostSharp.Samples.Trace" <br> Implementation="PostSharp.Samples.Trace.TraceTask, PostSharp.Samples.Trace.Weaver"&gt;<br> &lt;Dependency TaskType="CodeWeaver"/&gt;<br> &lt;/TaskType&gt;<br>&lt;/PlugIn&gt;</pre>
+
+<p>The skeleton of the Trace task will be as follows:</p>
+
+<pre>public class TraceTask : Task, IAdviceProvider<br>{<br> public void ProvideAdvices(Weaver codeWeaver)<br> {<br> // Add advices to codeWeaver.<br> }<br>}</pre>
+
+<p>Let's now look at the implementation of the <code>ProvideAdvices</code>
+method.</p>
+
+<p>We have to add an advice for each (multicasted) instance of
+the
+Trace custom attribute in the module. This functionality is
+encapsulated by the <code>CustomAttributeDictionaryTask</code>
+class, so this concern is solved in a few lines of code.</p>
+
+<p>Then, for each instance of <code>TraceAttribute</code>,
+we create an instance of our advice (described below) and apply it to
+the target method of this custom attribute instance.</p>
+
+<pre>public void ProvideAdvices(Weaver codeWeaver)<br>{<br> // Gets the dictionary of custom attributes.<br> CustomAttributeDictionaryTask customAttributeDictionary =<br> CustomAttributeDictionaryTask.GetTask(this.Project);<br><br> // Requests an enumerator of all instances of our TraceAttribute.<br> IEnumerator&lt;ICustomAttributeInstance&gt; customAttributeEnumerator =<br> customAttributeDictionary.GetCustomAttributesEnumerator(typeof(TraceAttribute), false);<br><br> // For each instance of our TraceAttribute.<br> while (customAttributeEnumerator.MoveNext())<br> {<br> // Gets the method to which it applies.<br> MethodDefDeclaration methodDef = customAttributeEnumerator.Current.TargetElement 
+                                     as MethodDefDeclaration;<br> if (methodDef != null)<br> {<br> // Constructs a custom attribute instance.<br> TraceAttribute attribute = 
+    (TraceAttribute)CustomAttributeHelper.ConstructRuntimeObject(
+      customAttributeEnumerator.Current.Value, this.Project.Module);<br><br> // Build an advice based on this custom attribute.<br> TraceAdvice advice = new TraceAdvice(this, attribute);<br><br> codeWeaver.AddMethodLevelAdvice(advice,<br> new Singleton&lt;MethodDefDeclaration&gt;(methodDef),<br> JoinPointKinds.BeforeMethodBody | JoinPointKinds.AfterMethodBodyAlways,<br> null);<br> }<br> }<br>}</pre>
+
+<h3>Inside the Aspect</h3>
+
+<p>Let's now look inside the <code>TraceAdvice</code>
+class, which implements the code injection. The most interesting
+top-level method is <code>Weave</code>.
+It is called in two opportunities: before and after the method body. In
+order to make the code more readable, we have split it in two methods: <code>WeaveEntry</code>
+and <code>WeaveExit</code>.</p>
+
+<pre>public void Weave(WeavingContext context, InstructionBlock block)<br>{<br> switch (context.JoinPoint.JoinPointKind)<br> {<br> case JoinPointKinds.BeforeMethodBody:<br> this.WeaveEntry(context, block);<br> break;<br><br> case JoinPointKinds.AfterMethodBodyAlways:<br> this.WeaveExit(context, block);<br> break;<br><br> default:<br> throw new ArgumentException(string.Format("Unexpected join point kind: {0}", <br> context.JoinPoint.JoinPointKind));<br> }<br>}</pre>
+
+Let's now have a closer look at <code>WeaveEntry</code>.
+It has three steps:<br>
+
+<ol>
+
+  <li>Create an <code>InstructionSequence</code>,
+inserts it to the <code>InstructionBlock</code>
+that has been dedicated to our advice, and attach the stock <code>InstructionWriter</code>.</li>
+
+  <li>Using this <code>InstructionWriter</code>,
+emit a call to <code>Trace.WriteLine</code>, then to <code>Trace.Indent</code>.</li>
+
+  <li>Detach the <code>InstructionWriter</code> from
+the <code>InstructionSequence</code>, which has the effect
+to commit the changes and to release the <code>InstructionWriter</code>
+so that it is available to the next advice weaver.</li>
+
+</ol>
+
+<pre>private void WeaveEntry(WeavingContext context, InstructionBlock block)<br>{<br> string methodName = context.Method.DeclaringType.ToString() + "/" + context.Method.ToString();<br><br> // Create a new instruction sequence and add it to the block<br> // dedicated to our advice. Attach the InstructionWriter.<br> InstructionSequence entrySequence = context.Method.Body.CreateInstructionSequence();<br> block.AddInstructionSequence(entrySequence, NodePosition.Before, null);<br> context.InstructionWriter.AttachInstructionSequence(entrySequence);<br><br><br> // Call Trace.WriteLine<br> context.InstructionWriter.EmitInstructionString(OpCodeNumber.Ldstr, 
+     (LiteralString)("Entry - " + methodName));<br> if (this.attribute.Category == null)<br> {<br> context.InstructionWriter.EmitInstruction(OpCodeNumber.Ldnull);<br> }<br> else<br> {<br> context.InstructionWriter.EmitInstructionString(OpCodeNumber.Ldstr, 
+   (LiteralString)this.attribute.Category);<br> }<br><br> context.InstructionWriter.EmitInstructionMethod(OpCodeNumber.Call, 
+   this.parent.traceWriteLineMethod);<br><br> // Call Trace.Indent()<br> if (context.Method.Name != ".ctor")<br> {<br> context.InstructionWriter.EmitInstructionMethod(OpCodeNumber.Call, 
+   this.parent.traceIndentMethod);<br> }<br><br> // Commit changes and detach the instruction sequence.<br> context.InstructionWriter.DetachInstructionSequence();<br>}</pre>
+
+The <code>WeaveExit</code> method is similar.<br>
+
+<h2>Using the Trace Custom Attribute</h2>
+
+The Trace custom attribute is as easy to use as any other custom
+attribute. For instance, if you want to trace a method, you can apply
+the custom attribute to this method:<br>
+
+<pre>[Trace]<br>public static void Traced()<br>{<br>  System.Diagnostics.Trace.WriteLine( "Traced() should be traced." );<br>}</pre>
+
+However, since our custom attribute is derived from <code>MulticastAttribute</code>,
+things are more powerful:<br>
+
+<ul>
+
+  <li>If you apply the attribute to a property or an event, it
+will apply to all its accessors.</li>
+
+  <li>If you apply the attribute to a type, it will apply to all
+its methods, unless you specify a filter using the <code>AttributeTargetMembers</code>
+property.</li>
+
+  <li>If you apply the attribute to an assembly, it will apply
+all
+types and all methods, unless you specify type and/or method filters
+using the <code>AttributeTargetTypes</code> and <code>AttributeTargetMembers</code>
+properties.</li>
+
+</ul>
+
+Here is some example of attributes multicasted to many methods using
+filters:<br>
+
+<pre>[assembly: Trace( Category = "BaseCategory" )]<br>[assembly: Trace( AttributeTargetTypes = "TestTargetProject.FirstNamespace.*",<br>	Category = "FirstCategory" )]<br>[assembly: Trace( AttributeTargetTypes = "TestTargetProject.SecondNamespace.*",<br>	Category = "SecondNamespace", AttributePriority = 10 )]<br>[assembly: Trace( AttributeTargetTypes = "TestTargetProject.SecondNamespace.*",<br> AttributeTargetMembers = "*NotTrace", AttributeExclude = true, AttributePriority = 20 )]</pre>
+
+</body>
+</html>

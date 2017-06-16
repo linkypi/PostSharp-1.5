@@ -1,0 +1,167 @@
+#region Released to Public Domain by Gael Fraiteur
+/*----------------------------------------------------------------------------*
+ *   This file is part of samples of PostSharp.                                *
+ *                                                                             *
+ *   This sample is free software: you have an unlimited right to              *
+ *   redistribute it and/or modify it.                                         *
+ *                                                                             *
+ *   This sample is distributed in the hope that it will be useful,            *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                      *
+ *                                                                             *
+ *----------------------------------------------------------------------------*/
+#endregion
+
+package PostSharp.Samples.Cache;
+
+import System.*;
+import System.Collections.Generic.*;
+import System.Text.*;
+import System.Reflection.*;
+
+/**
+ * Provides formatting String representing types, methods and fields. The
+ * formatting Strings may contain arguments like {0}
+ * filled at runtime with generic parameters or method arguments.
+ *
+ */
+
+class Formatter
+{
+
+	// Gets a formatting String representing a Type.
+	public static String GetTypeFormatString(Type type)
+	{
+		StringBuilder stringBuilder = new StringBuilder();
+
+		// Build the format String for the declaring type.
+
+		stringBuilder.Append(type.get_FullName());
+
+		if (type.get_IsGenericTypeDefinition())
+		{
+			stringBuilder.Append("<");
+			for (int i = 0; i < type.GetGenericArguments().length; i++)
+			{
+				if (i > 0)
+					stringBuilder.Append(", ");
+				stringBuilder.AppendFormat("{{{0}}}", new Integer(i));
+			}
+			stringBuilder.Append(">");
+
+		}
+		return stringBuilder.ToString();
+	}
+
+	// Gets the formatting Strings representing a method.
+	public static MethodFormatStrings GetMethodFormatStrings(MethodBase method)
+	{
+		String typeFormat;
+		String methodFormat;
+		String parameterFormat;
+
+		StringBuilder stringBuilder = new StringBuilder();
+
+		typeFormat = GetTypeFormatString(method.get_DeclaringType());
+
+		// Build the format String for the method name.
+		stringBuilder.set_Length(0);
+		stringBuilder.Append("::");
+		stringBuilder.Append(method.get_Name());
+		if (method.get_IsGenericMethodDefinition())
+		{
+			stringBuilder.Append("<");
+			for (int i = 0; i < method.GetGenericArguments().length; i++)
+			{
+				if (i > 0)
+					stringBuilder.Append(", ");
+				stringBuilder.AppendFormat("{{{0}}}", new Integer(i));
+			}
+			stringBuilder.Append(">");
+
+		}
+		methodFormat = stringBuilder.ToString();
+
+		// Build the format String for parameters.
+		stringBuilder.set_Length(0);
+		ParameterInfo[] parameters = method.GetParameters();
+		stringBuilder.Append("(");
+		for (int i = 0; i < parameters.length; i++)
+		{
+			if (i > 0)
+			{
+				stringBuilder.Append(", ");
+			}
+			stringBuilder.Append("{{{");
+			stringBuilder.Append(i);
+			stringBuilder.Append("}}}");
+		}
+		stringBuilder.Append(")");
+
+		parameterFormat = stringBuilder.ToString();
+
+		return new MethodFormatStrings(typeFormat, methodFormat, parameterFormat);
+	}
+
+	// Pads a String with a space, if not empty and not yet padded.
+	public static String NormalizePrefix(String prefix)
+	{
+		if (String.IsNullOrEmpty(prefix))
+		{
+			return "";
+		}
+		else if (prefix.EndsWith(" "))
+		{
+			return prefix;
+		}
+		else
+		{
+			return prefix + " ";
+		}
+	}
+
+	public static String FormatString(String format, Object[] args)
+	{
+		if (args == null)
+			return format;
+		else
+			return String.Format(format, args);
+	}
+
+}
+
+/** 
+ * Set of 3 formatting String that, at runtime, represent a method and its
+ * parameters.
+ * @attribute Serializable() 
+ */
+class MethodFormatStrings
+{
+	private String typeFormat;
+	private String methodFormat;
+	private String parameterFormat;
+
+	MethodFormatStrings(String typeFormat, String methodFormat, String parameterFormat)
+	{
+		this.typeFormat = typeFormat;
+		this.methodFormat = methodFormat;
+		this.parameterFormat = parameterFormat;
+	}
+
+public String Format(
+		Object instance,
+		MethodBase method,
+		Object[] invocationParameters)
+	{
+		String[] parts = { 
+                Formatter.FormatString(this.typeFormat, method.get_DeclaringType().GetGenericArguments()),
+                Formatter.FormatString(this.methodFormat, method.GetGenericArguments()),
+                instance == null ? "" : String.Format("{{{0}}}", instance ),
+                Formatter.FormatString(this.parameterFormat, invocationParameters) };
+
+		return String.Concat(parts);
+
+	}
+
+
+}

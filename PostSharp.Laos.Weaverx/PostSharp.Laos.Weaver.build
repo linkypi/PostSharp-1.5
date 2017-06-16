@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- NAnt build file for PostSharp.Laos.Weaver -->
+<project name="PostSharp.Laos.Weaver" default="build">
+
+  <property name="rootDir" value="../.." />
+  <include buildfile="${rootDir}/Build/Common.include"/>
+
+  <property name="references" value="System.dll"/>
+
+  <fileset id="dependencies">
+    <include name="../../PostSharp.Corex/PostSharp.Core.build"/>
+    <include name="../PostSharp.Laos/PostSharp.Laos.build"/>
+  </fileset>
+
+  <fileset id="outputfiles">
+    <include name="PostSharp.Laos.psplugin" />
+  </fileset>
+
+  <property name="keyfile" value="${postsharpKeyFile}"/>
+  <property name="delaysign" value="true"/>
+
+  <target name="_build" depends="standard-build"/>
+
+</project>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- A small demo project that just recompiles the input assembly, without any
+     other transformation than assembly renaming.                                -->
+<Project xmlns="http://schemas.postsharp.org/1.0/configuration">
+	<TaskType Name="SampleTask" 
+			  Implementation="PostSharp.Samples.Host.SampleTask, PostSharp.Samples.Host"
+			  Phase="Analyze"/>
+	<Tasks>
+		<SampleTask />
+		<Compile TargetFile="{$Output}" />
+	</Tasks>
+</Project>

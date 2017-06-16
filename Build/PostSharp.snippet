@@ -1,0 +1,316 @@
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>
+                PostSharp Header
+            </Title>
+            <Shortcut>psgpl</Shortcut>
+      			<Description>PostSharp header with GPL copyright</Description>
+      			<Author>Gael Fraiteur</Author>
+      			<SnippetTypes>
+      				<SnippetType>Expansion</SnippetType>
+      			</SnippetTypes>
+        </Header>
+        <Snippet>
+            <Code Language="csharp">
+<![CDATA[#region Copyright (c) 2004-2009 by Gael Fraiteur
+/*----------------------------------------------------------------------------*
+ *   This file is part of compile-time components of PostSharp.                *
+ *                                                                             *
+ *   This library is free software: you can redistribute it and/or modify      *
+ *   it under the terms of the version 3 of the GNU General Public License     *
+ *   as published by the Free Software Foundation.                             *
+ *                                                                             *
+ *   This library is distributed in the hope that it will be useful,           *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             *
+ *   GNU General Public License for more details.                              *
+ *                                                                             *
+ *   You should have received a copy of the GNU General Public License         *
+ *   along with this library.  If not, see <http://www.gnu.org/licenses/>.     *
+ *                                                                             *
+ *----------------------------------------------------------------------------*/
+#endregion
+]]>
+</Code>
+        </Snippet>
+    </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>
+        PostSharp LGPL Header
+      </Title>
+      <Shortcut>pslgpl</Shortcut>
+      <Description>PostSharp header with LGPL copyright</Description>
+      <Author>Gael Fraiteur</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="csharp">
+        <![CDATA[#region Copyright (c) 2004-2009 by Gael Fraiteur 
+/*----------------------------------------------------------------------------*
+ *   This file is part of run-time components of PostSharp.                    *
+ *                                                                             *
+ *   This library is free software: you can redistribute it and/or modify      *
+ *   it under the terms of the version 3 of the GNU Lesser General Public      * 
+ *   License as published by the Free Software Foundation.                     *
+ *                                                                             *
+ *   This library is distributed in the hope that it will be useful,           *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             *
+ *   GNU General Public License for more details.                              *
+ *                                                                             *
+ *   You should have received a copy of the GNU Lesser General Public License  *
+ *   along with this library.  If not, see <http://www.gnu.org/licenses/>.     *
+ *                                                                             *
+ *----------------------------------------------------------------------------*/
+#endregion]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>  
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>
+        PostSharp LGPL Header
+      </Title>
+      <Shortcut>pslgpl</Shortcut>
+      <Description>PostSharp header with LGPL copyright</Description>
+      <Author>Gael Fraiteur</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="csharp">
+        <![CDATA[#region Copyright (c) 2004-2009 by Gael Fraiteur 
+/*----------------------------------------------------------------------------*
+ *   This file is part of run-time components of PostSharp.                    *
+ *                                                                             *
+ *   This library is free software: you can redistribute it and/or modify      *
+ *   it under the terms of the version 3 of the GNU Lesser General Public      * 
+ *   License as published by the Free Software Foundation.                     *
+ *                                                                             *
+ *   This library is distributed in the hope that it will be useful,           *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             *
+ *   GNU General Public License for more details.                              *
+ *                                                                             *
+ *   You should have received a copy of the GNU Lesser General Public License  *
+ *   along with this library.  If not, see <http://www.gnu.org/licenses/>.     *
+ *                                                                             *
+ *----------------------------------------------------------------------------*/
+#endregion]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>  
+  <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>
+                Precondition block
+            </Title>
+            <Shortcut>preblock</Shortcut>
+      			<Description>Block to be inserted at the entry of a method: test preconditions</Description>
+      			<Author>Gael Fraiteur</Author>
+      			<SnippetTypes>
+      				<SnippetType>Expansion</SnippetType>
+      			</SnippetTypes>
+        </Header>
+        <Snippet>
+            <Code Language="csharp">
+<![CDATA[#region Preconditions
+
+#endregion
+]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>
+                Test null parameter
+            </Title>
+            <Shortcut>prenull</Shortcut>
+      			<Description>Throws an exception if a parameter is null.</Description>
+      			<Author>Gael Fraiteur</Author>
+      			<SnippetTypes>
+      				<SnippetType>Expansion</SnippetType>
+      			</SnippetTypes>
+      			
+        </Header>
+        <Snippet>
+            <Declarations>
+             <Object>
+                <ID>ParameterName</ID>
+                    <Type>object</Type>
+                    <ToolTip>Replace with the parameter name.</ToolTip>
+                    <Default>parameterName</Default>
+                </Object>
+            </Declarations>
+            <Code Language="csharp">
+<![CDATA[ExceptionHelper.AssertArgumentNotNull($ParameterName$, "$ParameterName$");]]>
+</Code>
+        </Snippet>
+    </CodeSnippet>
+        <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>
+                Test null or empty string parameter
+            </Title>
+            <Shortcut>preempty</Shortcut>
+      			<Description>Throws an exception if a string parameter is null or empty.</Description>
+      			<Author>Gael Fraiteur</Author>
+      			<SnippetTypes>
+      				<SnippetType>Expansion</SnippetType>
+      			</SnippetTypes>
+      			
+        </Header>
+        <Snippet>
+            <Declarations>
+             <Object>
+                <ID>ParameterName</ID>
+                    <Type>string</Type>
+                    <ToolTip>Replace with the parameter name.</ToolTip>
+                    <Default>parameterName</Default>
+                </Object>
+            </Declarations>
+            <Code Language="csharp">
+<![CDATA[ExceptionHelper.AssertArgumentNotEmptyOrNull($ParameterName$, "$ParameterName$");]]>
+</Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>
+                Test positive parameter
+            </Title>
+            <Shortcut>prepos</Shortcut>
+      			<Description>Throws an exception if an integer parameter is negative.</Description>
+      			<Author>Gael Fraiteur</Author>
+      			<SnippetTypes>
+      				<SnippetType>Expansion</SnippetType>
+      			</SnippetTypes>
+      			
+        </Header>
+        <Snippet>
+            <Declarations>
+             <Object>
+                <ID>ParameterName</ID>
+                    <Type>int</Type>
+                    <ToolTip>Replace with the parameter name.</ToolTip>
+                    <Default>parameterName</Default>
+                </Object>
+            </Declarations>
+            <Code Language="csharp">
+<![CDATA[if ( $ParameterName$ < 0 ) 
+{
+   throw new ArgumentOutOfRangeException("$ParameterName$", "The parameter '$ParameterName$' should be zero or positive." );
+    }]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>
+                XML Comment: inherit
+            </Title>
+            <Shortcut>coinh</Shortcut>
+      			<Description>Specifies that the documentation should be inherited.</Description>
+      			<Author>Gael Fraiteur</Author>
+      			<SnippetTypes>
+      				<SnippetType>Expansion</SnippetType>
+      			</SnippetTypes>
+      			
+        </Header>
+        <Snippet>
+            <Code Language="csharp">
+<![CDATA[/// <inheritdoc />]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet> 
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>
+                XML Comment: internal
+            </Title>
+            <Shortcut>coint</Shortcut>
+      			<Description>Specifies that the object should be documented as
+            internal and not for use in user code.</Description>
+      			<Author>Gael Fraiteur</Author>
+      			<SnippetTypes>
+      				<SnippetType>Expansion</SnippetType>
+      			</SnippetTypes>
+      			
+        </Header>
+        <Snippet>
+            <Code Language="csharp">
+<![CDATA[/// <internal />]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>
+				XML Comment: obsolete
+			</Title>
+			<Shortcut>coobs</Shortcut>
+			<Description>
+				Specifies that the object should not be documented,
+				because it is obsolete.
+			</Description>
+			<Author>Gael Fraiteur</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+
+		</Header>
+		<Snippet>
+			<Code Language="csharp">
+				<![CDATA[/// <obsolete />]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+	<CodeSnippet Format="1.0.0">
+	<Header>
+		<Title>
+			Code Analysis : Suppress Message
+		</Title>
+		<Shortcut>sup</Shortcut>
+		<Description>
+			Suppress an FXCOP error message. Do not forget to include the proper namespace.
+		</Description>
+		<Author>Gael Fraiteur</Author>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Object>
+				<ID>Category</ID>
+				<Type>string</Type>
+				<ToolTip>Replace with the category name.</ToolTip>
+				<Default>Microsoft.Category</Default>
+			</Object>
+			<Object>
+				<ID>CheckId</ID>
+				<Type>string</Type>
+				<ToolTip>Replace with the Check Id.</ToolTip>
+				<Default>CA0000</Default>
+			</Object>
+			<Object>
+				<ID>Name</ID>
+				<Type>string</Type>
+				<ToolTip>Replace with the rule name.</ToolTip>
+				<Default>RuleName</Default>
+			</Object>
+		</Declarations>
+		<Code Language="csharp">
+			<![CDATA[[SuppressMessage("$Category$", "$CheckId$" /* $Name$ */)]]]>
+		</Code>
+	</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

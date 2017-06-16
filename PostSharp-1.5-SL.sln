@@ -1,0 +1,46 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Public.SL", "Core\PostSharp.Public\PostSharp.Public.SL.csproj", "{21006998-3EB5-468D-9FC9-63570C2998E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Laos.SL", "Laos\PostSharp.Laos\PostSharp.Laos.SL.csproj", "{02247228-8B9C-4FD4-A1F1-B6846F97B22A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Samples.Silverlight.Test", "Samples\PostSharp.Samples.Silverlight\PostSharp.Samples.Silverlight.Test\PostSharp.Samples.Silverlight.Test.csproj", "{6930CDD8-A14D-451C-B979-6B02715049C6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8BD2AA57-02F8-4070-9820-A2E761920ACD} = {8BD2AA57-02F8-4070-9820-A2E761920ACD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Samples.Silverlight.Impl", "Samples\PostSharp.Samples.Silverlight\PostSharp.Samples.Silverlight.Impl\PostSharp.Samples.Silverlight.Impl.csproj", "{8BD2AA57-02F8-4070-9820-A2E761920ACD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Samples.Silverlight.Aspects", "Samples\PostSharp.Samples.Silverlight\PostSharp.Samples.Silverlight.Aspects\PostSharp.Samples.Silverlight.Aspects.csproj", "{56E4E493-CD99-4BE8-86B1-CF764459637D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21006998-3EB5-468D-9FC9-63570C2998E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21006998-3EB5-468D-9FC9-63570C2998E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21006998-3EB5-468D-9FC9-63570C2998E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21006998-3EB5-468D-9FC9-63570C2998E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02247228-8B9C-4FD4-A1F1-B6846F97B22A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02247228-8B9C-4FD4-A1F1-B6846F97B22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02247228-8B9C-4FD4-A1F1-B6846F97B22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02247228-8B9C-4FD4-A1F1-B6846F97B22A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6930CDD8-A14D-451C-B979-6B02715049C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6930CDD8-A14D-451C-B979-6B02715049C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6930CDD8-A14D-451C-B979-6B02715049C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6930CDD8-A14D-451C-B979-6B02715049C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BD2AA57-02F8-4070-9820-A2E761920ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BD2AA57-02F8-4070-9820-A2E761920ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BD2AA57-02F8-4070-9820-A2E761920ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BD2AA57-02F8-4070-9820-A2E761920ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E4E493-CD99-4BE8-86B1-CF764459637D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E4E493-CD99-4BE8-86B1-CF764459637D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E4E493-CD99-4BE8-86B1-CF764459637D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E4E493-CD99-4BE8-86B1-CF764459637D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

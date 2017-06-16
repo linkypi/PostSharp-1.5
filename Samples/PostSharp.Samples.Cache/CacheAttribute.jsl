@@ -1,0 +1,127 @@
+#region Released to Public Domain by Gael Fraiteur
+/*----------------------------------------------------------------------------*
+ *   This file is part of samples of PostSharp.                                *
+ *                                                                             *
+ *   This sample is free software: you have an unlimited right to              *
+ *   redistribute it and/or modify it.                                         *
+ *                                                                             *
+ *   This sample is distributed in the hope that it will be useful,            *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                      *
+ *                                                                             *
+ *----------------------------------------------------------------------------*/
+#endregion
+
+package PostSharp.Samples.Cache;
+
+import System.*;
+import System.Reflection.*;
+import System.Collections.Generic.*;
+import PostSharp.Laos.*;
+import PostSharp.Extensibility.*;
+
+
+/**
+ *  Custom attribute that, when applied on a method, caches its return value.
+ *  The cache key is computed from the method name, the object instance,
+ *  the parameter values and the generic arguments.
+ * 
+ *  @attribute Serializable()  
+ *  @attribute AttributeUsage( AttributeTargets.Method, AllowMultiple=false )
+ * 
+ * **/
+public final class CacheAttribute extends OnMethodBoundaryAspect
+{
+	// Some formatting strings to compose the cache key.
+	MethodFormatStrings formatStrings;
+
+	// A dictionary that serves as a trivial cache implementation.
+	static Dictionary<String,Object> cache;
+
+	
+	static
+	{
+		// We initialize the cache only if we run outside PostSharp.
+		if (PostSharpEnvironment.get_Current() == null)
+		{
+			cache = new Dictionary<String, Object>();
+		}
+	}
+
+
+	// Validate the attribute usage.
+	public boolean CompileTimeValidate(MethodBase method)
+	{
+		// Don't apply to constructors.
+		if (method instanceof ConstructorInfo)
+		{
+			CacheMessageSource.Instance.Write(SeverityType.Error, "CX0001", null);
+			return false;
+		}
+
+		MethodInfo methodInfo = (MethodInfo)method;
+
+		// Don't apply to void methods.
+		if (methodInfo.get_ReturnType().get_Name() == "Void")
+		{
+			CacheMessageSource.Instance.Write(SeverityType.Error, "CX0002", null);
+			return false;
+		}
+
+		// Does not support out parameters.
+		ParameterInfo[] parameters = method.GetParameters();
+		for (int i = 0; i < parameters.length; i++)
+		{
+			if (parameters[i].get_IsOut())
+			{
+				CacheMessageSource.Instance.Write(SeverityType.Error, "CX0003", null);
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+
+	// At compile time, initialize the format string that will be
+	// used to create the cache keys.
+	public void CompileTimeInitialize(MethodBase method)
+	{
+		this.formatStrings = Formatter.GetMethodFormatStrings(method);
+	}
+
+	// Executed at runtime, before the method.
+	public void OnEntry(MethodExecutionEventArgs eventArgs)
+	{
+		// Compose the cache key.
+		String key = this.formatStrings.Format(
+			eventArgs.get_Instance(), eventArgs.get_Method(), eventArgs.GetReadOnlyArgumentArray());
+
+		// Test whether the cache contains the current method call.
+		if (!cache.ContainsKey(key))
+		{
+			// If not, we will continue the execution as normally.
+			// We store the key in a state variable to have it in the OnExit method.
+			eventArgs.set_MethodExecutionTag(key);
+		}
+		else
+		{
+			// If it is in cache, we set the cached value as the return value
+			// and we force the method to return immediately.
+			eventArgs.set_ReturnValue(cache.get_Item(key));
+			eventArgs.set_FlowBehavior(FlowBehavior.Return);
+		}
+
+	}
+
+	// Executed at runtime, after the method.
+	public void OnSuccess(MethodExecutionEventArgs eventArgs)
+	{
+		// Retrieve the key that has been computed in OnEntry.
+		String key = (String)eventArgs.get_MethodExecutionTag();
+
+		// Put the return value in the cache.
+		cache.set_Item(key, eventArgs.get_ReturnValue());
+	}
+	
+}

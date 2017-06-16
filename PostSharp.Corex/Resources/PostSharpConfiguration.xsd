@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://schemas.postsharp.org/1.0/configuration" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bind="urn:schemas-microsoft-com:asm.v1" targetNamespace="http://schemas.postsharp.org/1.0/configuration" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="configuration">
+  <xs:import schemaLocation="AssemblyBindingConfiguration.xsd" namespace="urn:schemas-microsoft-com:asm.v1" />
+  <xs:group name="BaseConfiguration">
+    <xs:annotation>
+      <xs:documentation>Declares elements common to all global elements.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Declares a property that can be used in expressions.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:attribute name="Value" type="Expression" use="required">
+            <xs:annotation>
+              <xs:documentation>Property value. An expression.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Name" type="xs:Name" use="required">
+            <xs:annotation>
+              <xs:documentation>Property name.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchPath" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Includes a directory in the search path.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:attribute name="Directory" type="Expression" use="required">
+            <xs:annotation>
+              <xs:documentation>Full or relative path of the directory to include in the search path. An expression.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Using" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Uses a plug-in.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:attribute name="PlugInFile" type="Expression" use="required">
+            <xs:annotation>
+              <xs:documentation>Full or relative path of the plug-in configuration file. An expression.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TaskType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Defines a task type.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Dependency" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Specifies that another task should run before or after the current task.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:attribute name="TaskType" type="xs:Name" use="required">
+                  <xs:annotation>
+                    <xs:documentation>Name of the task type to be executed.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Required" type="xs:boolean" use="optional" default="true">
+                  <xs:annotation>
+                    <xs:documentation>If 'false', the task shall not be included in the project unless it is included explicitely or required by another task. In this case, the dependency only ensures that tasks are executed in the proper order. If 'true', the task shall be included in the project.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Position" type="Position" use="optional" default="Before">
+                  <xs:annotation>
+                    <xs:documentation>Relative position of the required task w.r.t. the current task.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Parameters" type="ParameterCollection" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Collection of parameters that can be used by the implementation.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="Name" type="xs:Name" use="required">
+            <xs:annotation>
+              <xs:documentation>Name of the task type for programmatic reference.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Implementation" type="xs:normalizedString" use="required">
+            <xs:annotation>
+              <xs:documentation>Full name of the type implementing the task, including the assembly name.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Phase" type="xs:Name" use="optional">
+            <xs:annotation>
+              <xs:documentation>Phase in which the task should be executed, or absent if the Execute method of the task has not to be executed.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Platform" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Defines a target platform, used during the compilation phase.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Parameters" type="ParameterCollection" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Collection of parameters passed to the platform constructor.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="Implementation" type="xs:normalizedString" use="required">
+            <xs:annotation>
+              <xs:documentation>Full name of the type implementing the platform, including the assembly name.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Name" type="xs:Name" use="required">
+            <xs:annotation>
+              <xs:documentation>Platform name.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StrongName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Strong assembly name to be substituted to the corresponding short assembly name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AssemblyBinding">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="bind:dependentAssembly" maxOccurs="unbounded" minOccurs="0" />
+            <xs:element name="Import">
+              <xs:complexType>
+                <xs:attribute name="File" type="Expression" use="required" />
+                <xs:attribute name="Select" type="Expression" use="required" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="ParameterCollection">
+    <xs:annotation>
+      <xs:documentation>Collection of parameters.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Adds a parameter.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:attribute name="Name" type="xs:Name" use="required">
+            <xs:annotation>
+              <xs:documentation>Parameter name.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Value" type="Expression" use="required">
+            <xs:annotation>
+              <xs:documentation>Parameter value. An expression.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Configuration">
+    <xs:annotation>
+      <xs:documentation>Root of the Global Configuration File.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Phases">
+          <xs:annotation>
+            <xs:documentation>Sequence of phases of the post-compilation process.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Phase" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>Phase in the post-compilation process.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attribute name="Name" type="xs:Name">
+                    <xs:annotation>
+                      <xs:documentation>Phase name.</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="Ordinal" type="xs:integer">
+                    <xs:annotation>
+                      <xs:documentation>Ordinal number used to sort phases.</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:group ref="BaseConfiguration" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlugIn">
+    <xs:annotation>
+      <xs:documentation>Root element of Plug-In Configuration Files.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="BaseConfiguration" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Project">
+    <xs:annotation>
+      <xs:documentation>Root element of Project Files.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="BaseConfiguration" minOccurs="0" />
+        <xs:element name="Tasks" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Unordered set of tasks.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any namespace="http://schemas.postsharp.org/1.0/configuration" processContents="lax" maxOccurs="unbounded" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="ReferenceDirectory" type="Expression" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+					Directory according to which relative paths are resolved. By default, 
+					relative paths are resolved according to the directory that contains 
+					the project file. You may use the {$WorkingDirectory} property if
+					you want to resolve paths according to the working directory.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="Expression">
+    <xs:annotation>
+      <xs:documentation>String that can contain properties resolved at runtime.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="Position">
+    <xs:annotation>
+      <xs:documentation>'Before' or 'After'.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Before" />
+      <xs:enumeration value="After" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

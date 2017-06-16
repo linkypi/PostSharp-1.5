@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+
+  
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+
+
+  
+
+
+  
+  
+  
+  <title>High-Level Trace Aspect Sample</title>
+  <link rel="stylesheet" type="text/css" href="../UserGuide.css">
+</head>
+
+
+<body>
+
+
+
+<h1>High-Level Trace Aspect Sample</h1>
+
+<span class="openfloat"><a href="PostSharp.Samples.XTrace.sln"><img src="../vs.png" border="0" alt="">Open this sample in Visual Studio</a> </span>
+
+<p>The <code>PostSharp.Samples.XTrace</code> project demonstrates the use of PostSharp Laos to implement tracing.<br>
+
+
+</p>
+
+
+<p>It provides more advanced functionalities than the <a href="../PostSharp.Samples.Trace/PostSharp.Samples.Trace.html">low-level trace aspect</a>:</p>
+
+
+<ol>
+
+
+  <li>It allows not only to trace method boundaries but also exceptions, field access and method invocations.</li>
+
+
+  <li>It traces also the concrete values of parameters.</li>
+
+
+</ol>
+
+
+<p>Note that, since it is based on PostSharp Laos, it is much more
+demanding than the low-level trace aspect. Using it too aggressively
+could result in significantly higher CPU consumption, principally
+because your program would because GC unfriendly. But it seems the
+price to pay&nbsp; if you want to trace also the parameter values.</p>
+<p>This example illustrates also the use of compile-time initialization.</p>
+
+
+<h2>Objective</h2>
+<p>We would like to develop the following custom attributes:</p>
+<ul>
+  <li>
+    <code>XTraceExceptionAttribute</code>: write a trace message when the method to which it is applied fails with an exception.
+  </li>
+  <li><code>XTraceFieldAccessAttribute</code>: write a trace message whenever the field to which it is applied is accessed (get or set operation).</li>
+  <li><code>XTraceMethodBoundaryAttribute</code>: write a trace message when the method to which it is applied starts or ends (successfully or not).</li>
+  <li><code>XTraceMethodInvocationAttribute</code>: write a trace message when the message to which it is applied is invoked (this method may be defined in a different assembly).</li>
+</ul>
+<p>We want to trace as richly as possible, i.e. we would like to write
+the values of parameters, field values and so on. Also, we would like
+to take advantage of the compile-time initialization to avoid computing
+the formatting strings at runtime.</p>
+<p>Since all these 4 aspects are very similar, we will comment only the most commonly used, <code>XTraceMethodBoundaryAttribute</code>.</p>
+<h2>Implementation of XTraceMethodBoundaryAttribute</h2>
+<p>Since we want to insert code before and after the method body, we derive our custom attribute from <code>OnMethodBoundaryAspect</code> and we implement the <code>OnEntry</code>, <code>OnSuccess</code> and <code>OnException</code> methods.</p>
+<p>The skeleton of our custom attribute is the following:</p>
+<pre>[Serializable]<br>public sealed class XTraceMethodBoundaryAttribute : OnMethodBoundaryAspect<br>{<br><br>    public override void OnEntry(MethodExecutionEventArgs context)<br>    {<br>    }<br><br>    public override void OnSuccess(MethodExecutionEventArgs eventArgs)<br>    {<br>    }<br><br>    public override void OnException(MethodExecutionEventArgs eventArgs)<br>    {<br>    }<br><br>} </pre>
+<h3>Compile-Time Initialization</h3>
+<p>Writing the method name with all its parameters and generic type
+parameters is not trivial. It requires a computing power that we cannot
+neglect if we want our trace aspect to have acceptable runtime
+performance.</p>
+<p>Fortunately, a lot of things are known at compile-time: the name of
+the type and the method, the number of generic parameters, and the
+number and the type of parameters. So the approach we chose is, <i>at compile-time</i>, to compose a template (formatting string) and, <i>at runtime</i>, to format these templates using the concretely received parameters and generic parameters.</p>
+<p>For instance, if we have a method&nbsp;</p>
+<pre>MyType&lt;T1&gt;::MyMethod&lt;T2&gt;(T2 arg1, int arg2)</pre>
+<p>the template may be</p>
+<pre>MyType&lt;{0}&gt;::MyMethod&lt;{1}&gt;({2}, {3})</pre>
+<p>At runtime, we would provide an array with the parameters.</p>
+<p>The functionality of preparing templates and applying them is encapsulated in the classes <code>Formatter</code> and <code>MethodFormatStrings</code>. Their implementation is not interesting for our discussion, so we will not describe them here.</p>
+<p>How to realize this with PostSharp Laos?</p>
+<p>First, we define instance fields containing formatting strings and
+other things we don't want to compute at runtime. Then, implement the <code>CompileTimeInitialize</code>
+method to set up these fields. During post-compilation, PostSharp Laos
+will serialize the object. That means that fields that are initialized
+at compile-time to used at runtime should be serializable. Since it is
+the default behavior, we do not have to care much about that. But if
+there is a field that is used <i>only</i> at runtime or <i>only</i> at compile-time, we can safely mark it as non serializable. There is no such field in our example.</p>
+<p>Finally here is the code of compile-time initialization:</p>
+<pre>string prefix;<br>MethodFormatStrings formatStrings;<br>bool isVoid;<br><br>public string Prefix<br>{<br>    get { return this.prefix; }<br>    set { this.prefix = value; }<br>}<br>        <br>public override void CompileTimeInitialize(MethodBase method)<br>{<br>    this.prefix = Formatter.NormalizePrefix(this.prefix);<br>    this.formatStrings = Formatter.GetMethodFormatStrings(method);<br>    MethodInfo methodInfo = method as MethodInfo;<br>    if (methodInfo != null)<br>    {<br>        this.isVoid = methodInfo.ReturnType == typeof(void);<br>    }<br>    else<br>    {<br>        this.isVoid = true;<br>    }<br>}</pre>
+<h3>Runtime Methods</h3>
+Let's go back to the skeleton of our <code>XTraceMethodBoundaryAttribute</code> class. We have to implement the <code>OnEntry</code>, <code>OnSuccess</code> and <code>OnException</code> classes. All we have to do is to format the templates with the concrete parameters and to call the <code>Trace.TraceInformation</code> method.<br>
+<pre>public override void OnEntry(MethodExecutionEventArgs context)<br>{<br>    Trace.TraceInformation(<br>        this.prefix + "Entering " +<br>        this.formatStrings.Format(<br>            context.Instance,<br>            context.Method,<br>            context.GetArguments()));<br>    Trace.Indent();<br><br>}<br><br>public override void OnSuccess(MethodExecutionEventArgs eventArgs)<br>{<br>    Trace.Unindent();<br>    Trace.TraceInformation(<br>        this.prefix + "Leaving " +<br>        this.formatStrings.Format(<br>            eventArgs.Instance,<br>            eventArgs.Method,<br>            eventArgs.GetArguments()) +<br>        (this.isVoid ? "" : Formatter.FormatString(" : {{{0}}}.", 
+                                            eventArgs.ReturnValue)));<br>}<br><br>public override void OnException(MethodExecutionEventArgs eventArgs)<br>{<br>    Trace.Unindent();<br>    Trace.TraceWarning(<br>            this.prefix + "Leaving " +<br>            this.formatStrings.Format(<br>            eventArgs.Instance,<br>            eventArgs.Method,<br>            eventArgs.GetArguments()<br>            ) +<br>            Formatter.FormatString(" with exception {0} : {{{1}}}.", 
+                eventArgs.Exception.GetType().Name,<br>            eventArgs.Exception.Message));<br><br>}</pre>
+
+
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn xmlns="http://schemas.postsharp.org/1.0/configuration">
+	<SearchPath Directory="bin/{$Configuration}"/>
+	<TaskType Name="PostSharp.Samples.Trace"	
+			  Implementation="PostSharp.Samples.Trace.TraceTask, PostSharp.Samples.Trace.Weaver">
+		<Dependency TaskType="CodeWeaver"/>
+	</TaskType>
+</PlugIn>

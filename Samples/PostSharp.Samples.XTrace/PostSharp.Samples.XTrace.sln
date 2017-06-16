@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Samples.XTrace", "PostSharp.Samples.XTrace\PostSharp.Samples.XTrace.csproj", "{A83A36A8-51E4-4793-A51F-697644AED84A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Samples.XTrace.Test", "PostSharp.Samples.XTrace.Test\PostSharp.Samples.XTrace.Test.csproj", "{5AABCF5F-4013-48EC-B5D6-37C6060A2720}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		SkipPostSharp|Any CPU = SkipPostSharp|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A83A36A8-51E4-4793-A51F-697644AED84A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A83A36A8-51E4-4793-A51F-697644AED84A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A83A36A8-51E4-4793-A51F-697644AED84A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A83A36A8-51E4-4793-A51F-697644AED84A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A83A36A8-51E4-4793-A51F-697644AED84A}.SkipPostSharp|Any CPU.ActiveCfg = Debug|Any CPU
+		{A83A36A8-51E4-4793-A51F-697644AED84A}.SkipPostSharp|Any CPU.Build.0 = Debug|Any CPU
+		{5AABCF5F-4013-48EC-B5D6-37C6060A2720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AABCF5F-4013-48EC-B5D6-37C6060A2720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AABCF5F-4013-48EC-B5D6-37C6060A2720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AABCF5F-4013-48EC-B5D6-37C6060A2720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AABCF5F-4013-48EC-B5D6-37C6060A2720}.SkipPostSharp|Any CPU.ActiveCfg = SkipPostSharp|Any CPU
+		{5AABCF5F-4013-48EC-B5D6-37C6060A2720}.SkipPostSharp|Any CPU.Build.0 = SkipPostSharp|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

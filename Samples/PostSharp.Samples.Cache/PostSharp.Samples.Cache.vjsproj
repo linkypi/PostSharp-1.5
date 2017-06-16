@@ -1,0 +1,81 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4CEC22AF-335D-4B51-AB87-86E5622CC3C0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PostSharp.Samples.Cache</RootNamespace>
+    <AssemblyName>PostSharp.Samples.Cache</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SkipPostSharp|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SkipPostSharp\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SkipPostSharp</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PostSharp.Laos, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\Laos\PostSharp.Laos\bin\Debug\PostSharp.Laos.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp.Public, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\Core\PostSharp.Core\bin\debug\PostSharp.Public.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CacheAttribute.jsl" />
+    <Compile Include="CacheMessageSource.jsl" />
+    <Compile Include="Formatter.jsl" />
+    <Compile Include="Messages.Designer.jsl">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.jsl" />
+    <Compile Include="AssemblyInfo.jsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Messages.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.jsl</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PostSharp.Samples.Cache.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <DontImportPostSharp>True</DontImportPostSharp>
+    <SamplesDir>..</SamplesDir>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualJSharp.targets" />
+  <Import Project="$(SamplesDir)\PostSharp-Samples.targets" />
+  
+  
+</Project>

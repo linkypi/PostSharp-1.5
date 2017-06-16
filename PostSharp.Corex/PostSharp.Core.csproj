@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5F5509FC-717A-4CC4-90F7-45DAFC8EB46F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PostSharp.Core</RootNamespace>
+    <AssemblyName>PostSharp.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ISymWrapper" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationInfo.cs" />
+    <Compile Include="AssertionFailedException.cs" />
+    <Compile Include="CodeModel\AssemblyEnvelope.cs" />
+    <Compile Include="CodeModel\AssemblyLoadHelper.cs" />
+    <Compile Include="CodeModel\AssemblyLocator.cs" />
+    <Compile Include="CodeModel\AssemblyManifestDeclaration.cs" />
+    <Compile Include="CodeModel\AssemblyRedirectionPolicy.cs" />
+    <Compile Include="CodeModel\AssemblyRedirectionPolicyManager.cs" />
+    <Compile Include="CodeModel\AssemblyRefDeclaration.cs" />
+    <Compile Include="CodeModel\BindingException.cs" />
+    <Compile Include="CodeModel\BindingOptions.cs" />
+    <Compile Include="CodeModel\Binding\AssemblyComparer.cs" />
+    <Compile Include="CodeModel\Binding\BindingHelper.cs" />
+    <Compile Include="CodeModel\Binding\GenericMapComparer.cs" />
+    <Compile Include="CodeModel\Binding\HashCodeHelper.cs" />
+    <Compile Include="CodeModel\Binding\MethodComparer.cs" />
+    <Compile Include="CodeModel\Binding\MethodSignatureComparer.cs" />
+    <Compile Include="CodeModel\Binding\TypeComparer.cs" />
+    <Compile Include="CodeModel\CallingConvention.cs" />
+    <Compile Include="CodeModel\Collections\ElementCollection.cs" />
+    <Compile Include="CodeModel\Collections\MetaDataDeclarationDirectory.cs" />
+    <Compile Include="CodeModel\CustomAttributeConstructorException.cs" />
+    <Compile Include="CodeModel\CustomAttributeDeclaration.cs" />
+    <Compile Include="CodeModel\CustomStringDeclaration.cs" />
+    <Compile Include="CodeModel\DataDeclaration.cs" />
+    <Compile Include="CodeModel\Declaration.cs" />
+    <Compile Include="CodeModel\DeclarationCache.cs" />
+    <Compile Include="CodeModel\Domain.cs" />
+    <Compile Include="CodeModel\Element.cs" />
+    <Compile Include="CodeModel\EventDeclaration.cs" />
+    <Compile Include="CodeModel\ExceptionHandler.cs" />
+    <Compile Include="CodeModel\ExportedTypeDeclaration.cs" />
+    <Compile Include="CodeModel\FieldDefDeclaration.cs" />
+    <Compile Include="CodeModel\FieldRefDeclaration.cs" />
+    <Compile Include="CodeModel\GenericMap.cs" />
+    <Compile Include="CodeModel\GenericParameterConstraintDeclaration.cs" />
+    <Compile Include="CodeModel\GenericParameterDeclaration.cs" />
+    <Compile Include="CodeModel\GenericParameterKind.cs" />
+    <Compile Include="CodeModel\Helpers\AssemblyNameHelper.cs" />
+    <Compile Include="CodeModel\Helpers\AssemblyNameWrapper.cs" />
+    <Compile Include="CodeModel\Helpers\CompareHelper.cs" />
+    <Compile Include="CodeModel\Helpers\CustomAttributeHelper.cs" />
+    <Compile Include="CodeModel\Helpers\DelegateBuilder.cs" />
+    <Compile Include="CodeModel\Helpers\DelegateSignature.cs" />
+    <Compile Include="CodeModel\Helpers\EnumHelper.cs" />
+    <Compile Include="CodeModel\Helpers\GenericHelper.cs" />
+    <Compile Include="CodeModel\Helpers\GenericParameterReferenceFinder.cs" />
+    <Compile Include="CodeModel\Helpers\TypeClassificationHelper.cs" />
+    <Compile Include="CodeModel\Helpers\VisibilityHelper.cs" />
+    <Compile Include="CodeModel\IAnnotation.cs" />
+    <Compile Include="CodeModel\IAssembly.cs" />
+    <Compile Include="CodeModel\IDeclaration.cs" />
+    <Compile Include="CodeModel\IElement.cs" />
+    <Compile Include="CodeModel\IField.cs" />
+    <Compile Include="CodeModel\IGeneric.cs" />
+    <Compile Include="CodeModel\IGenericMethodDefinition.cs" />
+    <Compile Include="CodeModel\ImageAttributes.cs" />
+    <Compile Include="CodeModel\IManifestResourceImplementation.cs" />
+    <Compile Include="CodeModel\IMember.cs" />
+    <Compile Include="CodeModel\IMemberRefResolutionScope.cs" />
+    <Compile Include="CodeModel\IMetadataDeclaration.cs" />
+    <Compile Include="CodeModel\IMethod.cs" />
+    <Compile Include="CodeModel\IMethodSignature.cs" />
+    <Compile Include="CodeModel\IModule.cs" />
+    <Compile Include="CodeModel\Instruction.cs" />
+    <Compile Include="CodeModel\InstructionBlock.cs" />
+    <Compile Include="CodeModel\InstructionPrefixes.cs" />
+    <Compile Include="CodeModel\InstructionReader.cs" />
+    <Compile Include="CodeModel\InstructionReaderBookmark.cs" />
+    <Compile Include="CodeModel\InstructionSequence.cs" />
+    <Compile Include="CodeModel\InstructionWriter.cs" />
+    <Compile Include="CodeModel\InterfaceImplementationDeclaration.cs" />
+    <Compile Include="CodeModel\IntrinsicType.cs" />
+    <Compile Include="CodeModel\IRemoveable.cs" />
+    <Compile Include="CodeModel\ISecurable.cs" />
+    <Compile Include="CodeModel\IType.cs" />
+    <Compile Include="CodeModel\ITypeContainer.cs" />
+    <Compile Include="CodeModel\ITypeRefResolutionScope.cs" />
+    <Compile Include="CodeModel\ITypeSignature.cs" />
+    <Compile Include="CodeModel\IWeakReferenceable.cs" />
+    <Compile Include="CodeModel\LiteralString.cs" />
+    <Compile Include="CodeModel\LocalVariableDeclaration.cs" />
+    <Compile Include="CodeModel\LocalVariableSymbol.cs" />
+    <Compile Include="CodeModel\ManifestFileDeclaration.cs" />
+    <Compile Include="CodeModel\ManifestResourceDeclaration.cs" />
+    <Compile Include="CodeModel\MappedGenericDeclaration.cs" />
+    <Compile Include="CodeModel\MarshalType.cs" />
+    <Compile Include="CodeModel\MarshalTypes\ArrayMarshalType.cs" />
+    <Compile Include="CodeModel\MarshalTypes\CustomMarshallerMarshalType.cs" />
+    <Compile Include="CodeModel\MarshalTypes\FixedArrayMarshalType.cs" />
+    <Compile Include="CodeModel\MarshalTypes\FixedStringMarshalType.cs" />
+    <Compile Include="CodeModel\MarshalTypes\IntrinsicMarshalType.cs" />
+    <Compile Include="CodeModel\MarshalTypes\SafeArrayMarshalType.cs" />
+    <Compile Include="CodeModel\MemberKind.cs" />
+    <Compile Include="CodeModel\MemberRefDeclaration.cs" />
+    <Compile Include="CodeModel\MemberValuePair.cs" />
+    <Compile Include="CodeModel\MetaDataDeclaration.cs" />
+    <Compile Include="CodeModel\MetaDataDeclarationTables.cs" />
+    <Compile Include="CodeModel\MetaDataToken.cs" />
+    <Compile Include="CodeModel\MethodBodyDeclaration.cs" />
+    <Compile Include="CodeModel\MethodDefDeclaration.cs" />
+    <Compile Include="CodeModel\MethodGroupDeclaration.cs" />
+    <Compile Include="CodeModel\MethodImplementationDeclaration.cs" />
+    <Compile Include="CodeModel\MethodRefDeclaration.cs" />
+    <Compile Include="CodeModel\MethodSemanticDeclaration.cs" />
+    <Compile Include="CodeModel\MethodSignature.cs" />
+    <Compile Include="CodeModel\MethodSpecDeclaration.cs" />
+    <Compile Include="CodeModel\ModuleDeclaration.cs" />
+    <Compile Include="CodeModel\ModuleRefDeclaration.cs" />
+    <Compile Include="CodeModel\NamedDeclaration.cs" />
+    <Compile Include="CodeModel\OpCodeDictionary.cs" />
+    <Compile Include="CodeModel\OpCodeMap.cs" />
+    <Compile Include="CodeModel\OpCodeNumber.cs" />
+    <Compile Include="CodeModel\ParameterDeclaration.cs" />
+    <Compile Include="CodeModel\PermissionDeclaration.cs" />
+    <Compile Include="CodeModel\PermissionSetDeclaration.cs" />
+    <Compile Include="CodeModel\PInvokeMap.cs" />
+    <Compile Include="CodeModel\PlatformInfo.cs" />
+    <Compile Include="CodeModel\PropertyDeclaration.cs" />
+    <Compile Include="CodeModel\RawUnmanagedResource.cs" />
+    <Compile Include="CodeModel\ReflectionNameOptions.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\ArrayTypeSignatureWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\AssemblyWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\BaseTypeWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\CustomAttributeProviderWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\EventWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\FieldWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\GenericParameterWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\GenericTypeInstanceTypeSignatureWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\IReflectionWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\MethodConstructorInfoWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\MethodMethodInfoWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\ParameterWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\PointerTypeSignatureWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\PropertyParameterWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\PropertyWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\ReflectionWrapperUtil.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\TypeWrapper.cs" />
+    <Compile Include="CodeModel\SerializationType.cs" />
+    <Compile Include="CodeModel\SerializationTypes\ArraySerializationType.cs" />
+    <Compile Include="CodeModel\SerializationTypes\EnumerationSerializationType.cs" />
+    <Compile Include="CodeModel\SerializationTypes\IntrinsicSerializationType.cs" />
+    <Compile Include="CodeModel\SerializationTypes\TaggedObjectSerializationType.cs" />
+    <Compile Include="CodeModel\SerializationTypes\TypeSerializationType.cs" />
+    <Compile Include="CodeModel\SerializedValue.cs" />
+    <Compile Include="CodeModel\StandaloneAssemblyName.cs" />
+    <Compile Include="CodeModel\StandaloneSignatureDeclaration.cs" />
+    <Compile Include="CodeModel\TokenType.cs" />
+    <Compile Include="CodeModel\TypeClassification.cs" />
+    <Compile Include="CodeModel\TypeDefDeclaration.cs" />
+    <Compile Include="CodeModel\TypeNakingOptions.cs" />
+    <Compile Include="CodeModel\TypeRefDeclaration.cs" />
+    <Compile Include="CodeModel\TypeSignature.cs" />
+    <Compile Include="CodeModel\TypeSignatures\ArrayTypeSignature.cs" />
+    <Compile Include="CodeModel\TypeSignatures\BoxedTypeSignature.cs" />
+    <Compile Include="CodeModel\TypeSignatures\CustomModifier.cs" />
+    <Compile Include="CodeModel\TypeSignatures\CustomModifierTypeSignature.cs" />
+    <Compile Include="CodeModel\TypeSignatures\GenericInstanceTypeSignature.cs" />
+    <Compile Include="CodeModel\TypeSignatures\GenericParameterTypeSignature.cs" />
+    <Compile Include="CodeModel\TypeSignatures\InstrinsicTypeSignature.cs" />
+    <Compile Include="CodeModel\TypeSignatures\MethodPointerTypeSignature.cs" />
+    <Compile Include="CodeModel\TypeSignatures\PinnedTypeSignature.cs" />
+    <Compile Include="CodeModel\TypeSignatures\PointerTypeSignature.cs" />
+    <Compile Include="CodeModel\TypeSpecDeclaration.cs" />
+    <Compile Include="CodeModel\UnmanagedResource.cs" />
+    <Compile Include="CodeModel\Visibility.cs" />
+    <Compile Include="CodeWeaver\AdviceCollection.cs" />
+    <Compile Include="CodeWeaver\AdviceComparer.cs" />
+    <Compile Include="CodeWeaver\AdvicePerKindCollection.cs" />
+    <Compile Include="CodeWeaver\IAdvice.cs" />
+    <Compile Include="CodeWeaver\IAdviceProvider.cs" />
+    <Compile Include="CodeWeaver\JoinPoint.cs" />
+    <Compile Include="CodeWeaver\JoinPointKinds.cs" />
+    <Compile Include="CodeWeaver\MethodBodyRestructurer.cs" />
+    <Compile Include="CodeWeaver\Weaver.cs" />
+    <Compile Include="CodeWeaver\WeaverState.cs" />
+    <Compile Include="CodeWeaver\WeaverTask.cs" />
+    <Compile Include="CodeWeaver\WeavingContext.cs" />
+    <Compile Include="CodeWeaver\WeavingHelper.cs" />
+    <Compile Include="Collections\AppendingSortedList.cs" />
+    <Compile Include="Collections\CollectionDebugViewer.cs" />
+    <Compile Include="Collections\DictionaryFactory.cs" />
+    <Compile Include="Collections\EmptyArray.cs" />
+    <Compile Include="Collections\EmptyCollection.cs" />
+    <Compile Include="Collections\EmptyEnumerator.cs" />
+    <Compile Include="Collections\EnumerableWrapper.cs" />
+    <Compile Include="Collections\EnumeratorEnlarger.cs" />
+    <Compile Include="Collections\ExtensibleArray.cs" />
+    <Compile Include="Collections\FastStringComparer.cs" />
+    <Compile Include="Collections\ICollectionFactory.cs" />
+    <Compile Include="Collections\IDictionaryFactory.cs" />
+    <Compile Include="Collections\IIndex.cs" />
+    <Compile Include="Collections\IIndexable.cs" />
+    <Compile Include="Collections\IListFactory.cs" />
+    <Compile Include="Collections\IMultiDictionary.cs" />
+    <Compile Include="Collections\INamed.cs" />
+    <Compile Include="Collections\Index.cs" />
+    <Compile Include="Collections\IndexedCollection.cs" />
+    <Compile Include="Collections\IPositioned.cs" />
+    <Compile Include="Collections\IVisitable.cs" />
+    <Compile Include="Collections\LinkedListHelper.cs" />
+    <Compile Include="Collections\ListFactory.cs" />
+    <Compile Include="Collections\MarshalByRefCollection.cs" />
+    <Compile Include="Collections\MarshalByRefDictionary.cs" />
+    <Compile Include="Collections\MarshalByRefEnumerator.cs" />
+    <Compile Include="Collections\MarshalByRefList.cs" />
+    <Compile Include="Collections\MultiDictionary.cs" />
+    <Compile Include="Collections\NodePosition.cs" />
+    <Compile Include="Collections\NonNullableList.cs" />
+    <Compile Include="Collections\Pair.cs" />
+    <Compile Include="Collections\ReadOnlyCollectionWrapper.cs" />
+    <Compile Include="Collections\Set.cs" />
+    <Compile Include="Collections\SimpleLinkedListNode.cs" />
+    <Compile Include="Collections\Singleton.cs" />
+    <Compile Include="Collections\SortedDictionaryFactory.cs" />
+    <Compile Include="Collections\SortedMultiDictinary.cs" />
+    <Compile Include="Collections\Specialized\StringSet.cs" />
+    <Compile Include="Collections\UnionCollection.cs" />
+    <Compile Include="CoreMessageProvider.cs" />
+    <Compile Include="ExceptionHelper.cs" />
+    <Compile Include="Extensibility\AnnotationValue.cs" />
+    <Compile Include="Extensibility\AssembleOptions.cs" />
+    <Compile Include="Extensibility\AutoUpdate.cs" />
+    <Compile Include="Extensibility\BridgingTraceListener.cs" />
+    <Compile Include="Extensibility\CommandLineProgram.cs" />
+    <Compile Include="Extensibility\CompilerWorkarounds.cs" />
+    <Compile Include="Extensibility\ConfigurablePropertyAttribute.cs" />
+    <Compile Include="Extensibility\Configuration\ApplicationConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\AssemblyBindingConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\AssemblyBindingExternalConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\AssemblyIdentityConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\BaseConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\BindingRedirectConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\ConfigurationElement.cs" />
+    <Compile Include="Extensibility\Configuration\ConfigurationHelper.cs" />
+    <Compile Include="Extensibility\Configuration\DependencyConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\DependentAssemblyConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\ImportAssemblyBindingsConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\MyXmlSerializerImpl.cs" />
+    <Compile Include="Extensibility\Configuration\NameValuePair.cs" />
+    <Compile Include="Extensibility\Configuration\PhaseConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\PlatformConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\PlugInConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\ProjectConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\PropertyConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\SearchPathConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\SourceConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\TaskTypeConfiguration.cs" />
+    <Compile Include="Extensibility\Configuration\UsingConfiguration.cs" />
+    <Compile Include="Extensibility\CustomAssemblyBinder.cs" />
+    <Compile Include="Extensibility\DefaultPostSharpHost.cs" />
+    <Compile Include="Extensibility\IPostSharpDomainManager.cs" />
+    <Compile Include="Extensibility\IPostSharpHost.cs" />
+    <Compile Include="Extensibility\IPostSharpObject.cs" />
+    <Compile Include="Extensibility\MessageSinkAccessor.cs" />
+    <Compile Include="Extensibility\Messenger.cs" />
+    <Compile Include="Extensibility\ModuleLoadDirectFromFileStrategy.cs" />
+    <Compile Include="Extensibility\ModuleLoadReflectionFromFileStrategy.cs" />
+    <Compile Include="Extensibility\ModuleLoadReflectionFromNameStrategy.cs" />
+    <Compile Include="Extensibility\ModuleLoadStrategy.cs" />
+    <Compile Include="Extensibility\PostSharpDomainManager.cs" />
+    <Compile Include="Extensibility\PostSharpLocalHost.cs" />
+    <Compile Include="Extensibility\PostSharpObject.cs" />
+    <Compile Include="Extensibility\PostSharpObjectAccessor.cs" />
+    <Compile Include="Extensibility\PostSharpObjectSettings.cs" />
+    <Compile Include="Extensibility\Project.cs" />
+    <Compile Include="Extensibility\ProjectInvocation.cs" />
+    <Compile Include="Extensibility\PropertyCollection.cs" />
+    <Compile Include="Extensibility\RemotingAccessor.cs" />
+    <Compile Include="Extensibility\TagCollection.cs" />
+    <Compile Include="Extensibility\Task.cs" />
+    <Compile Include="Extensibility\TaskCollection.cs" />
+    <Compile Include="Extensibility\Tasks\AnnotationRepositoryTask.cs" />
+    <Compile Include="Extensibility\Tasks\AutoDetectTask.cs" />
+    <Compile Include="Extensibility\Tasks\CompileTask.cs" />
+    <Compile Include="Extensibility\Tasks\DisableMessagesTask.cs" />
+    <Compile Include="Extensibility\Tasks\GlobalsTask.cs" />
+    <Compile Include="Extensibility\Tasks\IAnnotationProvider.cs" />
+    <Compile Include="Extensibility\Tasks\ImplementationBoundAttributesTask.cs" />
+    <Compile Include="Extensibility\Tasks\IndexGenericInstancesTask.cs" />
+    <Compile Include="Extensibility\Tasks\IndexTypeDefMemberRefsTask.cs" />
+    <Compile Include="Extensibility\Tasks\IndexUsagesTask.cs" />
+    <Compile Include="Extensibility\Tasks\MulticastAttributeTask.cs" />
+    <Compile Include="Extensibility\Tasks\RemoveTask.cs" />
+    <Compile Include="Extensibility\Tasks\TypeHierarchyTask.cs" />
+    <Compile Include="Extensibility\Tasks\VerifyTask.cs" />
+    <Compile Include="Extensibility\ToolInvocationHelper.cs" />
+    <Compile Include="ITaggable.cs" />
+    <Compile Include="ModuleReader\AutoGen\MetaDataTables.cs" />
+    <Compile Include="ModuleReader\AutoGen\ModuleReader.cs" />
+    <Compile Include="ModuleReader\BufferOverflowException.cs" />
+    <Compile Include="ModuleReader\BufferReader.cs" />
+    <Compile Include="ModuleReader\CorElementType.cs" />
+    <Compile Include="ModuleReader\CorSerializationType.cs" />
+    <Compile Include="ModuleReader\DeserializationUtil.cs" />
+    <Compile Include="ModuleReader\ImageReader.cs" />
+    <Compile Include="ModuleReader\InstructionBlockBuilder.cs" />
+    <Compile Include="ModuleReader\InstructionSequenceBuilder.cs" />
+    <Compile Include="ModuleReader\MetadataColumn.cs" />
+    <Compile Include="ModuleReader\MetaDataColumnOrdinal.cs" />
+    <Compile Include="ModuleReader\MetadataRow.cs" />
+    <Compile Include="ModuleReader\MetadataTable.cs" />
+    <Compile Include="ModuleReader\MetaDataTableOrdinal.cs" />
+    <Compile Include="ModuleReader\MetaDataTables.cs" />
+    <Compile Include="ModuleReader\ModuleReader.cs" />
+    <Compile Include="ModuleReader\ReadModuleStrategy.cs" />
+    <Compile Include="ModuleReader\UnmanagedBuffer.cs" />
+    <Compile Include="ModuleWriter\AddressRange.cs" />
+    <Compile Include="ModuleWriter\ILWriter.cs" />
+    <Compile Include="ModuleWriter\ILWriterOptions.cs" />
+    <Compile Include="ModuleWriter\InstructionEmitter.cs" />
+    <Compile Include="ModuleWriter\PreparingInstructionEmitter.cs" />
+    <Compile Include="ModuleWriter\SerializationUtil.cs" />
+    <Compile Include="ModuleWriter\UnmanagedResourceWriter.cs" />
+    <Compile Include="ModuleWriter\WriteILInstructionEmitter.cs" />
+    <Compile Include="NullableBool.cs" />
+    <Compile Include="PlatformAbstraction\DotNet\DotNet20Platform.cs" />
+    <Compile Include="PlatformAbstraction\DotNet\DotNet20TargetPlatformAdapter.cs" />
+    <Compile Include="PlatformAbstraction\DotNet\Guids.cs" />
+    <Compile Include="PlatformAbstraction\DotNet\IMetaDataDispenser.cs" />
+    <Compile Include="PlatformAbstraction\Mono\Mono20Platform.cs" />
+    <Compile Include="PlatformAbstraction\Mono\Mono20TargetPlatformAdapter.cs" />
+    <Compile Include="PlatformAbstraction\Platform.cs" />
+    <Compile Include="PlatformAbstraction\TargetPlatformAdapter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyVersion.cs" />
+    <Compile Include="Trace.cs" />
+    <Compile Include="UnreachableException.cs" />
+    <Compile Include="Utilities\Cacheable.cs" />
+    <Compile Include="Utilities\HighPrecisionTimer.cs" />
+    <Compile Include="Utilities\Logic.cs" />
+    <Compile Include="XmlSerializers\ApplicationConfigurationSerializer.cs" />
+    <Compile Include="XmlSerializers\PlugInConfigurationSerializer.cs" />
+    <Compile Include="XmlSerializers\ProjectConfigurationSerializer.cs" />
+    <Compile Include="XmlSerializers\XmlSerializationReader1.cs" />
+    <Compile Include="XmlSerializers\XmlSerializationWriter1.cs" />
+    <Compile Include="XmlSerializers\XmlSerializer1.cs" />
+    <Compile Include="XmlSerializers\XmlSerializerContract.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Default.psproj" />
+    <None Include="PostSharp-AppDomain.config" />
+    <None Include="PostSharp-Library-Release.config" />
+    <None Include="PostSharp-Library.config" />
+    <None Include="PostSharp-Platform.config" />
+    <None Include="PostSharp.Core.build" />
+    <None Include="PostSharp.Core.pidb" />
+    <None Include="PostSharp.Core.tlb" />
+    <None Include="Resources\AssemblyBindingConfiguration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\AssemblyBindingConfiguration.xsx">
+      <DependentUpon>AssemblyBindingConfiguration.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\PostSharpAutoUpdate.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\PostSharpConfiguration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\PostSharpConfiguration.xsx">
+      <DependentUpon>PostSharpConfiguration.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core\PostSharp.Public\PostSharp.Public.csproj">
+      <Project>{481ce092-840c-401f-964d-76cc2f47e012}</Project>
+      <Name>PostSharp.Public</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModuleReader\AutoGen\GenerateModuleReader.xml" />
+    <Content Include="ModuleReader\AutoGen\GenerateModuleReader.xsl" />
+    <Content Include="Resources\MPL-1.1.txt" />
+    <Content Include="Resources\updates.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Exceptions.resx" />
+    <EmbeddedResource Include="Resources\Messages.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

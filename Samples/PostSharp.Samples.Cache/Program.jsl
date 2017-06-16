@@ -1,0 +1,38 @@
+#region Released to Public Domain by Gael Fraiteur
+/*----------------------------------------------------------------------------*
+ *   This file is part of samples of PostSharp.                                *
+ *                                                                             *
+ *   This sample is free software: you have an unlimited right to              *
+ *   redistribute it and/or modify it.                                         *
+ *                                                                             *
+ *   This sample is distributed in the hope that it will be useful,            *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                      *
+ *                                                                             *
+ *----------------------------------------------------------------------------*/
+#endregion
+
+package PostSharp.Samples.Cache;
+
+/**
+ * Summary description for Program
+ */
+public class Program
+{
+	public static void main(String[] args)
+	{
+		System.out.println("1 ->" + GetDifficultResult(1));
+		System.out.println("2 ->" + GetDifficultResult(2));
+		System.out.println("1 ->" + GetDifficultResult(1));
+		System.out.println("2 ->" + GetDifficultResult(2));
+	}
+
+	/** @attribute Cache()  **/
+	static int GetDifficultResult(int arg)
+	{
+		// If the following text is printed, the method was not cached.
+		System.out.println("Some difficult work!");
+		System.Threading.Thread.Sleep(1000);
+		return arg;
+	}
+}

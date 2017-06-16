@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="ExecutePostSharp">
+
+	<UsingTask	AssemblyFile="PostSharp.MSBuild.dll"
+				TaskName="PostSharp.MSBuild.PostSharp" />
+
+	
+	<!-- Default parameters -->
+	<PropertyGroup>
+		<SearchPath Condition="'$(SearchPath)'==''">.</SearchPath>
+    <CleanIntermediate Condition="'$(CleanIntermediate)'==''">true</CleanIntermediate>
+		<PostSharpProject Condition="'$(PostSharpProject)'==''">Default.psproj</PostSharpProject>
+		<AutoUpdateDisable Condition="'$(AutoUpdateDisable)'==''">true</AutoUpdateDisable>
+</PropertyGroup>
+	
+	<!-- This target executes PostSharp on an existing assembly. This target is typically
+	     invoked manually for debugging. It is not a part of the standard build process. -->
+	<Target Name="ExecutePostSharp">
+
+		<!-- Output errors if some parameters are missing. -->
+		<Error Condition="'$(In)'==''" Text="Missing parameter: In."/>
+		<Error Condition="'$(Out)'==''" Text="Missing parameter: Out."/>
+		<Error Condition="'$(ReferenceDirectory)'==''" Text="Missing parameter: ReferenceDirectory."/>
+
+		<Message Text="The current directory is $(ReferenceDirectory)."/>
+
+
+		<CreateItem Include="Output=$(Out);
+							SearchPath=$(SearchPath);
+							IntermediateDirectory=$(IntermediateDirectory);
+							CleanIntermediate=$(CleanIntermediate);
+							MSBuildProjectFullPath=$(MSBuildProjectFullPath);
+							SignAssembly=False;
+							PrivateKeyLocation=;
+							$(Parameters)">
+			<Output TaskParameter="Include" ItemName="_PostSharpParameters"/>
+		</CreateItem>
+
+		<CreateProperty Condition="'$(PostSharpProject)'==''" Value="Default.psproj">
+			<Output TaskParameter="Value" PropertyName="PostSharpProject"/>
+		</CreateProperty>
+
+		<PostSharp	Project="$(PostSharpProject)"
+					Input="$(In)"
+					InputReferenceDirectory="$(ReferenceDirectory)" 
+					AutoUpdateDisabled="$(PostSharpAutoUpdateDisable)"
+					Parameters="@(_PostSharpParameters)"/>
+
+
+	</Target>
+</Project>

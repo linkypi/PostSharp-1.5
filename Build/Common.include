@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+  <include buildfile="Config.include"/>
+
+  <!-- Initialization of properties -->
+  <property name="debug" value="true" overwrite="false" />
+  <property name="dotNetPostsharp" value="false" overwrite="false"/>
+  
+  <if test="${debug}">
+    <property name="optimize" value="false"/>
+    <property name="configuration" value="debug" />
+    <property name="defineSymbols" value="ASSERT" />
+  </if>
+  
+  <if test="${not debug}">
+    <property name="optimize" value="false"/>
+    <property name="configuration" value="release" />
+    <property name="defineSymbols" value="" />
+  </if>
+
+  <if test="${dotNetPostsharp}">
+    <property name="postsharpDir" value="${rootDir}/Core/PostSharp.NAntTasks/bin/${configuration}" overwrite="false" />
+    <property name="postsharpSearchPath" value="${rootDir}/Laos/PostSharp.Laos.Weaver/bin/${configuration}" overwrite="false"/>
+    <property name="buildPostsharpDisabled" value="true"/>
+  </if>
+
+  <property name="outputDir" value="bin/${nant.settings.currentframework}-${configuration}"/>
+  <property name="intermediateDir" value="obj/${nant.settings.currentframework}-${configuration}"/>
+  <property name="postsharpKeyFile" value="${rootDir}/Build/PostSharp-Public.snk"/>
+  <property name="mono" value="${nant.settings.currentframework=='mono-2.0'}"/>
+  <property name="requirements" value="" overwrite="false"/>
+  <property name="postsharpDir" value="${rootDir}/Core/PostSharp.NAntTasks/${outputDir}" overwrite="false" />
+  <property name="postsharpSearchPath" value="${rootDir}/Laos/PostSharp.Laos.Weaver/${outputDir}" overwrite="false"/>
+  <property name="buildPostsharpDisabled" value="false" overwrite="false"/>
+  
+  <if test="${mono}">
+    <property name="defineSymbols" value="${defineSymbols};MONO"/>
+  </if>
+
+  <!-- Common targets -->
+  <target name="mkdir">
+    <mkdir dir="${outputDir}"/>
+    <mkdir dir="${intermediateDir}"/>
+  </target>
+
+  <target name="clean">
+    <delete dir="${outputDir}"/>
+    <delete dir="${intermediateDir}"/>
+  </target>
+
+  <target name="clean-all" depends="clean">
+    <property name="build-target" value="clean"/>
+    <call target="call-dependencies"/>
+  </target>
+
+  <target name="rebuild-all" depends="clean-all">
+    <property name="build-target" value="_build" overwrite="false"/>
+    <call target="_build"/>
+  </target>
+
+  <target name="_rebuild" depends="clean">
+    <call target="_build"/>
+  </target>
+
+  <target name="rebuild" depends="clean">
+    <property name="build-target" value="_build"/>
+    <call target="_build"/>
+  </target>
+
+  <target name="build">
+    <property name="build-target" value="_build" overwrite="false"/>
+    <call target="${build-target}"/>
+  </target>
+
+  <target name="build-postsharp">
+    <if test="${not buildPostsharpDisabled}">
+      <nant buildfile="${rootDir}/Core/PostSharp.NAntTasks/PostSharp.NAntTasks.build" inheritall="false">
+        <properties>
+          <property name="configuration" value="${configuration}"/>
+        </properties>
+      </nant>
+      <nant buildfile="${rootDir}/Laos/PostSharp.Laos.Weaver/PostSharp.Laos.Weaver.build" inheritall="false">
+        <properties>
+          <property name="configuration" value="${configuration}"/>
+        </properties>
+      </nant>
+    </if>
+    <loadtasks assembly="${postsharpDir}/PostSharp.NAntTasks.dll"/>
+  </target>
+
+  <!-- 
+  
+  Required properties:
+  
+    target
+    projectName
+    rootNamespace
+    delaysign
+  
+  Required sets:
+  
+    references
+    dependencies
+    outputfiles
+  
+  -->
+
+  <target name="call-dependencies">
+    <foreach item="File" property="dependency">
+      <in>
+        <items refid="dependencies"/>
+      </in>
+      <do>
+        <nant buildfile="${dependency}" inheritall="false">
+          <properties>
+            <property name="configuration" value="${configuration}"/>
+            <property name="build-target" value="${build-target}" />
+          </properties>
+        </nant>
+      </do>
+    </foreach>
+  </target>
+
+
+  <target name="standard-build" depends="mkdir">
+
+    <property name="build-target" value="_build"/>
+    <call target="call-dependencies"/>
+
+
+    <property name="projectName" value="${path::get-file-name-without-extension( project::get-buildfile-uri())}"/>
+    <property name="rootNamespace" value="${projectName}" overwrite="false"/>
+    <property name="unsafe" value="false" overwrite="false"/>
+    <property name="target" value="library" overwrite="false"/>
+    <property name="extension" value="dll" if="${target=='library'}"/>
+    <property name="extension" value="exe" if="${target=='exe'}"/>
+    <property name="delaysign" value="false" overwrite="false"/>
+    <property name="keyfile" value="" overwrite="false"/>
+    <property name="postsharp" value="false" overwrite="false"/>
+
+
+    <!-- Copy outputs of dependencies -->
+    <foreach item="File" property="dependency">
+      <in>
+        <items refid="dependencies"/>
+      </in>
+      <do>
+        <echo message="Copying dependencies from ${path::get-directory-name(dependency)}/${outputDir}..."/>
+        <copy todir="${intermediateDir}" flatten="true">
+          <fileset>
+            <include name="${path::get-directory-name(dependency)}/${outputDir}/*.*"/>
+          </fileset>
+        </copy>
+      </do>
+    </foreach>
+
+    <copy todir="${outputDir}" flatten="true">
+      <fileset>
+        <include name="${intermediateDir}/*.*"/>
+      </fileset>
+    </copy>
+
+    <!-- Build a file with the list of references -->
+    <delete file="${intermediateDir}/references.txt"/>
+    <echo message="Building the dependency file..."/>
+    <foreach item="String" property="reference" in="${references}" delim=";">
+      <do>
+        <echo message="Dependency: ${reference}"/>
+        <echo message="${reference}" file="${intermediateDir}/references.txt" append="true"/>
+      </do>
+    </foreach>
+    <foreach item="File" property="reference">
+      <in>
+        <items>
+          <include name="${intermediateDir}/*.dll"/>
+        </items>
+      </in>
+      <do>
+        <if test="${path::get-file-name-without-extension(reference)!=projectName}">
+          <echo message="Dependency: ${reference}"/>
+          <echo message="${reference}" file="${intermediateDir}/references.txt" append="true"/>
+        </if>
+      </do>
+    </foreach>
+    <echo message="" file="${intermediateDir}/references.txt"  append="true"/>
+
+    <!-- Compile -->
+    <csc target="${target}"
+         output="${intermediateDir}/${projectName}.${extension}"
+         unsafe="${unsafe}"
+         define="${defineSymbols}"
+         debug="${debug}"
+         optimize="${optimize}"
+           >
+      <sources>
+        <include name="./**/*.cs"/>
+      </sources>
+      <references>
+        <includesfile name="${intermediateDir}/references.txt"/>
+      </references>
+      <resources dynamicprefix="true" prefix="${rootNamespace}">
+        <include name="./**/*.resx"/>
+      </resources>
+      <arg value="-delaysign+" if="${delaysign}"/>
+      <arg value="-keyfile:${keyfile}" if="${keyfile!=''}"/>
+    </csc>
+
+    <copy todir="${outputDir}" flatten="true">
+      <fileset refid="outputfiles"/>
+    </copy>
+
+    <!-- Invoke PostSharp. -->
+    <if test="${postsharp}">
+      <call target="build-postsharp"/>
+      
+      <postsharp input="${intermediateDir}/${projectName}.${extension}"
+              project="${postsharpDir}/Default.psproj"
+              parameters="
+                  Output=${outputDir}/${projectName}.${extension};
+                  ReferenceDirectory=.;
+							    Configuration=${configuration};
+							    Platform=Any;
+							    SearchPath=${intermediateDir},${postsharpSearchPath};
+							    IntermediateDirectory=${intermediateDir}/postsharp;
+							    CleanIntermediate=false;
+                  SignAssembly=false;
+                  PrivateKeyLocation=;
+                  ResolvedReferences=;"/>
+    </if>
+    <if test="${not postsharp}">
+      <copy file="${intermediateDir}/${projectName}.${extension}"
+            tofile="${outputDir}/${projectName}.${extension}"/>
+    </if>
+  </target>
+
+</project>

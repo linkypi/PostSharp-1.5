@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="PostSharp.Samples.Silverlight.Test.Page"
+    xmlns="http://schemas.microsoft.com/client/2007" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="400" Height="300" >
+	
+    <StackPanel x:Name="LayoutRoot" Background="OldLace">
+    	<TextBlock Text="Testing a Bound Control with Validation" TextWrapping="Wrap" />
+    	<Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0">
+            	<Run Text="First Name"/>
+</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0">
+            	<Run Text="Last Name"/>
+</TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Mode=TwoWay, Path=FirstName}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Mode=TwoWay, Path=LastName}"/>
+            <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Mode=TwoWay, Path=FirstName}"/>
+            <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Mode=TwoWay, Path=LastName}"/>
+
+		</Grid>
+        
+        <Button x:Name="somethingLongButton" Click="somethingLongButton_Click"><TextBlock Text="Something Long"/></Button>
+        
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,53 @@
+#region Copyright (c) 2004-2010 by SharpCrafters s.r.o.
+/*----------------------------------------------------------------------------*
+ *   This file is part of compile-time components of PostSharp.                *
+ *                                                                             *
+ *   This library is free software: you can redistribute it and/or modify      *
+ *   it under the terms of the version 3 of the GNU General Public License     *
+ *   as published by the Free Software Foundation.                             *
+ *                                                                             *
+ *   This library is distributed in the hope that it will be useful,           *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             *
+ *   GNU General Public License for more details.                              *
+ *                                                                             *
+ *   You should have received a copy of the GNU General Public License         *
+ *   along with this library.  If not, see <http://www.gnu.org/licenses/>.     *
+ *                                                                             *
+ *----------------------------------------------------------------------------*/
+#endregion
+
+using System;
+using System.Reflection;
+
+namespace PostSharp.CodeModel.ReflectionWrapper
+{
+    internal sealed class CustomAttributeProviderWrapper : ICustomAttributeProvider
+    {
+        private readonly MetadataDeclaration declaration;
+
+        public CustomAttributeProviderWrapper( MetadataDeclaration declaration )
+        {
+            this.declaration = declaration;
+        }
+
+        #region ICustomAttributeProvider Members
+
+        public object[] GetCustomAttributes( bool inherit )
+        {
+            return ReflectionWrapperUtil.GetCustomAttributes( this.declaration );
+        }
+
+        public object[] GetCustomAttributes( Type attributeType, bool inherit )
+        {
+            return ReflectionWrapperUtil.GetCustomAttributes( this.declaration, attributeType );
+        }
+
+        public bool IsDefined( Type attributeType, bool inherit )
+        {
+            return ReflectionWrapperUtil.IsCustomAttributeDefined( this.declaration, attributeType );
+        }
+
+        #endregion
+    }
+}

@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PS0001" xml:space="preserve">
+    <value>Unexpected node "{0}" of type {1} with namespace "{2}".</value>
+  </data>
+  <data name="PS0002" xml:space="preserve">
+    <value>The configuration file is missing. Are you sure this software was properly installed? We looked in location(s): {0}</value>
+  </data>
+  <data name="PS0003" xml:space="preserve">
+    <value>Invalid configuration file: {0}</value>
+  </data>
+  <data name="PS0004" xml:space="preserve">
+    <value>Invalid configuration file: expected a root element of type "{0}", but got "{1}".</value>
+  </data>
+  <data name="PS0005" xml:space="preserve">
+    <value>Invalid configuration of the platform "{0}": cannot instantiate the type "{1}".</value>
+  </data>
+  <data name="PS0006" xml:space="preserve">
+    <value>Cannot instantiate the platform adapter "{0}". An exception of type {1} was thrown: {2}</value>
+  </data>
+  <data name="PS0007" xml:space="preserve">
+    <value>Invalid platform name "{0}".</value>
+  </data>
+  <data name="PS0008" xml:space="preserve">
+    <value>Cannot find the included file "{0}".</value>
+  </data>
+  <data name="PS0009" xml:space="preserve">
+    <value>The property "{0}" is already defined while the overwrite mode is set to Fail. The old value was "{1}" and the new value is "{1}".</value>
+  </data>
+  <data name="PS0010" xml:space="preserve">
+    <value>Cannot find the plug-in configuration file "{0}".</value>
+  </data>
+  <data name="PS0011" xml:space="preserve">
+    <value>Cannot find the project file "{0}".</value>
+  </data>
+  <data name="PS0013" xml:space="preserve">
+    <value>Task "{0}": invalid type name "{1}".</value>
+  </data>
+  <data name="PS0014" xml:space="preserve">
+    <value>Task "{0}": cannot instantiate the type "{1}". An exception of type {2} was thrown: {3}</value>
+  </data>
+  <data name="PS0015" xml:space="preserve">
+    <value>Cannot find the source assembly "{0}".</value>
+  </data>
+  <data name="PS0016" xml:space="preserve">
+    <value>Maximal number of errors reached: {0}.</value>
+  </data>
+  <data name="PS0017" xml:space="preserve">
+    <value>Task "{0}": invalid value "{1}" for attribute "{2}". Expecting "{3}".</value>
+  </data>
+  <data name="PS0018" xml:space="preserve">
+    <value>Compile task: at least one of the "intermediateDirectory" or "targetFile" attributes is required.</value>
+  </data>
+  <data name="PS0019" xml:space="preserve">
+    <value>Compile task: cannot create the directory "{1}": {2}</value>
+  </data>
+  <data name="PS0020" xml:space="preserve">
+    <value>Compile task: the "cleanIntermediate" attribute cannot be true when the "targetFile" attribute is not set.</value>
+  </data>
+  <data name="PS0021" xml:space="preserve">
+    <value>The attribute "{0}" is not supported on the task "{1}".</value>
+  </data>
+  <data name="PS0022" xml:space="preserve">
+    <value>An error occurred while loading the assembly PostSharp.Core.XmlSerializers. Verify that the PostSharp.Core.XmlSerializers.dll file is present in the same directory as PostSharp.Core.dll.</value>
+  </data>
+  <data name="PS0023" xml:space="preserve">
+    <value>Error evaluating the expression "{0}": maximum recursion level reached. Don't you have a circular reference?</value>
+  </data>
+  <data name="PS0024" xml:space="preserve">
+    <value>Error evaluating the expression "{0}": the property "{1}" is not defined.</value>
+  </data>
+  <data name="PS0025" xml:space="preserve">
+    <value>Cannot locate the source assembly because the "path" attribute of the "project/source" element is an invalid expression.</value>
+  </data>
+  <data name="PS0026" xml:space="preserve">
+    <value>{0} error(s) found. Cannot continue.</value>
+  </data>
+  <data name="PS0027" xml:space="preserve">
+    <value>Generating file {0}.</value>
+  </data>
+  <data name="PS0028" xml:space="preserve">
+    <value>DotNet20PlatformAdapter does not expect any parameter. Passed parameters will be ignored.</value>
+  </data>
+  <data name="PS0029" xml:space="preserve">
+    <value>The platform "{0}" is not defined.</value>
+  </data>
+  <data name="PS0030" xml:space="preserve">
+    <value>No default platform has been defined.</value>
+  </data>
+  <data name="PS0031" xml:space="preserve">
+    <value>Cannot instantiate the platform "{0}". The type "{1}" could not be loaded.</value>
+  </data>
+  <data name="PS0032" xml:space="preserve">
+    <value>Cannot instantiate the platform "{0}". The type "{1}" does not have the expected constructor.</value>
+  </data>
+  <data name="PS0033" xml:space="preserve">
+    <value>[{0}] {1}</value>
+  </data>
+  <data name="PS0034" xml:space="preserve">
+    <value>ILASM exited with return code {0}. Tool output: {1}</value>
+  </data>
+  <data name="PS0035" xml:space="preserve">
+    <value>{0} {1}</value>
+    <comment>Executing a program.</comment>
+  </data>
+  <data name="PS0036" xml:space="preserve">
+    <value>Unexpected XML node (type={0}, name="{1}") in the list of tasks.</value>
+  </data>
+  <data name="PS0037" xml:space="preserve">
+    <value>The path "{0}" was ignored because it contained an unresolved property.</value>
+  </data>
+  <data name="PS0038" xml:space="preserve">
+    <value>The project is missing the "source" configuration element.</value>
+  </data>
+  <data name="PS0039" xml:space="preserve">
+    <value>The source module is not specified.</value>
+  </data>
+  <data name="PS0040" xml:space="preserve">
+    <value>The task "{0}" is not a part of the project or has not been yet executed, although it is a prerequisite for the task "{1}". Check the application-level configuration file.</value>
+  </data>
+  <data name="PS0041" xml:space="preserve">
+    <value>Error while processing dependencies of the task "{0}": the task definition "{1}" could not be found.</value>
+  </data>
+  <data name="PS0042" xml:space="preserve">
+    <value>To many cycles when sorting tasks. Are you sure there is no cycle in task dependencies?</value>
+  </data>
+  <data name="PS0043" xml:space="preserve">
+    <value>Executing the task "{0}".</value>
+  </data>
+  <data name="PS0044" xml:space="preserve">
+    <value>Error in task "{0}". The phase "{1}" does not exist.</value>
+  </data>
+  <data name="PS0046" xml:space="preserve">
+    <value>Cannot load the assembly {0} version {1}, because the version {2} was already loaded and is not backward-compatible with the requested version.</value>
+  </data>
+  <data name="PS0047" xml:space="preserve">
+    <value>Cannot load the assembly {0} version {1}, because the highest found version of this assembly is {2} and is not backward-compatible with the requested version.</value>
+  </data>
+  <data name="PS0048" xml:space="preserve">
+    <value>Cannot find the task "{0}".</value>
+  </data>
+  <data name="PS0049" xml:space="preserve">
+    <value>Cannot load the task "{0}": the type "{1}" is not a task.</value>
+  </data>
+  <data name="PS0050" xml:space="preserve">
+    <value>Invalid stack state in method "{0}" after instruction "{1}": stack size at this point is {2}.</value>
+  </data>
+  <data name="PS0051" xml:space="preserve">
+    <value>The type "{0}" or one of its ancestor should be decorated by an instance of MulticastAttributeUsageAttribute.</value>
+  </data>
+  <data name="PS0052" xml:space="preserve">
+    <value>The plug-in "{0}" required by the type "{1}" was not found.</value>
+  </data>
+  <data name="PS0053" xml:space="preserve">
+    <value>Invalid PostSharp registry configuration.</value>
+  </data>
+  <data name="PS0054" xml:space="preserve">
+    <value>The type "{0}" cannot be decorated by more than one an instance of MulticastAttributeUsageAttribute.</value>
+  </data>
+  <data name="PS0055" xml:space="preserve">
+    <value>Cannot continue with errors.</value>
+  </data>
+  <data name="PS0056" xml:space="preserve">
+    <value>Error while loading the configuration file PostSharp-Library.config: cannot parse line {0}.</value>
+  </data>
+  <data name="PS0057" xml:space="preserve">
+    <value>Generating MSIL code with compatibility option '{0}'. This mode emulates also bugs!</value>
+  </data>
+  <data name="PS0058" xml:space="preserve">
+    <value>The plug-in "{0}" required by the assembly "{1}" was not found.</value>
+  </data>
+  <data name="PS0059" xml:space="preserve">
+    <value>Cannot find the module "{0}" in the assembly "{1}".</value>
+  </data>
+  <data name="PS0060" xml:space="preserve">
+    <value>The processing of module "{0}" was not successful. Cannot continue.</value>
+  </data>
+  <data name="PS0061" xml:space="preserve">
+    <value>The processing of phase {0} of module "{1}" was not successful. Cannot continue.</value>
+  </data>
+  <data name="PS0063" xml:space="preserve">
+    <value>Cannot retrieve the list of available updates: {0}</value>
+  </data>
+  <data name="PS0064" xml:space="preserve">
+    <value>A new version of {0} is available. You have currently {1} and you could download the version {2} from {3}.</value>
+  </data>
+  <data name="PS0064H" xml:space="preserve">
+    <value>{3}</value>
+    <comment>This is the HelpLink. Should open the proper download page.</comment>
+  </data>
+  <data name="PS0065" xml:space="preserve">
+    <value>Cannot cast multiple instances of the custom attribute {0} to the element "{1}" because this custom attribute does not support multiple instances.</value>
+  </data>
+  <data name="PS0066" xml:space="preserve">
+    <value>Cannot write to the file {{{0}}}: {1}</value>
+  </data>
+  <data name="PS0067" xml:space="preserve">
+    <value>The PEVERIFY utility could not be found. The target module will not be verified.</value>
+  </data>
+  <data name="PS0068" xml:space="preserve">
+    <value>PEVERIFY returned with return code {0}.</value>
+  </data>
+  <data name="PS0069" xml:space="preserve">
+    <value>Cannot weave the initialization of the field {0}.{1}, because it is initialized outside the constructor. The weaving of this field initialization will be ignored, but other field assignments will be woven.</value>
+  </data>
+  <data name="PS0070" xml:space="preserve">
+    <value>Cannot weave the initialization of the field {0}.{1}, because it is initialized outside the constructor. Since the field has been marked for removal, it is not possible to ignore the weaving of this field initialization.</value>
+  </data>
+  <data name="PS0071" xml:space="preserve">
+    <value>Cannot apply the custom attribute "{0}" on the {1} "{2}": cannot apply this custom attribute on a {1}. Valid targets are: {3}.</value>
+  </data>
+  <data name="PS0072" xml:space="preserve">
+    <value>On type "{0}", [MulticastAttributeUsage] cannot be more permissive than the information inherited from base classes (property {1}).</value>
+  </data>
+  <data name="PS0073" xml:space="preserve">
+    <value>The assembly has a public key, but you did not request to sign it. Consider providing a private key to sign this assembly.</value>
+  </data>
+  <data name="PS0074" xml:space="preserve">
+    <value>The assembly has no public key, but you requested to sign it. Consider removing the private key.</value>
+  </data>
+  <data name="PS0075" xml:space="preserve">
+    <value>Compile task: the property 'PrivateKeyLocation' shoud be set when the property 'SignAssembly' is true.</value>
+  </data>
+  <data name="PS0076" xml:space="preserve">
+    <value>Cannot evaluate the expression given in the WorkingDirectory attribute of the Project element.</value>
+  </data>
+  <data name="PS0077" xml:space="preserve">
+    <value>Task "{0}": invalid expression "{1}" for attribute "{2}". </value>
+  </data>
+  <data name="PS0078" xml:space="preserve">
+    <value>Cannot load the assembly "{0}": {1}</value>
+  </data>
+  <data name="PS0079" xml:space="preserve">
+    <value>The task "{0}" is not defined.</value>
+  </data>
+  <data name="PS0080" xml:space="preserve">
+    <value>The process "{0}" did not terminate in due time and was killed.</value>
+  </data>
+  <data name="PS0081" xml:space="preserve">
+    <value>Task "{0}", attribute "{1}": cannot convert "{2}" to a {3}.</value>
+  </data>
+  <data name="PS0082" xml:space="preserve">
+    <value>Task "{0}": the required attribute "{1}" is missing.</value>
+  </data>
+  <data name="PS0083" xml:space="preserve">
+    <value>Task "{0}": invalid value "{1}" for attribute "{2}". Expecting a valid datetime.</value>
+  </data>
+  <data name="PS0084" xml:space="preserve">
+    <value>Tasks could not be created successfully.</value>
+  </data>
+  <data name="PS0085" xml:space="preserve">
+    <value>Error in the project reference directory expression.</value>
+  </data>
+  <data name="PS0086" xml:space="preserve">
+    <value>The project reference directory attribute cannot be an empty string.</value>
+  </data>
+  <data name="PS0087" xml:space="preserve">
+    <value>Cannot perform a post-compilation static cast from type {0} to type {1}: cannot assign {0} to {1}.</value>
+  </data>
+  <data name="PS0088" xml:space="preserve">
+    <value>Cannot load the address of the value-type field "{0}", because this field has an aspect that actually suppresses the field. If you need to call an instance method on a value-type field, use the Post.GetValue method. If you need to pass the field by reference, store the field in a local variable, pass the local variable by reference, and stores the local variable value back into the field after the method call [in method "{1}"].</value>
+  </data>
+  <data name="PS0089" xml:space="preserve">
+    <value>Be aware that, when you load the address of the value-type field "{0}", aspects are not applied on this operation. If you need to call an instance method on a value-type field, use the Post.GetValue method. If you need to pass the field by reference, store the field in a local variable, pass the local variable by reference, and stores the local variable value back into the field after the method call [in method "{1}"].</value>
+  </data>
+  <data name="PS0090" xml:space="preserve">
+    <value>Invalid property {3} for the multicast attribute "{0}" instantiated on {1} "{2}": targets "{4}" are not supported by this custom attribute type.</value>
+  </data>
+  <data name="PS0091" xml:space="preserve">
+    <value>Cannot apply the custom attribute "{0}" on {1} "{2}" because of incompatible attributes (visibility, scope, virtuality, ...).</value>
+  </data>
+  <data name="PS0092" xml:space="preserve">
+    <value>Unexpected error during auto-update check: {0}</value>
+  </data>
+  <data name="PS0093" xml:space="preserve">
+    <value>Invalid expression for property {0} of custom attribute {1} on {2} {3}: {4}</value>
+  </data>
+  <data name="PS0098" xml:space="preserve">
+    <value>Cannot process the element AssemblyBinding/Import[{0}] because the attribute '{1}' contains an invalid expression.</value>
+  </data>
+  <data name="PS0094" xml:space="preserve">
+    <value>Cannot open the file '{0}' specified in AssemblyBinding/Import[{1}]/@HRef: {2}.</value>
+  </data>
+  <data name="PS0095" xml:space="preserve">
+    <value>Error in XML document: {0}</value>
+  </data>
+  <data name="PS0096" xml:space="preserve">
+    <value>Cannot parse a version number for redirection of assembly '{0}': {1}.</value>
+  </data>
+  <data name="PS0097" xml:space="preserve">
+    <value>The XPath expression '{0}' did not evaluate to a valid element in file '{1}'.</value>
+  </data>
+  <data name="PS0099" xml:space="preserve">
+    <value>Unhandled exception: {0}</value>
+  </data>
+  <data name="PS0100" xml:space="preserve">
+    <value>Auto-detect: {0}</value>
+    <comment>exception in custom attribute construction</comment>
+  </data>
+  <data name="PS0101" xml:space="preserve">
+    <value>This method does not support recursive module processing. Set the ProcessDependenciesFirst property to false or use InvokeProjects.</value>
+  </data>
+  <data name="PS0102" xml:space="preserve">
+    <value>The assembly {0} was loaded, but an assembly with the same name was already loaded from {1}.</value>
+  </data>
+  <data name="PS0103" xml:space="preserve">
+    <value>On type "{0}", cannot override property {1} of [MulticastAttributeUsage] once it bas been specified on a base type.</value>
+  </data>
+  <data name="PS0104" xml:space="preserve">
+    <value>Cannot apply a MulticastAttribute ({0}) to the parameters or the return value of a method ({1}) located outside the current assembly.</value>
+  </data>
+  <data name="PS0105" xml:space="preserve">
+    <value>Cannot apply the custom attribute "{0}" on parameter "{1}" of method "{2}" because of incompatible attributes of the declaring method (visibility, scope, virtuality, ...).</value>
+  </data>
+  <data name="PS0106" xml:space="preserve">
+    <value>Cannot apply the custom attribute "{0}" on parameter "{1}" of method "{2}" because of incompatible attributes of the parameter (out/ref).</value>
+  </data>
+  <data name="PS0107" xml:space="preserve">
+    <value>Cannot apply the custom attribute "{0}" on parameter "{1}" of method "{2}": cannot apply this attribute on a {3}. Valid targets are: {4}.</value>
+  </data>
+  <data name="PS0108" xml:space="preserve">
+    <value>Invalid property {3} for the multicast attribute [{0}] instantiated on {1} "{2}": this property has been sealed and cannot be overwritten.</value>
+  </data>
+  <data name="PS0109" xml:space="preserve">
+    <value>Cannot resolve the assembly reference '{0}'. PostSharp binder log: {1}</value>
+  </data>
+  <data name="PS0045" xml:space="preserve">
+    <value>Invalid path passed to PostSharp: "{0}": {1}</value>
+  </data>
+  <data name="PS0110" xml:space="preserve">
+    <value>There cannot be more than 32 advices on the same join point in method "{0}".</value>
+  </data>
+</root>

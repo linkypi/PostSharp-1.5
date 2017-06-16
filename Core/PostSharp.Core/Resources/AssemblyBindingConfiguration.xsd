@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="AssemblyBindingConfiguration"
+                  targetNamespace="urn:schemas-microsoft-com:asm.v1"
+                  elementFormDefault="qualified"
+                  xmlns="urn:schemas-microsoft-com:asm.v1"
+                  xmlns:mstns="urn:schemas-microsoft-com:asm.v1"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="dependentAssembly">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="assemblyIdentity">
+          <xs:complexType>
+            <xs:sequence />
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="publicKeyToken" type="xs:string" />
+            <xs:attribute name="culture" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="bindingRedirect">
+          <xs:complexType>
+            <xs:attribute name="oldVersion" type="xs:string" use="optional"/>
+            <xs:attribute name="newVersion" type="xs:string" use="optional"/>
+            <xs:attribute name="newPublicKeyToken" type="xs:string" use="optional"/>
+            <xs:attribute name="newName" type="xs:string" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

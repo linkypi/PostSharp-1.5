@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Updates xmlns="http://schemas.postsharp.org/1.0/autoupdate">
+	<Application id="postsharp10" Name="PostSharp 1.0" Version="1.0.4.120" Url="http://www.postsharp.org/download"/>
+</Updates>
+

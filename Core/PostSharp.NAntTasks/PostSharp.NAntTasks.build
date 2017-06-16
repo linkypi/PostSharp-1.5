@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- NAnt build file for PostSharp.NAntTasks -->
+<project name="PostSharp.NAntTasks" default="build">
+
+  <property name="rootDir" value="../.." />
+  <include buildfile="${rootDir}/Build/Common.include"/>
+
+   <property name="references" value="System.dll;${nant::get-base-directory()}/NAnt.Core.dll"/>
+
+  <fileset id="dependencies">
+    <include name="../PostSharp.Core/PostSharp.Core.build"/>
+  </fileset>
+
+  <fileset id="outputfiles"/>
+
+  <property name="keyfile" value="${postsharpKeyFile}"/>
+  <property name="delaysign" value="true"/>
+
+  <target name="_build" depends="standard-build"/>
+
+</project>

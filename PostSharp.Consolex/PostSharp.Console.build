@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- NAnt build file for PostSharp.Public -->
+<project name="PostSharp.Consolex" default="build">
+
+  <property name="rootDir" value="../.." />
+  <include buildfile="${rootDir}/Build/Common.include"/>
+
+  <target name="dependencies" depends="mkdir">
+    <nant buildfile="${rootDir}/Core/PostSharp.Core/PostSharp.Core.build" />
+    <copy todir="${outputDir}">
+      <fileset>
+        <include name="${rootDir}/Core/PostSharp.Core/${outputDir}/*.*"/>
+      </fileset>
+    </copy>  
+  </target>
+  
+  <target name="_build" depends="dependencies">
+    <csc target="exe"
+         output="${outputDir}/PostSharp.exe"
+         unsafe="true"
+         keyfile="${keyFile}"
+         define="${defineSymbols}"
+         debug="${debug}"
+           >
+      <sources>
+        <include name="./**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="${outputDir}/PostSharp.Public.dll"/>
+        <include name="${outputDir}/PostSharp.Core.dll"/>
+      </references>
+      <arg value="-delaysign+"/>
+    </csc>
+  </target>
+  
+</project>

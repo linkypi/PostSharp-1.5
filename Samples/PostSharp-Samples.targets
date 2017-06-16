@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Test" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This file detects the PostSharp installation directory according to
+       deployment properties. It defines the PostSharpTargets property pointing
+       to the target file that should actually be imported after importing the
+       compiler.
+       
+       Every project should define the property DontImportPostSharp=True before
+       importing C#/VB targets. -->
+
+  <!-- Use a special target file when we are in source tree -->
+  <Import Project="PostSharp-Samples-Src.targets" Condition="'RemoveAtPackaging'!=''" />
+
+  <!-- Other locations -->
+  <PropertyGroup>
+  
+    <!-- This is where the targets file is supposed to be in the distribution tree-->
+    <PostSharpDirectory Condition="'$(PostSharpDirectory)'=='' AND Exists('..\PostSharp-1.5.targets')">..</PostSharpDirectory>
+    <!-- We can also try the MSBuild extension directory -->
+    <PostSharpDirectory Condition="'$(PostSharpDirectory)'=='' AND Exists('$(MSBuildExtensionsPath)\PostSharp\PostSharp-1.5.targets')">$(MSBuildExtensionsPath)\PostSharp</PostSharpDirectory>
+    <!-- Try the environment variable -->
+    <PostSharpDirectory Condition="'$(PostSharpDirectory)'=='' AND Exists('$(POSTSHARP15)\PostSharp-1.5.targets')">$(POSTSHARP15)</PostSharpDirectory>
+    <!-- Error. We did not find it. -->
+    
+  </PropertyGroup>
+
+  <Import Project="$(PostSharpDirectory)\PostSharp-1.5.targets"  Condition="'$(PostSharpDirectory)'!=''" />
+
+  <Target Name="BeforeBuild" Condition="'$(PostSharp15Imported)'!='True'">
+    <Exec Command="cmd /c cd"/>
+    <Error Text="Cannot find PostSharp." />
+  </Target>
+  
+</Project>

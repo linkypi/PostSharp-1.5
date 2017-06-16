@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns="http://schemas.postsharp.org/1.0/autoupdate" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.postsharp.org/1.0/configuration" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="autoupdate">
+	<xs:element name="Updates">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Application" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="id" type="xs:ID" use="required"/>
+						<xs:attribute name="Name" type="xs:Name" use="required"/>
+						<xs:attribute name="Version" type="xs:normalizedString" use="required"/>
+						<xs:attribute name="Url" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

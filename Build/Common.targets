@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+
+
+  <Import Project="Config.targets"/>
+  
+ <PropertyGroup>
+<MSBuildCommunityTasksPath>$(MSbuildProjectDirectory)\$(PostSharpDirectory)\Private\Dependencies\MSBuildCommunityTasks\MSBuild.Community.Tasks.dll</MSBuildCommunityTasksPath>
+ </PropertyGroup>
+
+	<!-- Import custom tasks -->
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.XCopy"/>
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.SplitPath"/>
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.GenerateWixTree"/>
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.GenerateXmlSerializers"/>
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.GetFullPath"/>
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.GetRelativePath"/>
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.IndexingXslt"/>
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.ReplaceInFiles"/>
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.GenerateItemsXml"/>
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.ReadItemsXml"/>
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.ReplaceInFiles"/>
+	<UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.AdjustSampleProjects"/>
+        <UsingTask AssemblyFile="PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll" TaskName="PostSharp.CustomTasks.RegexMatch"/>
+
+	<!-- Import external tasks -->
+	<UsingTask AssemblyFile="$(MSBuildCommunityTasksPath)" TaskName="MSBuild.Community.Tasks.Xslt"/>
+	<UsingTask AssemblyFile="$(MSBuildCommunityTasksPath)" TaskName="MSBuild.Community.Tasks.Zip"/>
+	<UsingTask AssemblyFile="$(MSBuildCommunityTasksPath)" TaskName="MSBuild.Community.Tasks.XmlUpdate"/>
+	<UsingTask AssemblyFile="$(MSBuildCommunityTasksPath)" TaskName="MSBuild.Community.Tasks.Subversion.SvnVersion"/>
+	
+	<!-- Some properties -->
+	<PropertyGroup>
+		<WithClassRef>False</WithClassRef>
+		<MajorVersion>1.5</MajorVersion>
+		<MinorVersion>7</MinorVersion>
+		<SourceReleaseDir>$(PostSharpDirectory)\Build\releases\postsharp-$(Version)-src\Core</SourceReleaseDir>
+		<Configuration Condition=" '$(Configuration)'=='' ">Debug</Configuration>
+		<DocConfiguration Condition=" '$(DocConfiguration)'=='' ">MSHelp</DocConfiguration>
+		<IntermediateDir>$(PostSharpDirectory)\Build\intermediate\$(Configuration)</IntermediateDir>
+		<IntermediateSrcDir>$(IntermediateDir)\src</IntermediateSrcDir>
+		<IntermediateWixDir>$(IntermediateDir)\wix</IntermediateWixDir>
+    <IntermediateBinaryDir>$(IntermediateDir)\binary</IntermediateBinaryDir>
+		<IntermediateSandcastleDir>$(PostSharpDirectory)\Build\intermediate\Doc\sandcastle</IntermediateSandcastleDir>
+		<IntermediateDocDir>$(PostSharpDirectory)\Build\intermediate\Doc\$(DocConfiguration)</IntermediateDocDir>
+		<IntermediateClassDocDir>$(IntermediateDocDir)\ClassRef</IntermediateClassDocDir>
+		<IntermediateXmlDocDir>$(IntermediateDocDir)\XmlRef</IntermediateXmlDocDir>
+		<IntermediateUserGuideDir>$(IntermediateDocDir)\UserGuide</IntermediateUserGuideDir>
+		<IntermediateIntellisenseDir>$(PostSharpDirectory)\Build\intermediate\Doc\intellisense</IntermediateIntellisenseDir>
+	</PropertyGroup>
+	<!-- Imports the configuration file (deployment dependent) -->
+	<Import Project="Config.targets" Condition="Exists('Config.targets')"/>
+	<!-- Gets the full path of PostSharp and sets it into the PostSharpFullPath property -->
+	<Target Name="GetPostSharpFullPath" DependsOnTargets="CustomTasks">
+		<GetFullPath RelativePath="$(PostSharpDirectory)">
+			<Output TaskParameter="FullPath" PropertyName="PostSharpFullPath"/>
+		</GetFullPath>
+		<Message Text="PostSharp is in $(PostSharpFullPath)."/>
+	</Target>
+	<Target Name="GetProperties">
+		<GetFrameworkSdkPath>
+			<Output TaskParameter="Path" PropertyName="DotNetSdkDirectory"/>
+		</GetFrameworkSdkPath>
+		<GetFrameworkPath>
+			<Output TaskParameter="Path" PropertyName="DotNetDirectory"/>
+		</GetFrameworkPath>
+		<Message Importance="normal" Text="Framework Directory = $(DotNetDirectory)"/>
+		<Message Importance="normal" Text="SDK Directory = $(DotNetSdkDirectory)"/>
+	</Target>
+	<!-- Checks the configuration -->
+	<Target Name="CheckConfig" DependsOnTargets="GetPostSharpFullPath">
+		<Error Text="Cannot find the configuration file. Rename '$(PostSharpFullPath)\Build\Config.targets.ori' to '$(PostSharpFullPath)\Build\Config.targets' and edit this file so that it matches your environment settings." Condition="!Exists('$(PostSharpDirectory)\Build\Config.targets')"/>
+	</Target>
+	<!-- Checks the dependencies -->
+	<Target Name="CheckAllDependencies" Condition=" '$(SkipCheckDependencies)' == '' " DependsOnTargets="RequiresMSHelp;
+                            RequiresMSBuildCommunityTasks;
+                            RequiresWiX;
+                            RequiresAltovaXml;
+                            RequiresSubversion;
+                            RequiresTidyHtml;
+                            RequiresSandcastle">
+	</Target>
+	<Target Name="RequiresMSHelp" Condition=" '$(SkipCheckDependencies)' == '' " DependsOnTargets="CheckConfig">
+		<Error Text="Cannot locate MSHelp2 compiler. Install this software and indicate its location in the 'Config.targets' file." Condition="!Exists('$(MSHelpPath)\hxcomp.exe')"/>
+	</Target>
+	<Target Name="RequiresMSBuildCommunityTasks" Condition=" '$(SkipCheckDependencies)' == '' " DependsOnTargets="CheckConfig">
+		<Error Text="Cannot locate MSBuild Community Tasks. Install this software and indicate its location in the 'Config.msbuild' file (now looking at location '$(MSBuildCommunityTasksPath)')." Condition="!Exists('$(MSBuildCommunityTasksPath)')"/>
+	</Target>
+	<Target Name="RequiresWiX" Condition=" '$(SkipCheckDependencies)' == '' " DependsOnTargets="CheckConfig">
+		<Error Text="Cannot locate Windows Installer XML Toolkit (WiX). Install this software and indicate its location in the 'Config.targets' file." Condition="!Exists('$(WixPath)/candle.exe')"/>
+	</Target>
+	<Target Name="RequiresAltovaXml" Condition=" '$(SkipCheckDependencies)' == '' " DependsOnTargets="CheckConfig">
+		<Error Text="Cannot locate AltovaXML. Install this software and indicate its location in the 'Config.targets' file." Condition="!Exists('$(AltovaXmlPath)\AltovaXML.exe')"/>
+	</Target>
+	<Target Name="RequiresSubversion" Condition=" '$(SkipCheckDependencies)' == '' " DependsOnTargets="CheckConfig">
+		<Error Text="Cannot locate Subversion. Install this software and indicate its location in the 'Config.targets' file." Condition="!Exists('$(SvnPath)\svnversion.exe')"/>
+	</Target>
+	<Target Name="RequiresTidyHtml" Condition=" '$(SkipCheckDependencies)' == '' " DependsOnTargets="CheckConfig">
+		<Error Text="Cannot locate Tidy HTML. Install this software and indicate its location in the 'Config.targets' file." Condition="!Exists('$(TidyHtmlPath)\tidy.exe')"/>
+	</Target>
+	<Target Name="RequiresDExplorer" Condition=" '$(SkipCheckDependencies)' == '' " DependsOnTargets="CheckConfig">
+		<Error Text="Cannot locate MSHelp2 Explorer (dexplore.exe). Install this software and indicate its location in the 'Config.targets' file." Condition="!Exists('$(DExplorerPath)\dexplore.exe')"/>
+	</Target>
+	<Target Name="RequiresSandcastle" Condition=" '$(SkipCheckDependencies)' == '' " DependsOnTargets="CheckConfig">
+		<Error Text="Cannot locate Sandcastle. Install this software and indicate its location in the 'Config.targets' file." Condition="!Exists('$(SandcastlePath)\ProductionTools\BuildAssembler.exe')"/>
+	</Target>
+	<Target Name="RequiresNUnit" Condition=" '$(SkipCheckDependencies)' == '' " DependsOnTargets="CheckConfig">
+		<Error Text="Cannot locate NUnit. Install this software and indicate its location in the 'Config.targets' file." Condition="!Exists('$(NUnitPath)\nunit-console.exe')"/>
+	</Target>
+  <Target Name="RequiresHtmlHelp" Condition=" '$(SkipCheckDependencies)' == '' ">
+    <Error Text="Cannot locate HTML Help Workshop. Install this software and indicate its location in the 'Config.targets' file." Condition="!Exists('$(HtmlHelpPath)\hhc.exe')"/>
+  </Target>
+
+
+	<!-- Build custom tasks -->
+	<Target Name="CustomTasks" Condition="!Exists('$(PostSharpDirectory)\Build\PostSharp.CustomTasks\bin\release\PostSharp.CustomTasks.dll')">
+		<MSBuild Projects="$(PostSharpDirectory)\Build\PostSharp.CustomTasks\PostSharp.CustomTasks.csproj" Properties="Configuration=Release;Platform=AnyCPU" StopOnFirstFailure="true"/>
+	</Target>
+</Project>

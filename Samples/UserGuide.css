@@ -1,0 +1,44 @@
+﻿body, td, th{
+	
+	font-family: Tahoma;
+	font-size: 9pt;
+}
+
+.openfloat
+{
+	
+	float: right;
+	margin-right: 20px;
+}
+
+.openfloat img
+{
+	
+	vertical-align: middle;
+}
+
+h1
+{
+	
+	font-size: 14pt;
+}
+
+h2
+{
+	
+	font-size: 12pt;
+}
+
+pre
+{
+	
+	background-color: #eeeeee;
+	border: 1px black solid;
+	
+}
+
+code, pre
+{
+	
+	font-family: Consolas;
+}

@@ -1,0 +1,34 @@
+This file contains a set of useful debugging command lines.
+
+* PostSharp.Laos.Test:
+  ..\..\..\..\Laos\PostSharp.Laos.Test\PostSharp.Laos.Test-Console.psproj  ..\..\..\..\Laos\PostSharp.Laos.Test\bin\SkipPostSharp\PostSharp.Laos.Test.dll /Pause
+
+* PostSharp.Samples.Binding:
+  ..\..\..\..\Samples\PostSharp.Samples.Binding\PostSharp.Samples.Binding-Console.psproj  ..\..\..\..\Samples\PostSharp.Samples.Binding\bin\SkipPostSharp\PostSharp.Samples.Binding.exe /Pause
+
+* PostSharp.Samples.Aggregate:
+  ..\..\..\..\Samples\PostSharp.Samples.Aggregate\PostSharp.Samples.Aggregate-Console.psproj  ..\..\..\..\Samples\PostSharp.Samples.Aggregate\bin\SkipPostSharp\PostSharp.Samples.Aggregate.exe /Pause
+
+* PostSharp.Samples.Cache:
+  ..\..\..\..\Samples\PostSharp.Samples.Cache\PostSharp.Samples.Cache-Console.psproj  ..\..\..\..\Samples\PostSharp.Samples.Cache\bin\SkipPostSharp\PostSharp.Samples.Cache.exe /Pause
+
+* PostSharp.Samples.Trace:
+  ..\..\..\..\Samples\PostSharp.Samples.Trace\PostSharp.Samples.Trace.Test\PostSharp.Samples.Trace.Test-Console.psproj  ..\..\..\..\Samples\PostSharp.Samples.Trace\PostSharp.Samples.Trace.Test\bin\SkipPostSharp\TestTargetProject.exe /Pause
+
+* PostSharp.Samples.XTrace:
+  ..\..\..\..\Samples\PostSharp.Samples.XTrace\PostSharp.Samples.XTrace.Test\PostSharp.Samples.XTrace.Test-Console.psproj  ..\..\..\..\Samples\PostSharp.Samples.XTrace\PostSharp.Samples.XTrace.Test\bin\SkipPostSharp\PostSharp.Samples.XTrace.Test.exe /Pause
+
+* PostSharp.Samples.DbInvoke:
+  ..\..\..\..\Samples\PostSharp.Samples.DbInvoke\PostSharp.Samples.DbInvoke.Test\PostSharp.Samples.DbInvoke.Test-Console.psproj  ..\..\..\..\Samples\PostSharp.Samples.DbInvoke\PostSharp.Samples.DbInvoke.Test\bin\SkipPostSharp\PostSharp.Samples.DbInvoke.Test.exe /Pause
+  
+* dasm on System.dll
+  ..\..\..\Test\dasm\decompile.psproj C:\WINDOWS\Microsoft.NET\Framework64\v2.0.50727\System.dll /P:Target=%TEMP%\postsharp\System.dll /P:IntermediateDirectory=%TEMP%\postsharp
+  
+* Bug 24
+  ..\..\..\..\Core\Test\Bugs\Bug24\Bug24-Console.psproj ..\..\..\..\Core\Test\Bugs\Bug24\bin\debug\Bug24.exe
+  
+* TestMadhu
+  ..\..\..\..\Laos\Test\TestMadhu\L4N-PS-WPF.psproj ..\..\..\..\Laos\Test\TestMadhu\bin\SkipPostSharp\L4N-PS-WPF.exe
+
+* PostSharp4EntLib  
+  G:\Development\PostSharp-EntLib\src\PostSharp4EntLib.Test\PostSharp4EntLib.Test-Console.psproj G:\Development\PostSharp-EntLib\src\PostSharp4EntLib.Test\bin\SkipPostSharp\PostSharp4EntLib.Test.exe /p:MSBuildProjectFullPath=G:\Development\PostSharp-EntLib\src\PostSharp4EntLib.Test\PostSharp4EntLib.Test.csproj

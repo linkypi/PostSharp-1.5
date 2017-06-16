@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+  <property name="nunitDir" value="/usr/lib/mono/gac/nunit.framework/2.4.8.0__96d09a1eb7f44a77/" overwrite="false" />
+
+</project>

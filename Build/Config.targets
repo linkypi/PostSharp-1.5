@@ -1,0 +1,64 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<!-- 
+  
+       Copy this file under the name "Config.msbuild" and edit it so that 
+       it matches your own development environment.                                              
+       
+       
+  -->
+  
+	<PropertyGroup>
+	
+	 <!--
+   
+    If you downloaded the source code from Subversion and want to build just
+    the binaries, complete the following properties.
+   
+   -->
+	
+	  <!-- You will probably not need to change this -->
+	  <ProgramFiles64>C:\Program Files</ProgramFiles64>
+	  
+	  <!-- On a x64 OS probably "C:\Program Files (x86)". -->
+	  <ProgramFiles32>C:\Program Files (x86)</ProgramFiles32>
+	  
+		<!-- This is the full path of MSBuild.Community.Tasks.dll.
+		     Download from http://msbuildtasks.tigris.org/.
+     -->
+		<MSBuildCommunityTasksPath>$(ProgramFiles32)\MSBuild\MSBuildCommunityTasks\MSBuild.Community.Tasks.dll</MSBuildCommunityTasksPath>
+		
+		<!-- Should contain svnversion.exe
+         Download from http://subversion.tigris.org/project_packages.html 
+    -->
+		<SvnPath>$(ProgramFiles32)\Subversion\bin</SvnPath>
+		
+		
+		
+		<!--
+    
+    If you want the complete delivery, complete the following.
+    
+    -->
+	  
+	  <!-- Should contain candle.exe -->
+		<WixPath>$(ProgramFiles32)\Windows Installer XML v3\bin</WixPath>
+		
+		<!-- Should contain AltovaXML.exe -->
+		<AltovaXmlPath>$(ProgramFiles32)\Altova\AltovaXML2008</AltovaXmlPath>
+		<VSSDKPath>$(ProgramFiles32)\Visual Studio 2005 SDK\2007.02</VSSDKPath>		
+
+		<!-- Should contain hxcomp.exe -->
+		<MSHelpPath>$(VSSDKPath)\VisualStudioIntegration\Archive\HelpIntegration</MSHelpPath>
+		
+		<!-- Should contain tidy.exe  -->
+		<TidyHtmlPath>$(ProgramFiles32)\Tidy HTML</TidyHtmlPath>
+		
+		<!-- Should contain dexplore.exe -->
+		<DExplorerPath>$(ProgramFiles32)\Common Files\Microsoft Shared\Help 8</DExplorerPath>
+		
+		<!-- Should contain the directory ProductionTools -->
+		<SandcastlePath>$(ProgramFiles32)\Sandcastle</SandcastlePath>
+		
+	</PropertyGroup>
+</Project>

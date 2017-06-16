@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="PostSharp.Samples.Host">
+</Property><Property Name="Solution File" Value="P:\branches\1.5\Samples\PostSharp.Samples.Host\PostSharp.Samples.Host.sln">
+</Property><Property Name="Date" Value="Sunday, October 26, 2008">
+</Property><Property Name="Time" Value="13:15">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="PostSharp.Samples.Host.sln" Description="File successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\PostSharp.Samples.Host.sln">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="PostSharp.Samples.Host.csproj" Description="Project file successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\PostSharp.Samples.Host.csproj">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="ClientDomainManager.cs" Description="File successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\ClientDomainManager.cs">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="Host.cs" Description="File successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\Host.cs">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="Program.cs" Description="File successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\Program.cs">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="AssemblyInfo.cs" Description="File successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="LocalHost.cs" Description="File successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\LocalHost.cs">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="SampleTask.cs" Description="File successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\SampleTask.cs">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="App.config" Description="File successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\App.config">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="RoundTrip.psproj" Description="File successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\RoundTrip.psproj">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="PostSharp.Samples.Host.html" Description="File successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\PostSharp.Samples.Host.html">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="README.txt" Description="File successfully backed up as P:\branches\1.5\Samples\PostSharp.Samples.Host\Backup\README.txt">
+</Event><Event ErrorLevel="0" Project="PostSharp.Samples.Host" Source="PostSharp.Samples.Host.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="PostSharp.Samples.Host" Source="PostSharp.Samples.Host.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="" Source="PostSharp.Samples.Host.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="PostSharp.Samples.Host.sln" Description="Converted">
+</Event></UpgradeLog>

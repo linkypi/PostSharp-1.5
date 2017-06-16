@@ -1,0 +1,598 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlreadyMarkedForRemoval" xml:space="preserve">
+    <value>This declaration has already been marked for removal.</value>
+  </data>
+  <data name="ArrayOfArraysInCustomAttribute" xml:space="preserve">
+    <value>Invalid image.The type of a custom attribute argument cannot be array of array.</value>
+  </data>
+  <data name="BadImage" xml:space="preserve">
+    <value>Invalid image. {0}</value>
+  </data>
+  <data name="BindingCannotFindField" xml:space="preserve">
+    <value>Cannot find a field named '{0}' of type '{1}' in scope '{2}' (module = '{3}').</value>
+  </data>
+  <data name="BindingCannotFindMethod" xml:space="preserve">
+    <value>Cannot find a method named '{0}' with signature '{1}' in scope '{2}'  (module = '{3}').</value>
+  </data>
+  <data name="BlockHasSequencesAndBlock" xml:space="preserve">
+    <value>An InstructionBlock cannot have both instruction sequences and children instruction blocks.</value>
+  </data>
+  <data name="BlockNotAttached" xml:space="preserve">
+    <value>This InstructionBlock has no parent.</value>
+  </data>
+  <data name="BlockShouldHaveParent" xml:space="preserve">
+    <value>The block should have a parent.</value>
+  </data>
+  <data name="CallingConventionIsNotVarArg" xml:space="preserve">
+    <value>The calling convention is not vararg.</value>
+  </data>
+  <data name="CannotAddBlockToOtherMethodBody" xml:space="preserve">
+    <value>Cannot add an InstructionBlock to another MethodBodyDeclaration than the one that instantiated it.</value>
+  </data>
+  <data name="CannotCompareOptionalCustomModifiersForEquivalence" xml:space="preserve">
+    <value>Cannot compare optional custom modifiers for equivalence.</value>
+  </data>
+  <data name="CannotDereferenceThisType" xml:space="preserve">
+    <value>Cannot dereference a '{0}'.</value>
+  </data>
+  <data name="CannotDetachRootBlockOfHandler" xml:space="preserve">
+    <value>Cannot detach the root instruction block of an exception handler.</value>
+  </data>
+  <data name="CannotDetermineTypeSize" xml:space="preserve">
+    <value>Cannot determine the size of the type '{0}'.</value>
+  </data>
+  <data name="CannotFindAssemblyRef" xml:space="preserve">
+    <value>Cannot find the AssemblyRef '{0}' in the module '{1}'.</value>
+  </data>
+  <data name="CannotFindAssemblyRefSameNameFound" xml:space="preserve">
+    <value>s the same name but another version and/or public key, was found. Didn't you mismatch versions?</value>
+  </data>
+  <data name="CannotFindMethodInType" xml:space="preserve">
+    <value>Cannot find a method named '{0}' with signature '{1}' in type '{2}'.</value>
+  </data>
+  <data name="CannotFindMethodSpecInMethodDef" xml:space="preserve">
+    <value>Cannot find a generic instance with parameters '{0}' in generic MethodDef '{1}'.</value>
+  </data>
+  <data name="CannotFindMethodSpecInMethodRef" xml:space="preserve">
+    <value>Cannot find a generic instance with parameters '{0}' in generic MethodRef '{1}'.</value>
+  </data>
+  <data name="CannotFindReflectionField" xml:space="preserve">
+    <value>Cannot find the reflection field '{0}' in module '{1}'.</value>
+  </data>
+  <data name="CannotFindTask" xml:space="preserve">
+    <value>Cannot find the task {0} in the project.</value>
+  </data>
+  <data name="CannotFindTypeInAssemblyRef" xml:space="preserve">
+    <value>Cannot find the type '{0}' in AssemblyRef '{1}'.</value>
+  </data>
+  <data name="CannotFindTypeInCurrentModule" xml:space="preserve">
+    <value>Cannot find the type '{0}' in module '{1}'.</value>
+  </data>
+  <data name="CannotFindTypeInCurrentAssembly" xml:space="preserve">
+    <value>Cannot find the type '{0}' in assembly '{1}'.</value>
+  </data>
+  <data name="BindingOptionsRequireOnlyDefinition" xml:space="preserve">
+    <value>The flag BindingOptions.OnlyDefinition is mandatory for this method.</value>
+  </data>
+  <data name="CannotFindTypeSeeInnerException" xml:space="preserve">
+    <value>Cannot find the type '{0}'. See the inner exception for details.</value>
+  </data>
+  <data name="CannotHaveMethodBody" xml:space="preserve">
+    <value>The method '{0}' has no method body.</value>
+  </data>
+  <data name="CannotRemoveBecauseNoParent" xml:space="preserve">
+    <value>Cannot remove this item from its parent, because it already has no parent.</value>
+  </data>
+  <data name="CannotResolveTypeRef" xml:space="preserve">
+    <value>Cannot find the TypeDef for the TypeRef '{0}'.</value>
+  </data>
+  <data name="CannotSerializeTypeSignature" xml:space="preserve">
+    <value>Invalid image.Cannot map this type signature to a serialization type: {0}.</value>
+  </data>
+  <data name="CannotWriteReferenceOfDetachedSequence" xml:space="preserve">
+    <value>Cannot write the reference of an instruction sequence that is not attached to a method body.</value>
+  </data>
+  <data name="CannotWriteReferenceOfLocalVariables" xml:space="preserve">
+    <value>Cannot write reference of local variable signatures.</value>
+  </data>
+  <data name="CollectionEmpty" xml:space="preserve">
+    <value>The required collection is empty.</value>
+  </data>
+  <data name="ConstructorReturnsNull" xml:space="preserve">
+    <value>The constructor {0} returned a null value.</value>
+  </data>
+  <data name="DeclarationAlreadyLinked" xml:space="preserve">
+    <value>This declaration is already linked.</value>
+  </data>
+  <data name="DeclarationHasNoModule" xml:space="preserve">
+    <value>The declaration is not attached to a module.</value>
+  </data>
+  <data name="DeclarationRemoved" xml:space="preserve">
+    <value>Cannot resolve the token {0}, probably because the corresponding element has been removed.</value>
+  </data>
+  <data name="DeclarationShouldBeInModule" xml:space="preserve">
+    <value>The declaration should be attached to a module.</value>
+  </data>
+  <data name="DomainHasAlreadyPostSharpObject" xml:space="preserve">
+    <value>This AppDomain has already a PostSharpObject instance. There may be only one instance per AppDomain.</value>
+  </data>
+  <data name="ElementHasAlreadyParent" xml:space="preserve">
+    <value>This element has already a parent.</value>
+  </data>
+  <data name="EnumeratorNotPositioned" xml:space="preserve">
+    <value>The enumerator is not correctly positioned.</value>
+  </data>
+  <data name="ExceptionHandlerNotInInstructionBlock" xml:space="preserve">
+    <value>When the  exception handler or filter InstructionBlock is attached to a parent, this parent should be the parent of the protected (try) block.</value>
+  </data>
+  <data name="FileDoesNotExist" xml:space="preserve">
+    <value>This file does not exist: '{0}'.</value>
+  </data>
+  <data name="FileNamePropertyRequired" xml:space="preserve">
+    <value>The FileName property of the ProjectConfiguration instance cannot be null.</value>
+  </data>
+  <data name="FoundFieldWithDifferentType" xml:space="preserve">
+    <value>A field name '{0}' was found in the type '{1}', but its type is '{2}' instead of '{3}'.</value>
+  </data>
+  <data name="GenericBindingOptionsRequired" xml:space="preserve">
+    <value>When finding a generic type or method, you should provide either the RequireGenericInstance either the RequireGenericDeclaration binding option.</value>
+  </data>
+  <data name="HostResolvedAssemblyNotFound" xml:space="preserve">
+    <value>The file name returned by the host does not exist.</value>
+  </data>
+  <data name="IncompatibleOpCode" xml:space="preserve">
+    <value>The opcode {0} is incompatible with the choosen operand type.</value>
+  </data>
+  <data name="IncorrectStreamPosition" xml:space="preserve">
+    <value>The stream is incorrectly positioned.</value>
+  </data>
+  <data name="InstructionBlockHasHandlers" xml:space="preserve">
+    <value>The InstructionBlock has a already exception handler.</value>
+  </data>
+  <data name="InstructionBlockHasNoSequence" xml:space="preserve">
+    <value>The InstructionBlock has no InstructionSequence.</value>
+  </data>
+  <data name="InstructionBlockHasSequences" xml:space="preserve">
+    <value>The InstructionBlock has InstructionSequences and cannot contain also a child block.</value>
+  </data>
+  <data name="InstructionBlockIsAttached" xml:space="preserve">
+    <value>The InstructionBlock is attached.</value>
+  </data>
+  <data name="InstructionBlockIsDetached" xml:space="preserve">
+    <value>The InstructionBlock is detached.</value>
+  </data>
+  <data name="InstructionBlockIsDetachedOrRoot" xml:space="preserve">
+    <value>The InstructionBlock is detached or is the root.</value>
+  </data>
+  <data name="InstructionReaderDoesNotTrackSymbols" xml:space="preserve">
+    <value>The InstructionReader has been instantiated without resolution of symbols.</value>
+  </data>
+  <data name="InstructionReaderInvalidOperandType" xml:space="preserve">
+    <value>The current instruction has a different operand type.</value>
+  </data>
+  <data name="InstructionReaderInvalidPosition" xml:space="preserve">
+    <value>The InstructionBlock is currently at an invalid position.</value>
+  </data>
+  <data name="InstructionSequenceIsAttached" xml:space="preserve">
+    <value>The InstructionSequence is attached.</value>
+  </data>
+  <data name="InstructionSequenceIsDetached" xml:space="preserve">
+    <value>The InstructionSequence is detached.</value>
+  </data>
+  <data name="InstructionSequenceIsNotAttachedToMethod" xml:space="preserve">
+    <value>The InstructionSequence is not attached to a method.</value>
+  </data>
+  <data name="InstructionSequenceNotAtReader" xml:space="preserve">
+    <value>The InstructionReader is not positioned at the current InstructionSequence.</value>
+  </data>
+  <data name="InstructionSequenceNotDetached" xml:space="preserve">
+    <value>The InstructionSequence is already attached to an InstructionBlock.</value>
+  </data>
+  <data name="InstructionSequenceNotInBlock" xml:space="preserve">
+    <value>The InstructionSequence does not belong to the InstructionBlock.</value>
+  </data>
+  <data name="InstructionWriterHasNoSequence" xml:space="preserve">
+    <value>The InstructionWriter has no active InstructionSequence.</value>
+  </data>
+  <data name="InstructionWriterHasSequence" xml:space="preserve">
+    <value>The InstructionWriter has already an active InstructionSequence.</value>
+  </data>
+  <data name="IntrinsicSerializedValueMismatch" xml:space="preserve">
+    <value>The actual type of the 'value' '{0}' argument does not match the type announced in the 'type' argument '{1}'.</value>
+  </data>
+  <data name="InvalidArgumentType" xml:space="preserve">
+    <value>Invalid argument type. Expected '{0}' but got '{1}'.</value>
+  </data>
+  <data name="InvalidBlobAddress" xml:space="preserve">
+    <value>Invalid image. Invalid blob address.</value>
+  </data>
+  <data name="InvalidBranchingInstruction" xml:space="preserve">
+    <value>Invalid branching instruction: 0x{0:x}.</value>
+  </data>
+  <data name="InvalidEnumerationValue" xml:space="preserve">
+    <value>Invalid value {0} for enumeration {1} at location {2}.</value>
+  </data>
+  <data name="InvalidLocalHostImplementation" xml:space="preserve">
+    <value>Invalid type name for the local host.</value>
+  </data>
+  <data name="InvalidMetadataToken" xml:space="preserve">
+    <value>Invalid metadata token.</value>
+  </data>
+  <data name="InvalidMethodHeader" xml:space="preserve">
+    <value>Invalid method header '{1}' for method {0}.</value>
+  </data>
+  <data name="InvalidNumberOfConstructorArguments" xml:space="preserve">
+    <value>Invalid number of constructor arguments.</value>
+  </data>
+  <data name="InvalidOpCodeNumber" xml:space="preserve">
+    <value>Invalid instruction code: 0x{0:X}.</value>
+  </data>
+  <data name="InvalidOpCodeNumberWithLocation" xml:space="preserve">
+    <value>Invalid instruction code 0x{0:X} in method '{1}', sequence '{2}', offset 0x{3:X}.</value>
+  </data>
+  <data name="InvalidOperandType" xml:space="preserve">
+    <value>Invalid operand type {0}.</value>
+  </data>
+  <data name="InvalidParameterOrdinal" xml:space="preserve">
+    <value>Invalid parameter ordinal: {0}.</value>
+  </data>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>Invalid image. Unexpected token '{0}' at this location: {1}.</value>
+  </data>
+  <data name="InvalidTokenOperand" xml:space="preserve">
+    <value>The token type {0} is not recognized as a token operand.</value>
+  </data>
+  <data name="InvalidTokenType" xml:space="preserve">
+    <value>Invalid token type.</value>
+  </data>
+  <data name="InvalidType" xml:space="preserve">
+    <value>Unexpected type {0} for '{1}'. Expected type(s): {2}.</value>
+  </data>
+  <data name="InvalidXmlSchema" xml:space="preserve">
+    <value>The XML Schema is invalid.</value>
+  </data>
+  <data name="InvariantFailed" xml:space="preserve">
+    <value>Invariant failed: '{0}'.</value>
+  </data>
+  <data name="LiteralStringNull" xml:space="preserve">
+    <value>The LiteralString is null.</value>
+  </data>
+  <data name="LocalHostTypeDoesNotDerive" xml:space="preserve">
+    <value>The local host type {0} is not derived from the PostSharpLocalHost type.</value>
+  </data>
+  <data name="LocalHostTypeHasNoDefaultConstructor" xml:space="preserve">
+    <value>The local host type {0} has no default constructor.</value>
+  </data>
+  <data name="LocalVariableReadOnly" xml:space="preserve">
+    <value>This collection of local variables is read-only because it may be shared by many methods. Take a writable copy of this collection for the specific method.</value>
+  </data>
+  <data name="MetadataTokenIsNull" xml:space="preserve">
+    <value>The MetadataToken is null.</value>
+  </data>
+  <data name="MethodBodyInSequenceSameAsInBlock" xml:space="preserve">
+    <value>The method body of the InstructionSequence should be the same as the method body as the InstructionBlock.</value>
+  </data>
+  <data name="MethodBodyIsModified" xml:space="preserve">
+    <value>Cannot call this method when the method body has been modified.</value>
+  </data>
+  <data name="MethodBodySameInBothSequences" xml:space="preserve">
+    <value>The method body of both InstructionSequence's should be the same.</value>
+  </data>
+  <data name="MethodHasNoBody" xml:space="preserve">
+    <value>The method has no body.</value>
+  </data>
+  <data name="MethodHasNoParent" xml:space="preserve">
+    <value>Cannot get the method body when the method is not attached to its parent type.</value>
+  </data>
+  <data name="ModuleInSameDomain" xml:space="preserve">
+    <value>The target module should belong to the same domain as the current declaration.</value>
+  </data>
+  <data name="ModuleInSameDomainAsType" xml:space="preserve">
+    <value>The target module should belong to the same domain as the type.</value>
+  </data>
+  <data name="ModulesDoNotMatch" xml:space="preserve">
+    <value>The module of the operand does not match the module of the current method body.</value>
+  </data>
+  <data name="NoDeclarationCacheHandler" xml:space="preserve">
+    <value>There is no declaration cache handler for this item.</value>
+  </data>
+  <data name="NoHeapInPE" xml:space="preserve">
+    <value>Cannot find the heap {0} in this module.</value>
+  </data>
+  <data name="NoObserverToRemove" xml:space="preserve">
+    <value>This is not an observer of the current instance.</value>
+  </data>
+  <data name="NotAnEnumeration" xml:space="preserve">
+    <value>This type is not an enumeration.</value>
+  </data>
+  <data name="NotAttachedToModule" xml:space="preserve">
+    <value>Operation not available when the element is not attached to a module.</value>
+  </data>
+  <data name="NotGenericDeclaration" xml:space="preserve">
+    <value>The current declaration is not a generic declaration.</value>
+  </data>
+  <data name="NullConstantValue" xml:space="preserve">
+    <value>Invalid image. The constant value cannot be null unless the constant type is string, but it is a {0}.</value>
+  </data>
+  <data name="NullToken" xml:space="preserve">
+    <value>Invalid image. The token {0} is null.</value>
+  </data>
+  <data name="OldItemNotFoundInIndex" xml:space="preserve">
+    <value>Error while updating the index entry: the old key '{0}' was not found.</value>
+  </data>
+  <data name="ParentElementNotAttached" xml:space="preserve">
+    <value>Cannot attach an element to an element that is not itself attached.</value>
+  </data>
+  <data name="PostConditionFailed" xml:space="preserve">
+    <value>Post condition failed: '{0}'.</value>
+  </data>
+  <data name="ProjectConfigurationNotLoaded" xml:space="preserve">
+    <value>The project configuration has not been loaded.</value>
+  </data>
+  <data name="ProjectRequiresCustomAssemblyBinder" xml:space="preserve">
+    <value>Cannot create a Project instance in an AppDomain that has no CustomAssemblyBinder.</value>
+  </data>
+  <data name="PublicKeyNeedsAttribute" xml:space="preserve">
+    <value>Current attributes do not allow to set a public key.</value>
+  </data>
+  <data name="ReadOnlyCollection" xml:space="preserve">
+    <value>The current collection is read-only.</value>
+  </data>
+  <data name="ReferenceExceptionHandlerNotInInstructionBlock" xml:space="preserve">
+    <value>The reference ExceptionHandler should be a child of the current InstructionBlock.</value>
+  </data>
+  <data name="ReferenceSequenceNotInCurrentBlock" xml:space="preserve">
+    <value>The reference sequence is not in the current block.</value>
+  </data>
+  <data name="RequireGenericDefinitionButGaveGenericInstance" xml:space="preserve">
+    <value>You have required a generic definition, but you have passed a generic instance.</value>
+  </data>
+  <data name="RequireGenericInstanceButGaveGenericDefinition" xml:space="preserve">
+    <value>You have required a generic instance, but you have passed a generic definition.</value>
+  </data>
+  <data name="SignatureInOtherModule" xml:space="preserve">
+    <value>The signature belongs to another module than the current declaration.</value>
+  </data>
+  <data name="SingletonIsSingleton" xml:space="preserve">
+    <value>A singleton may contain only one element (not two, not zero).</value>
+  </data>
+  <data name="StandaloneSignatureInvalidKind" xml:space="preserve">
+    <value>The StandaloneSignatureDeclaration contains a different kind of signature.</value>
+  </data>
+  <data name="StringInHeapTooLarge" xml:space="preserve">
+    <value>Invalid image.A string in the PE String Heap has more than 1024 characters.</value>
+  </data>
+  <data name="TagOnWeaklyReferencedDeclaration" xml:space="preserve">
+    <value>It is not possible to set a tag on a weakly referenced declaration.</value>
+  </data>
+  <data name="TaskNotInitialized" xml:space="preserve">
+    <value>The task has not been initialized.</value>
+  </data>
+  <data name="TasksNotDeserialized" xml:space="preserve">
+    <value>Tasks have not been deserialized.</value>
+  </data>
+  <data name="TasksNotSerialized" xml:space="preserve">
+    <value>Tasks have not been serialized.</value>
+  </data>
+  <data name="TimerNotStarted" xml:space="preserve">
+    <value>The timer was not started.</value>
+  </data>
+  <data name="TooManySimilarAdvices" xml:space="preserve">
+    <value>Maximally 32 advices may be applied to the same joinpoint.</value>
+  </data>
+  <data name="TypeDoesNotImplementIAnalysis" xml:space="preserve">
+    <value>The type {0} does not implement the IAnalysis interface.</value>
+  </data>
+  <data name="TypeSignatureNotPointer" xml:space="preserve">
+    <value>The TypeSignature is not a pointer.</value>
+  </data>
+  <data name="UndefinedParameter" xml:space="preserve">
+    <value>Undefined parameter with ordinal {0}.</value>
+  </data>
+  <data name="UnexpectedCallingConvention" xml:space="preserve">
+    <value>Unexpected calling convention: 0x{0:x}.</value>
+  </data>
+  <data name="UnexpectedEncodedTokenType" xml:space="preserve">
+    <value>Unexpected encoded token type for {0}.</value>
+  </data>
+  <data name="UnexpectedInstruction" xml:space="preserve">
+    <value>Unexpected instruction or prefix {0} for this method.</value>
+  </data>
+  <data name="UnexpectedInstructionWithVarPop" xml:space="preserve">
+    <value>Unexpected instruction {0} with VarPop stack behavior.</value>
+  </data>
+  <data name="UnexpectedInstructionWithVarPush" xml:space="preserve">
+    <value>Unexpected instruction {0} with VarPush stack behavior.</value>
+  </data>
+  <data name="UnexpectedOperand" xml:space="preserve">
+    <value>Unexpected operand {0} for the instruction {1}.</value>
+  </data>
+  <data name="UnexpectedTokenType" xml:space="preserve">
+    <value>Unexpected token type {0} at location '{1}'. Expected token type(s): {2}.</value>
+  </data>
+  <data name="UnknownTypeKindOnTypeRef" xml:space="preserve">
+    <value>Unknown TypeKind of TypeRef {0}.</value>
+  </data>
+  <data name="UnreachableCode" xml:space="preserve">
+    <value>This part of the code should never be reached.</value>
+  </data>
+  <data name="UnsupportedTaskPropertyType" xml:space="preserve">
+    <value>Unsupported type for a configurable task property: {0}.</value>
+  </data>
+  <data name="CannotLoadAssembly" xml:space="preserve">
+    <value>Error while loading the assembly "{0}": {1}
+===== PostSharp Assembly Binder =================
+{2}
+=================================================
+
+    </value>
+  </data>
+  <data name="CannotLoadType" xml:space="preserve">
+    <value>Error while loading the type "{0}": {1}
+===== PostSharp Assembly Binder =================
+{2}
+=================================================
+
+    </value>
+  </data>
+  <data name="InstructionReaderBookmarkNotValidHere" xml:space="preserve">
+    <value>The InstructionReaderBookmark should be used in the same InstructionReader than the one that created it, and the InstructionReader should be in the same InstructionSequence than the bookmark.</value>
+  </data>
+  <data name="CannotMergeOrDifWithSetItself" xml:space="preserve">
+    <value>Cannot call the Union or Difference method with itself as the operand.</value>
+  </data>
+  <data name="AdviceWeaveDidNotReleaseInstructionWriter" xml:space="preserve">
+    <value>Post-Condition failed: the method {0}.Weave did not detach context.InstructionWriter.</value>
+  </data>
+  <data name="ConstructorInitializationPartHasHandler" xml:space="preserve">
+    <value>The initialization part of the constructor {{{0}}} has a block with an exception handler.</value>
+  </data>
+  <data name="FirstLevelResourceDirectoryShouldHaveId" xml:space="preserve">
+    <value>s should have an id, not a name.</value>
+  </data>
+  <data name="MoreThanTwoDepthLevelInResourceTable" xml:space="preserve">
+    <value>More than two depth levels in resource table.</value>
+  </data>
+  <data name="MethodAssociatedWithManySemantics" xml:space="preserve">
+    <value>The method '{0}' cannot be associated to many method semantics.</value>
+  </data>
+  <data name="DuplicateDictionaryKey" xml:space="preserve">
+    <value>An element with the same key already exists in the IDictionary.</value>
+  </data>
+  <data name="ExpectedAssemblyQualifiedTypeName" xml:space="preserve">
+    <value>"{0}" is not an assembly-qualified type name.</value>
+  </data>
+  <data name="AmbiguousMethodMatch" xml:space="preserve">
+    <value>Ambiguous match for method {0} in type {1}.</value>
+  </data>
+  <data name="CannotFindMethod" xml:space="preserve">
+    <value>Cannot find a method named {0} in type {1} matching the given predicate.</value>
+  </data>
+  <data name="SignatureDoesNotBelongToCurrentModule" xml:space="preserve">
+    <value>The type signature does not belong to the current module.</value>
+  </data>
+  <data name="PropertyCannotBeChangedAfterParentSet" xml:space="preserve">
+    <value>This property cannot be changed after the parent of this instance has been set.</value>
+  </data>
+  <data name="ElementAttachedToDifferentModule" xml:space="preserve">
+    <value>The declaration has been previously attached to a different module.</value>
+  </data>
+</root>

@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{35C8297A-2F2E-456D-BC7F-E765EEAD409A}"
+	ProjectSection(FolderStartupServices) = postProject
+		{B4F97281-0DBD-4835-9ED8-7DFB966E87FF} = {B4F97281-0DBD-4835-9ED8-7DFB966E87FF}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Laos.CF", "Laos\PostSharp.Laos\PostSharp.Laos.CF.csproj", "{27616583-96EE-432E-9F4F-A30037919470}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Public.CF", "Core\PostSharp.Public\PostSharp.Public.CF.csproj", "{58A1CA72-D34F-4195-9D8A-A523D5476BE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Samples.Compact", "Samples\PostSharp.Samples.Compact\PostSharp.Samples.Compact.csproj", "{891C5790-F1B2-4AD6-BCBA-107C602E5272}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D4121A79-2880-4566-AC03-74A4DCC054C0}"
+	ProjectSection(SolutionItems) = preProject
+		PostSharp-1.5-CF.vsmdi = PostSharp-1.5-CF.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Laos.Test.CF", "Private\Test\PostSharp.Laos.Test\PostSharp.Laos.Test.CF.csproj", "{F741C572-2E7D-42A2-BFAA-05BC21098797}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = PostSharp-1.5-CF.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27616583-96EE-432E-9F4F-A30037919470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27616583-96EE-432E-9F4F-A30037919470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27616583-96EE-432E-9F4F-A30037919470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27616583-96EE-432E-9F4F-A30037919470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A1CA72-D34F-4195-9D8A-A523D5476BE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A1CA72-D34F-4195-9D8A-A523D5476BE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A1CA72-D34F-4195-9D8A-A523D5476BE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A1CA72-D34F-4195-9D8A-A523D5476BE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{891C5790-F1B2-4AD6-BCBA-107C602E5272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{891C5790-F1B2-4AD6-BCBA-107C602E5272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{891C5790-F1B2-4AD6-BCBA-107C602E5272}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{891C5790-F1B2-4AD6-BCBA-107C602E5272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{891C5790-F1B2-4AD6-BCBA-107C602E5272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{891C5790-F1B2-4AD6-BCBA-107C602E5272}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F741C572-2E7D-42A2-BFAA-05BC21098797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F741C572-2E7D-42A2-BFAA-05BC21098797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F741C572-2E7D-42A2-BFAA-05BC21098797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F741C572-2E7D-42A2-BFAA-05BC21098797}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{891C5790-F1B2-4AD6-BCBA-107C602E5272} = {35C8297A-2F2E-456D-BC7F-E765EEAD409A}
+	EndGlobalSection
+	GlobalSection(TextTemplating) = postSolution
+		TextTemplating = 1
+	EndGlobalSection
+EndGlobal

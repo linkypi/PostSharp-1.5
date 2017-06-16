@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+	<type>AssemblyRefDeclaration</type>
+	<type>ManifestFileDeclaration</type>
+	<type>ModuleRefDeclaration</type>
+	<type>TypeDefDeclaration</type>
+	<type>TypeRefDeclaration</type>
+	<type>TypeSpecDeclaration</type>
+	<type>MethodDefDeclaration</type>
+	<type>FieldDefDeclaration</type>
+	<type>EventDeclaration</type>
+	<type>PropertyDeclaration</type>
+	<type>PermissionSetDeclaration</type>
+	<type>MethodSpecDeclaration</type>
+	<type>GenericParameterDeclaration</type>
+	<type>ManifestResourceDeclaration</type>
+	<type>StandaloneSignatureDeclaration</type>
+	<type>ParameterDeclaration</type>
+</types>

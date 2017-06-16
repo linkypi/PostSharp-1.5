@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	And here is a reference to the <ref name="a"/>.
+	And here is a reference to the <ref name="c"/>.
+	And here is a reference to the <ref name="d"/>.
+	And here is a reference to the <ref name="b"/>.
+</root>

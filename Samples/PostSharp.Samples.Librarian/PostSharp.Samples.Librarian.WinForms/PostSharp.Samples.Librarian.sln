@@ -1,0 +1,16 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# SharpDevelop 2.0.0.1710
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Samples.Librarian", "PostSharp.Samples.Librarian.csproj", "{BE46892A-5843-48BA-BDC9-511384117A73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE46892A-5843-48BA-BDC9-511384117A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE46892A-5843-48BA-BDC9-511384117A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE46892A-5843-48BA-BDC9-511384117A73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE46892A-5843-48BA-BDC9-511384117A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+EndGlobal

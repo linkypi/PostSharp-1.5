@@ -1,0 +1,95 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7565273E-5EB9-4BAB-9665-44372F03928B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PostSharp.Samples.Librarian.Weaver</RootNamespace>
+    <AssemblyName>PostSharp.Samples.Librarian.Weaver</AssemblyName>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\MSBuild.exe</StartProgram>
+    <StartArguments>PostSharp.Samples.Librarian.csproj /t:Rebuild</StartArguments>
+    <StartWorkingDirectory>..\PostSharp.Samples.Librarian\</StartWorkingDirectory>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SkipPostSharp</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PostSharp.Core, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\..\Core\PostSharp.Core\bin\Debug\PostSharp.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PostSharp.Laos, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\..\Laos\PostSharp.Laos\bin\Debug\PostSharp.Laos.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PostSharp.Laos.Weaver, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <Private>False</Private>
+      <HintPath>..\..\..\Laos\PostSharp.Laos.Weaver\bin\Debug\PostSharp.Laos.Weaver.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp.Public, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\..\Core\PostSharp.Public\bin\Debug\PostSharp.Public.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ImplementCloneableAspectWeaver.cs" />
+    <Compile Include="ImplementValidableAspectWeaver.cs" />
+    <Compile Include="LibrarianAspectWeaverFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="PostSharp.Samples.Librarian.psplugin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PostSharp.Samples.Librarian.Framework\PostSharp.Samples.Librarian.Framework.csproj">
+      <Project>{4FEDC113-4399-4700-ACA3-F23A930A9160}</Project>
+      <Name>PostSharp.Samples.Librarian.Framework</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <!-- The following section is conditioned by the presence of the current file
+       in the source tree. If this file is in a binary distribution, the
+       section below will not be executed. Instead, PostSharp should already
+       have been integrated in the default MSBuild process.                       -->
+  <PropertyGroup Condition=" Exists('..\..\..\Core\PostSharp.MSBuild\bin\debug\PostSharp.targets') ">
+    <DontImportPostSharp>True</DontImportPostSharp>
+    <PostSharpDirectory>$(MSBuildProjectDirectory)\..\..\..\Core\PostSharp.MSBuild\bin\debug\</PostSharpDirectory>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- NAnt build file for PostSharp.Core -->
+<project name="PostSharp.Core" default="build">
+
+  <property name="rootDir" value="../.." />
+  <include buildfile="${rootDir}/Build/Common.include"/>
+
+ <property name="references" value="System.dll"/>
+  <property name="rootNamespace" value="PostSharp"/>
+
+  <fileset id="dependencies">
+    <include name="../PostSharp.Public/PostSharp.Public.build"/>
+  </fileset>
+
+  <fileset id="outputfiles">
+    <include name="PostSharp-Library.config" />
+    <include name="PostSharp-Platform.config" />
+    <include name="Default.psproj" />
+  </fileset>
+
+  <property name="keyfile" value="${postsharpKeyFile}"/>
+  <property name="delaysign" value="true"/>
+  <property name="unsafe" value="true"/>
+
+  <target name="_build" depends="standard-build"/>
+   
+</project>

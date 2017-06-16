@@ -1,0 +1,3359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="1.35" Name="My FxCop Project">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">c:\program files\microsoft fxcop 1.32\Xml\FxCopReport.Xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded" NewOnly="False" />
+   <Report Status="Active" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableControlFlowAnalysis>True</EnableControlFlowAnalysis>
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>100</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>10</RuleExceptionsThreshold>
+  <Spelling Locale="en-us" />
+  <VersionAware>False</VersionAware>
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>False</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+ </ProjectOptions>
+ <Targets>
+  <AssemblyReferenceDirectories>
+   <Directory>$(ProjectDir)/../PostSharp.Core/bin/CodeAnalysis/</Directory>
+   <Directory>$(ProjectDir)/../PostSharp.Core/bin/debug/</Directory>
+  </AssemblyReferenceDirectories>
+  <Target Name="$(ProjectDir)/../Core/PostSharp.Core/bin/CodeAnalysis/PostSharp.Core.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../Core/PostSharp.Public/bin/CodeAnalysis/PostSharp.Public.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../Laos/PostSharp.Laos.Weaver/bin/CodeAnalysis/PostSharp.Laos.Weaver.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/../Laos/PostSharp.Laos/bin/CodeAnalysis/PostSharp.Laos.dll" Analyze="True" AnalyzeAllChildren="True" />
+ </Targets>
+ <Rules>
+  <RuleFiles>
+   <RuleFile Name="$(FxCopDir)\Rules\DesignRules.dll" Enabled="True" AllRulesEnabled="False">
+    <Rule Name="AbstractTypesShouldNotHaveConstructors" Enabled="True" />
+    <Rule Name="AvoidEmptyInterfaces" Enabled="True" />
+    <Rule Name="AvoidExcessiveParametersOnGenericTypes" Enabled="True" />
+    <Rule Name="AvoidNamespacesWithFewTypes" Enabled="True" />
+    <Rule Name="CollectionsShouldImplementGenericInterface" Enabled="True" />
+    <Rule Name="ConsiderPassingBaseTypesAsParameters" Enabled="True" />
+    <Rule Name="DeclareEventHandlersCorrectly" Enabled="True" />
+    <Rule Name="DeclareTypesInNamespaces" Enabled="True" />
+    <Rule Name="DefaultParametersShouldNotBeUsed" Enabled="True" />
+    <Rule Name="DefineAccessorsForAttributeArguments" Enabled="True" />
+    <Rule Name="DoNotCatchGeneralExceptionTypes" Enabled="True" />
+    <Rule Name="DoNotDeclareProtectedMembersInSealedTypes" Enabled="True" />
+    <Rule Name="DoNotDeclareVirtualMembersInSealedTypes" Enabled="True" />
+    <Rule Name="DoNotDeclareVisibleInstanceFields" Enabled="True" />
+    <Rule Name="DoNotExposeGenericLists" Enabled="True" />
+    <Rule Name="DoNotHideBaseClassMethods" Enabled="True" />
+    <Rule Name="DoNotOverloadOperatorEqualsOnReferenceTypes" Enabled="True" />
+    <Rule Name="DoNotPassTypesByReference" Enabled="True" />
+    <Rule Name="EnumeratorsShouldBeStronglyTyped" Enabled="True" />
+    <Rule Name="EnumsShouldHaveZeroValue" Enabled="True" />
+    <Rule Name="EnumStorageShouldBeInt32" Enabled="True" />
+    <Rule Name="ExceptionsShouldBePublic" Enabled="True" />
+    <Rule Name="GenericMethodsShouldProvideTypeParameter" Enabled="True" />
+    <Rule Name="ICollectionImplementationsHaveStronglyTypedMembers" Enabled="True" />
+    <Rule Name="ImplementIDisposableCorrectly" Enabled="True" />
+    <Rule Name="ImplementStandardExceptionConstructors" Enabled="True" />
+    <Rule Name="IndexersShouldNotBeMultidimensional" Enabled="True" />
+    <Rule Name="InterfaceMethodsShouldBeCallableByChildTypes" Enabled="True" />
+    <Rule Name="ListsAreStronglyTyped" Enabled="True" />
+    <Rule Name="MarkAssembliesWithAssemblyVersion" Enabled="True" />
+    <Rule Name="MarkAssembliesWithClsCompliant" Enabled="True" />
+    <Rule Name="MarkAssembliesWithComVisible" Enabled="True" />
+    <Rule Name="MarkAttributesWithAttributeUsage" Enabled="True" />
+    <Rule Name="MarkEnumsWithFlags" Enabled="True" />
+    <Rule Name="MembersShouldNotExposeCertainConcreteTypes" Enabled="True" />
+    <Rule Name="MovePInvokesToNativeMethodsClass" Enabled="True" />
+    <Rule Name="NestedTypesShouldNotBeVisible" Enabled="True" />
+    <Rule Name="OverloadOperatorEqualsOnOverloadingAddAndSubtract" Enabled="True" />
+    <Rule Name="OverrideMethodsOnComparableTypes" Enabled="True" />
+    <Rule Name="PropertiesShouldNotBeWriteOnly" Enabled="True" />
+    <Rule Name="ProvideObsoleteAttributeMessage" Enabled="True" />
+    <Rule Name="ReplaceRepetitiveArgumentsWithParamsArray" Enabled="True" />
+    <Rule Name="StaticHolderTypesShouldBeSealed" Enabled="True" />
+    <Rule Name="StaticHolderTypesShouldNotHaveConstructors" Enabled="True" />
+    <Rule Name="StringUriOverloadsCallSystemUriOverloads" Enabled="True" />
+    <Rule Name="TypesShouldNotExtendCertainBaseTypes" Enabled="True" />
+    <Rule Name="TypesThatOwnDisposableFieldsShouldBeDisposable" Enabled="True" />
+    <Rule Name="TypesThatOwnNativeResourcesShouldBeDisposable" Enabled="True" />
+    <Rule Name="UriParametersShouldNotBeStrings" Enabled="True" />
+    <Rule Name="UriPropertiesShouldNotBeStrings" Enabled="True" />
+    <Rule Name="UriReturnValuesShouldNotBeStrings" Enabled="True" />
+    <Rule Name="UseEventsWhereAppropriate" Enabled="True" />
+    <Rule Name="UseGenericEventHandlerInstances" Enabled="True" />
+    <Rule Name="UseGenericsWhereAppropriate" Enabled="True" />
+    <Rule Name="UseIntegralOrStringArgumentForIndexers" Enabled="True" />
+    <Rule Name="UsePropertiesWhereAppropriate" Enabled="True" />
+   </RuleFile>
+   <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="False">
+    <Rule Name="AvoidDuplicateAccelerators" Enabled="True" />
+    <Rule Name="DoNotHardcodeLocaleSpecificStrings" Enabled="True" />
+    <Rule Name="SetLocaleForDataTypes" Enabled="True" />
+    <Rule Name="SpecifyCultureInfo" Enabled="True" />
+    <Rule Name="SpecifyIFormatProvider" Enabled="True" />
+    <Rule Name="SpecifyMessageBoxOptions" Enabled="True" />
+   </RuleFile>
+   <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="False">
+    <Rule Name="AvoidLanguageSpecificTypeNamesInParameters" Enabled="True" />
+    <Rule Name="AvoidTypeNamesInParameters" Enabled="True" />
+    <Rule Name="DoNotNameEnumValuesReserved" Enabled="True" />
+    <Rule Name="DoNotPrefixEnumValuesWithTypeName" Enabled="True" />
+    <Rule Name="EventsShouldNotHaveBeforeOrAfterPrefix" Enabled="True" />
+    <Rule Name="FlagsEnumsShouldHavePluralNames" Enabled="True" />
+    <Rule Name="IdentifiersShouldBeCasedCorrectly" Enabled="True" />
+    <Rule Name="IdentifiersShouldBeSpelledCorrectly" Enabled="True" />
+    <Rule Name="IdentifiersShouldDifferByMoreThanCase" Enabled="True" />
+    <Rule Name="IdentifiersShouldHaveCorrectPrefix" Enabled="True" />
+    <Rule Name="IdentifiersShouldHaveCorrectSuffix" Enabled="True" />
+    <Rule Name="IdentifiersShouldNotContainUnderscores" Enabled="True" />
+    <Rule Name="IdentifiersShouldNotHaveIncorrectPrefix" Enabled="True" />
+    <Rule Name="IdentifiersShouldNotHaveIncorrectSuffix" Enabled="True" />
+    <Rule Name="IdentifiersShouldNotMatchKeywords" Enabled="True" />
+    <Rule Name="LongAcronymsShouldBePascalCased" Enabled="True" />
+    <Rule Name="OnlyFlagsEnumsShouldHavePluralNames" Enabled="True" />
+    <Rule Name="ParameterNamesShouldMatchBaseDeclaration" Enabled="True" />
+    <Rule Name="ParameterNamesShouldNotMatchMemberNames" Enabled="True" />
+    <Rule Name="PropertyNamesShouldNotMatchGetMethods" Enabled="True" />
+    <Rule Name="ResourceStringCompoundWordsShouldBeCasedCorrectly" Enabled="True" />
+    <Rule Name="ResourceStringsShouldBeSpelledCorrectly" Enabled="True" />
+    <Rule Name="UsePreferredTerms" Enabled="True" />
+   </RuleFile>
+   <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\UsageRules.dll" Enabled="True" AllRulesEnabled="False">
+    <Rule Name="AssembliesShouldDeclareMinimumSecurity" Enabled="True" />
+    <Rule Name="AttributeStringLiteralsShouldParseCorrectly" Enabled="True" />
+    <Rule Name="CallBaseClassMethodsOnISerializableTypes" Enabled="True" />
+    <Rule Name="CollectionPropertiesShouldBeReadOnly" Enabled="True" />
+    <Rule Name="DisposableFieldsShouldBeDisposed" Enabled="True" />
+    <Rule Name="DisposableTypesShouldDeclareFinalizer" Enabled="True" />
+    <Rule Name="DisposeMethodsShouldCallBaseClassDispose" Enabled="True" />
+    <Rule Name="DoNotCallOverridableMethodsInConstructors" Enabled="True" />
+    <Rule Name="DoNotDecreaseInheritedMemberVisibility" Enabled="True" />
+    <Rule Name="DoNotDisposeObjectsMultipleTimes" Enabled="True" />
+    <Rule Name="DoNotIgnoreMethodResults" Enabled="True" />
+    <Rule Name="DoNotMarkEnumsWithFlags" Enabled="True" />
+    <Rule Name="DoNotMarkServicedComponentsWithWebMethod" Enabled="True" />
+    <Rule Name="DoNotRaiseExceptionsInFilterBlocks" Enabled="True" />
+    <Rule Name="DoNotRaiseReservedExceptionTypes" Enabled="True" />
+    <Rule Name="DoNotShipUnreleasedResourceFormats" Enabled="True" />
+    <Rule Name="FinalizersShouldBeProtected" Enabled="True" />
+    <Rule Name="FinalizersShouldCallBaseClassFinalizer" Enabled="True" />
+    <Rule Name="ImplementISerializableCorrectly" Enabled="True" />
+    <Rule Name="ImplementSerializationConstructors" Enabled="True" />
+    <Rule Name="ImplementSerializationMethodsCorrectly" Enabled="True" />
+    <Rule Name="InitializeValueTypeStaticFieldsInline" Enabled="True" />
+    <Rule Name="InstantiateArgumentExceptionsCorrectly" Enabled="True" />
+    <Rule Name="LiteralsShouldBeSpelledCorrectly" Enabled="True" />
+    <Rule Name="MarkISerializableTypesWithSerializable" Enabled="True" />
+    <Rule Name="MarkWindowsFormsEntryPointsWithStaThread" Enabled="True" />
+    <Rule Name="MembersShouldDifferByMoreThanReturnType" Enabled="True" />
+    <Rule Name="NonConstantFieldsShouldNotBeVisible" Enabled="True" />
+    <Rule Name="OperationsShouldNotOverflow" Enabled="True" />
+    <Rule Name="OperatorsShouldHaveSymmetricalOverloads" Enabled="True" />
+    <Rule Name="OverloadOperatorEqualsOnOverridingValueTypeEquals" Enabled="True" />
+    <Rule Name="OverrideEqualsOnOverloadingOperatorEquals" Enabled="True" />
+    <Rule Name="OverrideGetHashCodeOnOverridingEquals" Enabled="True" />
+    <Rule Name="PassSystemUriObjectsInsteadOfStrings" Enabled="True" />
+    <Rule Name="ProvideDeserializationMethodsForOptionalFields" Enabled="True" />
+    <Rule Name="RethrowToPreserveStackDetails" Enabled="True" />
+    <Rule Name="ReviewUnusedParameters" Enabled="True" />
+    <Rule Name="TestForNaNCorrectly" Enabled="True" />
+    <Rule Name="UseManagedEquivalentsOfWin32Api" Enabled="True" />
+    <Rule Name="UseParamsForVariableArguments" Enabled="True" />
+   </RuleFile>
+  </RuleFiles>
+  <Groups />
+  <Settings />
+ </Rules>
+ <FxCopReport Version="1.35">
+  <Targets>
+   <Target Name="$(ProjectDir)/../Core/PostSharp.Core/bin/CodeAnalysis/PostSharp.Core.dll">
+    <Modules>
+     <Module Name="postsharp.core.dll">
+      <Namespaces>
+       <Namespace Name="PostSharp">
+        <Types>
+         <Type Name="Trace">
+          <Members>
+           <Member Name=".cctor()">
+            <Messages>
+             <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Created="2007-02-26 20:13:34Z">
+              <Issue>
+               <Item>PostSharp.Trace</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PostSharp.CodeModel">
+        <Types>
+         <Type Name="MethodBodyDeclaration">
+          <Members>
+           <Member Name="GetOriginalInstructionReader():PostSharp.CodeModel.InstructionReader">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2007-02-26 20:13:34Z">
+              <Issue Certainty="50">
+               <Item>GetOriginalInstructionReader</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="OpCodeNumber">
+          <Members>
+           <Member Name="Add_Ovf">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Add_Ovf</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Add_Ovf_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Add_Ovf_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Add_Ovf_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Beq_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Beq_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Bge_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Bge_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Bge_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Bge_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Bge_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Bge_Un_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Bge_Un_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Bge_Un_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Bgt_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Bgt_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Bgt_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Bgt_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Bgt_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Bgt_Un_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Bgt_Un_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Bgt_Un_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ble_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ble_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ble_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ble_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Ble_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ble_Un_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ble_Un_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Ble_Un_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Blt_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Blt_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Blt_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Blt_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Blt_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Blt_Un_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Blt_Un_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Blt_Un_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Bne_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Bne_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Bne_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Bne_Un_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Bne_Un_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Bne_Un_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Br">
+            <Messages>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Br</Item>
+               <Item>OpCodeNumber.Br</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Br_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Br_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Br</Item>
+               <Item>OpCodeNumber.Br_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Brfalse_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Brfalse_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Brtrue_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Brtrue_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Cgt_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Cgt_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Cgt_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Clt_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Clt_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Clt_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_I">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_I</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_I1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_I1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_I2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_I2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_I4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_I4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_I8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_I8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_I">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_I</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_I_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_I_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Conv_Ovf_I_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_I1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_I1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_I1_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_I1_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Conv_Ovf_I1_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_I2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_I2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_I2_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_I2_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Conv_Ovf_I2_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_I4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_I4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_I4_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_I4_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Conv_Ovf_I4_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_I8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_I8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_I8_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_I8_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Conv_Ovf_I8_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_U">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_U</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_U_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_U_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Conv_Ovf_U_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_U1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_U1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_U1_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_U1_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Conv_Ovf_U1_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_U2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_U2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_U2_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_U2_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Conv_Ovf_U2_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_U4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_U4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_U4_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_U4_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Conv_Ovf_U4_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_U8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_U8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_Ovf_U8_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_Ovf_U8_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Conv_Ovf_U8_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_R_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_R_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Conv_R_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_R4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_R4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_R8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_R8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_U">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_U</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_U1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_U1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_U2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_U2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_U4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_U4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Conv_U8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Conv_U8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Div_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Div_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Div_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldarg_0">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldarg_0</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldarg_1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldarg_1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldarg_2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldarg_2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldarg_3">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldarg_3</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldarg_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldarg_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldarga_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldarga_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4_0">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4_0</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4_1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4_1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4_2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4_2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4_3">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4_3</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4_4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4_4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4_5">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4_5</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4_6">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4_6</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4_7">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4_7</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4_8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4_8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4_M1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4_M1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I4_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I4_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_I8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_I8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_R4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_R4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldc_R8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldc_R8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldelem_I">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldelem_I</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldelem_I1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldelem_I1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldelem_I2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldelem_I2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldelem_I4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldelem_I4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldelem_I8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldelem_I8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldelem_R4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldelem_R4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldelem_R8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldelem_R8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldelem_Ref">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldelem_Ref</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldelem_U1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldelem_U1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldelem_U2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldelem_U2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldelem_U4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldelem_U4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldind_I">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldind_I</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldind_I1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldind_I1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldind_I2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldind_I2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldind_I4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldind_I4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldind_I8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldind_I8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldind_R4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldind_R4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldind_R8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldind_R8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldind_Ref">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldind_Ref</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldind_U1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldind_U1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldind_U2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldind_U2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldind_U4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldind_U4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldloc_0">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldloc_0</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldloc_1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldloc_1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldloc_2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldloc_2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldloc_3">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldloc_3</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldloc_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldloc_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Ldloca_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Ldloca_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Leave_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Leave_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Mul_Ovf">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Mul_Ovf</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Mul_Ovf_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Mul_Ovf_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Mul_Ovf_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Rem_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Rem_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Rem_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Shr_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Shr_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Shr_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Starg_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Starg_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stelem_I">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stelem_I</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stelem_I1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stelem_I1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stelem_I2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stelem_I2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stelem_I4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stelem_I4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stelem_I8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stelem_I8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stelem_R4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stelem_R4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stelem_R8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stelem_R8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stelem_Ref">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stelem_Ref</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stind_I">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stind_I</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stind_I1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stind_I1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stind_I2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stind_I2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stind_I4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stind_I4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stind_I8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stind_I8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stind_R4">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stind_R4</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stind_R8">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stind_R8</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stind_Ref">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stind_Ref</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stloc_0">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stloc_0</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stloc_1">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stloc_1</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stloc_2">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stloc_2</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stloc_3">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stloc_3</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Stloc_S">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Stloc_S</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Sub_Ovf">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Sub_Ovf</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Sub_Ovf_Un">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Sub_Ovf_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Un</Item>
+               <Item>OpCodeNumber.Sub_Ovf_Un</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Unbox_Any">
+            <Messages>
+             <Message Id="Member" TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue Name="Member">
+               <Item>Unbox_Any</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="6" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PostSharp.CodeModel.ReflectionWrapper">
+        <Types>
+         <Type Name="BaseTypeWrapper">
+          <Members>
+           <Member Name="GetEventImpl(System.String,System.Reflection.BindingFlags):System.Reflection.EventInfo">
+            <Messages>
+             <Message Id="bindingAttr" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>bindingAttr</Item>
+               <Item>BaseTypeWrapper.GetEventImpl(String, BindingFlags):EventInfo</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="GetFieldImpl(System.String,System.Reflection.BindingFlags):System.Reflection.FieldInfo">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>BaseTypeWrapper.GetFieldImpl(String, BindingFlags):FieldInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="bindingAttr" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>bindingAttr</Item>
+               <Item>BaseTypeWrapper.GetFieldImpl(String, BindingFlags):FieldInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="name" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>name</Item>
+               <Item>BaseTypeWrapper.GetFieldImpl(String, BindingFlags):FieldInfo</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="GetMethodImplImpl(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Reflection.CallingConventions,System.Type[],System.Reflection.ParameterModifier[]):System.Reflection.MethodInfo">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>BaseTypeWrapper.GetMethodImplImpl(String, BindingFlags, Binder, CallingConventions, Type[], ParameterModifier[]):MethodInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="binder" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>binder</Item>
+               <Item>BaseTypeWrapper.GetMethodImplImpl(String, BindingFlags, Binder, CallingConventions, Type[], ParameterModifier[]):MethodInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="bindingAttr" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>bindingAttr</Item>
+               <Item>BaseTypeWrapper.GetMethodImplImpl(String, BindingFlags, Binder, CallingConventions, Type[], ParameterModifier[]):MethodInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="callConvention" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>callConvention</Item>
+               <Item>BaseTypeWrapper.GetMethodImplImpl(String, BindingFlags, Binder, CallingConventions, Type[], ParameterModifier[]):MethodInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="modifiers" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>modifiers</Item>
+               <Item>BaseTypeWrapper.GetMethodImplImpl(String, BindingFlags, Binder, CallingConventions, Type[], ParameterModifier[]):MethodInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="name" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>name</Item>
+               <Item>BaseTypeWrapper.GetMethodImplImpl(String, BindingFlags, Binder, CallingConventions, Type[], ParameterModifier[]):MethodInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="types" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>types</Item>
+               <Item>BaseTypeWrapper.GetMethodImplImpl(String, BindingFlags, Binder, CallingConventions, Type[], ParameterModifier[]):MethodInfo</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="GetPropertyImplImpl(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Type,System.Type[],System.Reflection.ParameterModifier[]):System.Reflection.PropertyInfo">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>BaseTypeWrapper.GetPropertyImplImpl(String, BindingFlags, Binder, Type, Type[], ParameterModifier[]):PropertyInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="binder" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>binder</Item>
+               <Item>BaseTypeWrapper.GetPropertyImplImpl(String, BindingFlags, Binder, Type, Type[], ParameterModifier[]):PropertyInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="bindingAttr" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>bindingAttr</Item>
+               <Item>BaseTypeWrapper.GetPropertyImplImpl(String, BindingFlags, Binder, Type, Type[], ParameterModifier[]):PropertyInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="modifiers" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>modifiers</Item>
+               <Item>BaseTypeWrapper.GetPropertyImplImpl(String, BindingFlags, Binder, Type, Type[], ParameterModifier[]):PropertyInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="name" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>name</Item>
+               <Item>BaseTypeWrapper.GetPropertyImplImpl(String, BindingFlags, Binder, Type, Type[], ParameterModifier[]):PropertyInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="returnType" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>returnType</Item>
+               <Item>BaseTypeWrapper.GetPropertyImplImpl(String, BindingFlags, Binder, Type, Type[], ParameterModifier[]):PropertyInfo</Item>
+              </Issue>
+             </Message>
+             <Message Id="types" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>types</Item>
+               <Item>BaseTypeWrapper.GetPropertyImplImpl(String, BindingFlags, Binder, Type, Type[], ParameterModifier[]):PropertyInfo</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="PopulateEvents(System.Reflection.BindingFlags,System.Collections.IList):System.Void">
+            <Messages>
+             <Message Id="bindingAttr" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>bindingAttr</Item>
+               <Item>BaseTypeWrapper.PopulateEvents(BindingFlags, IList):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="PopulateFields(System.Reflection.BindingFlags,System.Collections.IList):System.Void">
+            <Messages>
+             <Message Id="bindingAttr" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>bindingAttr</Item>
+               <Item>BaseTypeWrapper.PopulateFields(BindingFlags, IList):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="PopulateMethods(System.Reflection.BindingFlags,System.Collections.IList):System.Void">
+            <Messages>
+             <Message Id="bindingAttr" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>bindingAttr</Item>
+               <Item>BaseTypeWrapper.PopulateMethods(BindingFlags, IList):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="PopulateProperties(System.Reflection.BindingFlags,System.Collections.IList):System.Void">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>BaseTypeWrapper.PopulateProperties(BindingFlags, IList):Void</Item>
+              </Issue>
+             </Message>
+             <Message Id="bindingAttr" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>bindingAttr</Item>
+               <Item>BaseTypeWrapper.PopulateProperties(BindingFlags, IList):Void</Item>
+              </Issue>
+             </Message>
+             <Message Id="properties" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>properties</Item>
+               <Item>BaseTypeWrapper.PopulateProperties(BindingFlags, IList):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ReflectionWrapperUtil">
+          <Members>
+           <Member Name="GetCustomAttributes(PostSharp.CodeModel.MetadataDeclaration,System.Type,System.Boolean):System.Object[]">
+            <Messages>
+             <Message Id="inherit" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2006-10-21 07:48:49Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>inherit</Item>
+               <Item>ReflectionWrapperUtil.GetCustomAttributes(MetadataDeclaration, Type, Boolean):Object[]</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PostSharp.CodeWeaver">
+        <Types>
+         <Type Name="JoinPoint">
+          <Members>
+           <Member Name="ExceptionHandler">
+            <Accessors>
+             <Accessor Name="set_ExceptionHandler(PostSharp.CodeModel.ExceptionHandler):System.Void">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Excluded" Created="2006-02-05 22:01:21Z">
+                <Issue>
+                 <Item>JoinPoint.set_ExceptionHandler(ExceptionHandler):Void</Item>
+                </Issue>
+                <Notes>
+                 <User Name="gael">
+                  <Note Id="2" />
+                 </User>
+                </Notes>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Weaver">
+          <Members>
+           <Member Name="IgnoreMethod(PostSharp.CodeModel.MethodDefDeclaration):System.Void">
+            <Messages>
+             <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Created="2007-02-26 20:13:34Z">
+              <Issue>
+               <Item>method</Item>
+               <Item>Weaver.IgnoreMethod(MethodDefDeclaration):Void</Item>
+               <Item>PostSharp.CodeModel.MethodDefDeclaration</Item>
+               <Item>PostSharp.CodeModel.MetadataDeclaration</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="ProcessJoinPoint(PostSharp.CodeWeaver.JoinPointKindIndex,PostSharp.CodeWeaver.JoinPointKindIndex,PostSharp.CodeWeaver.JoinPointKindIndex,PostSharp.CodeWeaver.Weaver+WeaverState,PostSharp.CodeModel.MetadataDeclaration):System.Void">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2007-02-26 20:13:34Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>Weaver.ProcessJoinPoint(JoinPointKindIndex, JoinPointKindIndex, JoinPointKindIndex, WeaverState, MetadataDeclaration):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="WeavingContext">
+          <Members>
+           <Member Name="ExceptionHandler">
+            <Accessors>
+             <Accessor Name="set_ExceptionHandler(PostSharp.CodeModel.ExceptionHandler):System.Void">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Excluded" Created="2006-02-05 22:01:21Z">
+                <Issue>
+                 <Item>WeavingContext.set_ExceptionHandler(ExceptionHandler):Void</Item>
+                </Issue>
+                <Notes>
+                 <User Name="gael">
+                  <Note Id="3" />
+                 </User>
+                </Notes>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="WeavingHelper">
+          <Members>
+           <Member Name="AddExceptionHandlers(PostSharp.CodeModel.InstructionWriter,PostSharp.CodeModel.InstructionBlock,PostSharp.CodeModel.InstructionSequence,PostSharp.CodeModel.ITypeSignature[],System.Boolean,PostSharp.CodeModel.InstructionBlock&amp;,PostSharp.CodeModel.InstructionBlock[]&amp;,PostSharp.CodeModel.InstructionBlock&amp;):System.Void">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2007-02-26 21:06:17Z" FixCategory="Breaking">
+              <Issue>
+               <Item>WeavingHelper.AddExceptionHandlers(InstructionWriter, InstructionBlock, InstructionSequence, ITypeSignature[], Boolean, InstructionBlock&amp;, InstructionBlock[]&amp;, InstructionBlock&amp;):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PostSharp.Collections">
+        <Types>
+         <Type Name="SimpleLinkedListNode`1">
+          <Members>
+           <Member Name="GetLast():PostSharp.Collections.SimpleLinkedListNode`1&lt;T&gt;">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2007-02-26 20:13:34Z">
+              <Issue Certainty="50">
+               <Item>GetLast</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PostSharp.Extensibility">
+        <Types>
+         <Type Name="CustomAssemblyBinder">
+          <Members>
+           <Member Name="CheckBackwardCompatibility(System.Reflection.Assembly,System.Version):System.Boolean">
+            <Messages>
+             <Message Id="assembly" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>assembly</Item>
+               <Item>CustomAssemblyBinder.CheckBackwardCompatibility(Assembly, Version):Boolean</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="5" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="requestedVersion" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>requestedVersion</Item>
+               <Item>CustomAssemblyBinder.CheckBackwardCompatibility(Assembly, Version):Boolean</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="4" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Messenger">
+          <Members>
+           <Member Name=".cctor()">
+            <Messages>
+             <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Created="2007-02-26 20:13:34Z">
+              <Issue>
+               <Item>PostSharp.Extensibility.Messenger</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PostSharpLocalHost">
+          <Members>
+           <Member Name="Dispose():System.Void">
+            <Messages>
+             <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2007-02-26 20:13:34Z">
+              <Issue Name="DisposeImplementation">
+               <Item>PostSharpLocalHost.Dispose():Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="Finalize():System.Void">
+            <Messages>
+             <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2007-02-26 20:13:34Z">
+              <Issue Name="FinalizeImplementation">
+               <Item>PostSharpLocalHost.Finalize():Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PostSharpObject">
+          <Members>
+           <Member Name="InitializeAppDomainWhenRemote(PostSharp.Extensibility.Messenger):System.Void">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2007-02-26 20:13:34Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>PostSharpObject.InitializeAppDomainWhenRemote(Messenger):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PostSharpObjectAccessor">
+          <Members>
+           <Member Name="Dispose(System.Boolean):System.Void">
+            <Messages>
+             <Message TypeName="DisposeMethodsShouldCallBaseClassDispose" Category="Microsoft.Usage" CheckId="CA2215" Created="2007-02-26 20:13:34Z">
+              <Issue>
+               <Item>PostSharpObjectAccessor.Dispose(Boolean):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Project">
+          <Members>
+           <Member Name="Dispose():System.Void">
+            <Messages>
+             <Message Id="phases" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Created="2007-02-26 21:18:11Z">
+              <Issue>
+               <Item>PostSharp.Extensibility.Project</Item>
+               <Item>phases</Item>
+               <Item>PostSharp.Extensibility.Configuration.PhaseConfigurationDictionary</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PostSharp.Extensibility.Tasks">
+        <Types>
+         <Type Name="IndexUsagesTask">
+          <Members>
+           <Member Name="GetUses(PostSharp.CodeModel.MethodDefDeclaration):System.Collections.Generic.ICollection`1&lt;PostSharp.CodeModel.MetadataDeclaration&gt;">
+            <Messages>
+             <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Created="2007-02-26 20:13:34Z">
+              <Issue>
+               <Item>method</Item>
+               <Item>IndexUsagesTask.GetUses(MethodDefDeclaration):ICollection`1&lt;PostSharp.CodeModel.MetadataDeclaration&gt;</Item>
+               <Item>PostSharp.CodeModel.MethodDefDeclaration</Item>
+               <Item>PostSharp.CodeModel.MetadataDeclaration</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="RemoveTask">
+          <Members>
+           <Member Name="IsMarkedForRemoval(PostSharp.CodeModel.IRemoveable):System.Boolean">
+            <Messages>
+             <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Created="2007-02-26 20:13:34Z">
+              <Issue>
+               <Item>declaration</Item>
+               <Item>RemoveTask.IsMarkedForRemoval(IRemoveable):Boolean</Item>
+               <Item>PostSharp.CodeModel.IRemoveable</Item>
+               <Item>PostSharp.ITaggable</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PostSharp.ModuleReader">
+        <Types>
+         <Type Name="ImageReader">
+          <Members>
+           <Member Name="GetGuid(System.Int32):System.Guid">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Excluded" Created="2006-02-05 22:01:21Z">
+              <Issue>
+               <Item>ImageReader.GetGuid(Int32):Guid</Item>
+              </Issue>
+              <Notes>
+               <User Name="gael">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="InstructionBlockBuilder+CorExceptionHandlingClauseSmall">
+          <Messages>
+           <Message Id="HandlerOffset" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseSmall</Item>
+             <Item>CorExceptionHandlingClauseSmall.HandlerOffset</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="InstructionBlockBuilder+CorMethodSection">
+          <Messages>
+           <Message Id="ClassToken" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseFat</Item>
+             <Item>CorExceptionHandlingClauseFat.ClassToken</Item>
+            </Issue>
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseSmall</Item>
+             <Item>CorExceptionHandlingClauseSmall.ClassToken</Item>
+            </Issue>
+           </Message>
+           <Message Id="Fat" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorMethodSection</Item>
+             <Item>CorMethodSection.Fat</Item>
+            </Issue>
+           </Message>
+           <Message Id="FilterOffset" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseFat</Item>
+             <Item>CorExceptionHandlingClauseFat.FilterOffset</Item>
+            </Issue>
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseSmall</Item>
+             <Item>CorExceptionHandlingClauseSmall.FilterOffset</Item>
+            </Issue>
+           </Message>
+           <Message Id="Flags" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseFat</Item>
+             <Item>CorExceptionHandlingClauseFat.Flags</Item>
+            </Issue>
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseSmall</Item>
+             <Item>CorExceptionHandlingClauseSmall.Flags</Item>
+            </Issue>
+           </Message>
+           <Message Id="HandlerLength" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseFat</Item>
+             <Item>CorExceptionHandlingClauseFat.HandlerLength</Item>
+            </Issue>
+           </Message>
+           <Message Id="HandlerOffset" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseFat</Item>
+             <Item>CorExceptionHandlingClauseFat.HandlerOffset</Item>
+            </Issue>
+           </Message>
+           <Message Id="Reserved" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorMethodSectionSmall</Item>
+             <Item>CorMethodSectionSmall.Reserved</Item>
+            </Issue>
+           </Message>
+           <Message Id="Small" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorMethodSection</Item>
+             <Item>CorMethodSection.Small</Item>
+            </Issue>
+           </Message>
+           <Message Id="TryLength" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseFat</Item>
+             <Item>CorExceptionHandlingClauseFat.TryLength</Item>
+            </Issue>
+           </Message>
+           <Message Id="TryOffset" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseFat</Item>
+             <Item>CorExceptionHandlingClauseFat.TryOffset</Item>
+            </Issue>
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorExceptionHandlingClauseSmall</Item>
+             <Item>CorExceptionHandlingClauseSmall.TryOffset</Item>
+            </Issue>
+           </Message>
+           <Message Id="firstClause" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorMethodSectionFat</Item>
+             <Item>CorMethodSectionFat.firstClause</Item>
+            </Issue>
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorMethodSectionSmall</Item>
+             <Item>CorMethodSectionSmall.firstClause</Item>
+            </Issue>
+           </Message>
+           <Message Id="sectionSize1" TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900" Status="Excluded" Created="2006-02-05 22:01:21Z" FixCategory="Breaking">
+            <Issue>
+             <Item>PostSharp.ModuleReader.InstructionBlockBuilder+CorMethodSectionFat</Item>
+             <Item>CorMethodSectionFat.sectionSize1</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="ModuleReader">
+          <Messages>
+           <Message TypeName="TypesThatOwnNativeResourcesShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1049" Created="2006-09-21 09:33:44Z">
+            <Issue>
+             <Item>ModuleReader</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="PostSharp.ModuleWriter">
+        <Types>
+         <Type Name="InstructionEmitter">
+          <Members>
+           <Member Name="CheckEnabled">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2007-02-26 20:13:34Z" FixCategory="Breaking">
+              <Issue>
+               <Item>InstructionEmitter.CheckEnabled:Boolean</Item>
+              </Issue>
+             </Message>
+            </Messages>
+            <Accessors>
+             <Accessor Name="set_CheckEnabled(System.Boolean):System.Void">
+              <Messages>
+               <Message Id="value" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2007-02-26 20:13:34Z" FixCategory="Breaking">
+                <Issue>
+                 <Item>value</Item>
+                 <Item>InstructionEmitter.set_CheckEnabled(Boolean):Void</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PreparingInstructionEmitter">
+          <Members>
+           <Member Name="IgnoreNop">
+            <Accessors>
+             <Accessor Name="set_IgnoreNop(System.Boolean):System.Void">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Excluded" Created="2006-02-05 22:01:21Z">
+                <Issue>
+                 <Item>PreparingInstructionEmitter.set_IgnoreNop(Boolean):Void</Item>
+                </Issue>
+                <Notes>
+                 <User Name="gael">
+                  <Note Id="1" />
+                 </User>
+                </Notes>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/../Laos/PostSharp.Laos.Weaver/bin/CodeAnalysis/PostSharp.Laos.Weaver.dll">
+    <Modules>
+     <Module Name="postsharp.laos.weaver.dll">
+      <Namespaces>
+       <Namespace Name="PostSharp.Laos.Weaver">
+        <Types>
+         <Type Name="ImplementMethodAspectWeaver">
+          <Members>
+           <Member Name="instanceTagField">
+            <Messages>
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2007-02-26 20:13:34Z">
+              <Issue>
+               <Item>ImplementMethodAspectWeaver.instanceTagField</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="InstanceCredentialsManager">
+          <Messages>
+           <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2007-02-26 21:18:11Z">
+            <Issue Name="ProvideDisposeBool">
+             <Item>PostSharp.Laos.Weaver.InstanceCredentialsManager</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="Dispose():System.Void">
+            <Messages>
+             <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2007-02-26 21:18:11Z">
+              <Issue Name="DisposeImplementation">
+               <Item>InstanceCredentialsManager.Dispose():Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="RequestGetInstanceCredentialsMethod(PostSharp.CodeModel.TypeDefDeclaration):System.Void">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2007-02-26 20:13:34Z" FixCategory="Breaking">
+              <Issue>
+               <Item>InstanceCredentialsManager.RequestGetInstanceCredentialsMethod(TypeDefDeclaration):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="LaosTrace">
+          <Members>
+           <Member Name="Trace">
+            <Messages>
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2007-02-26 20:13:34Z">
+              <Issue>
+               <Item>LaosTrace.Trace</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="OnMethodBoundaryAspectWeaver">
+          <Members>
+           <Member Name="EmitSetException(PostSharp.CodeWeaver.WeavingContext):System.Void">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2007-02-26 20:13:34Z">
+              <Issue>
+               <Item>OnMethodBoundaryAspectWeaver.EmitSetException(WeavingContext):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/../Laos/PostSharp.Laos/bin/CodeAnalysis/PostSharp.Laos.dll">
+    <Modules>
+     <Module Name="postsharp.laos.dll">
+      <Namespaces>
+       <Namespace Name="PostSharp.Laos">
+        <Types>
+         <Type Name="CompositionAspectOptions">
+          <Messages>
+           <Message TypeName="OnlyFlagsEnumsShouldHavePluralNames" Category="Microsoft.Naming" CheckId="CA1717" Created="2007-02-26 20:13:34Z">
+            <Issue>
+             <Item>CompositionAspectOptions</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="ICompositionAspect">
+          <Members>
+           <Member Name="GetOptions():PostSharp.Laos.CompositionAspectOptions">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2007-02-26 20:13:34Z">
+              <Issue Certainty="50">
+               <Item>GetOptions</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IImplementMethodAspect">
+          <Members>
+           <Member Name="GetOptions():PostSharp.Laos.ImplementMethodAspectOptions">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2007-02-26 20:13:34Z">
+              <Issue Certainty="50">
+               <Item>GetOptions</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IInstanceBoundLaosAspect">
+          <Members>
+           <Member Name="GetInstanceTagRequest():PostSharp.Laos.InstanceTagRequest">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2007-02-26 20:13:34Z">
+              <Issue Certainty="50">
+               <Item>GetInstanceTagRequest</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ILaosAspect">
+          <Messages>
+           <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Created="2007-02-26 20:13:34Z">
+            <Issue>
+             <Item>ILaosAspect</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="IOnExceptionAspect">
+          <Members>
+           <Member Name="GetOptions():PostSharp.Laos.OnExceptionAspectOptions">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2007-02-26 20:13:34Z">
+              <Issue Certainty="50">
+               <Item>GetOptions</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IOnFieldAccessAspect">
+          <Members>
+           <Member Name="GetOptions():PostSharp.Laos.OnFieldAccessAspectOptions">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2007-02-26 20:13:34Z">
+              <Issue Certainty="50">
+               <Item>GetOptions</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IOnMethodBoundaryAspect">
+          <Members>
+           <Member Name="GetOptions():PostSharp.Laos.OnMethodBoundaryAspectOptions">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2007-02-26 20:13:34Z">
+              <Issue Certainty="50">
+               <Item>GetOptions</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IOnMethodInvocationAspect">
+          <Members>
+           <Member Name="GetOptions():PostSharp.Laos.OnMethodInvocationAspectOptions">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Created="2007-02-26 20:13:34Z">
+              <Issue Certainty="50">
+               <Item>GetOptions</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+  </Targets>
+  <Notes>
+   <User Name="gael">
+    <Note Id="1" Modified="2006-02-05 23:18:41Z">Shall be used.</Note>
+    <Note Id="2" Modified="2006-02-05 23:16:24Z">Shall be used.</Note>
+    <Note Id="3" Modified="2006-02-05 23:28:02Z">Shall be used.</Note>
+    <Note Id="4" Modified="2006-02-06 00:14:51Z">Shall be used.</Note>
+    <Note Id="5" Modified="2006-02-06 00:14:58Z">Shall be used.</Note>
+    <Note Id="6" Modified="2006-02-06 20:39:45Z">MSIL naming.</Note>
+    <Note Id="7" Modified="2006-02-06 21:27:05Z">Check why it is not used.</Note>
+   </User>
+  </Notes>
+  <Rules>
+   <Rule TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040">
+    <Resolution Name="Default">Define a custom attribute to replace '{0}'.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+    <Resolution Name="Default">'{0}' appears to have no upstream public or protected callers.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+    <Resolution Name="Default">It appears that field '{0}' is never used or is only ever assigned to. Use this field or remove it.</Resolution>
+   </Rule>
+   <Rule TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011">
+    <Resolution Name="Default">Consider changing the type of parameter '{0}' in {1} from {2} to its base type {3}. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Resolution>
+   </Rule>
+   <Rule TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213">
+    <Resolution Name="Default">'{0}' contains field '{1}' that is of IDisposable type: {2}. Change {0}'s Dispose method to call Dispose or Close on this field.</Resolution>
+   </Rule>
+   <Rule TypeName="DisposeMethodsShouldCallBaseClassDispose" Category="Microsoft.Usage" CheckId="CA2215">
+    <Resolution Name="Default">Change {0} so that it calls its base class Dispose method for all code paths. Place the call in a finally block to ensure that resources are cleaned up when an exception is raised.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707">
+    <Resolution Name="Member">Remove all underscores from member '{0}'.</Resolution>
+   </Rule>
+   <Rule TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063">
+    <Resolution Name="DisposeImplementation">Modify {0} so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in VB), and then returns.</Resolution>
+    <Resolution Name="FinalizeImplementation">Modify {0} so that it calls Dispose(false) and then returns.</Resolution>
+    <Resolution Name="ProvideDisposeBool">Provide an overridable implementation of Dispose(bool) on {0} or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Resolution>
+    <Resolution Name="RenameDispose">Rename {0} to 'Dispose' and ensure that it is declared as public and sealed.</Resolution>
+   </Rule>
+   <Rule TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810">
+    <Resolution Name="Default">Initialize all static fields in {0} when those fields are declared and remove the explicit static constructor.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+    <Resolution Name="Default">The 'this' parameter (or 'Me' in VB) of {0} is never used. Mark the member as static (or Shared in VB) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
+   </Rule>
+   <Rule TypeName="OnlyFlagsEnumsShouldHavePluralNames" Category="Microsoft.Naming" CheckId="CA1717">
+    <Resolution Name="Default">If the name '{0}' is plural, change it to its singular form.</Resolution>
+   </Rule>
+   <Rule TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801">
+    <Resolution Name="Default">Parameter '{0}' of {1} is never used. Remove the parameter or use it in the method body.</Resolution>
+   </Rule>
+   <Rule TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706">
+    <Resolution Name="Member" />
+   </Rule>
+   <Rule TypeName="TypesThatOwnNativeResourcesShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1049">
+    <Resolution Name="Default">Implement IDisposable on '{0}'.</Resolution>
+   </Rule>
+   <Rule TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024">
+    <Resolution Name="Default">Change '{0}' to a property if appropriate.</Resolution>
+   </Rule>
+   <Rule TypeName="ValueTypeFieldsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1900">
+    <Resolution Name="Default">Structure '{0}' contains the following non-portable fields: '{1}'.</Resolution>
+   </Rule>
+  </Rules>
+ </FxCopReport>
+</FxCopProject>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>PostSharp 1.0: Build Instructions</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="CREATED" CONTENT="20060116;21494000">
+	<META NAME="CHANGEDBY" CONTENT="Gael Fraiteur">
+	<META NAME="CHANGED" CONTENT="20061011;15125979">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1>PostSharp 1.0: Build Instructions</H1>
+<H3>1. Disabling verification of the PostSharp public key 
+</H3>
+<P>The private key thats signs PostSharp assemblies is not made
+public, so you will have to load unsigned assemblies. 
+</P>
+<P>Assemblies are compiled with delayed signing option, so it will be
+impossible to load them unless you specify that their signature has
+not to be verified. 
+</P>
+<P>To do so, execute the following command as an administrator: 
+</P>
+<PRE STYLE="margin-bottom: 0.5cm">regedit.exe Build\PostSharp.reg</PRE>
+<H3>&nbsp;Loading into Visual Studio 
+</H3>
+<P>At this stage, the working copy should be ready to be loaded into
+Visual Studio. 
+</P>
+<P>Alternatively you can edit or view the code with any editor and
+use <I>msbuild</I> to build the projects and solutions. 
+</P>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>

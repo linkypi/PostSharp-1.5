@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Compound Aspect Sample</title>
+
+
+  <link rel="stylesheet" type="text/css" href="../UserGuide.css">
+
+</head>
+
+
+<body>
+
+<h1>Compound Aspect Sample</h1>
+
+<span class="openfloat"><a href="PostSharp.Samples.Binding.sln"><img src="../vs.png" border="0" alt="">Open this sample in Visual Studio</a> </span>
+
+<p>The <code>PostSharp.Samples.Binding</code>
+project demonstrates how to combine many sub-aspects in a single custom
+attribute using the <code>CompoundAttribute</code>
+mechanism.</p>
+
+<p>As an example, we tried to implement
+automatically&nbsp;interfaces used in data binding:</p>
+
+<ul>
+
+  <li> <code>INotifyPropertyChanged</code>&nbsp; contains a
+single event named&nbsp;<code>PropertyChanged</code>,
+which should be raised, obviously, whenever a property is changed. This 
+  interface enables objects to be <em>observed</em>, i.e. to make a view of the 
+  object without having to continuously polling for changes.</li>
+
+  <li><code>IEditableObject</code> (from the
+namespace <code>System.ComponentModel</code>), provides
+the functionality to commit or rollback changes to an object. It
+defines the methods <code>BeginEdit</code>, <code>EndEdit</code>
+and <code>CancelEdit</code>.</li>
+
+</ul>
+
+<h2>The NotifyPropertyChanged Aspect</h2>
+
+What we want to achieve is 'simply' to implement automatically the
+following interface:
+<pre>public interface INotifyPropertyChanged<br>{<br>&nbsp; event PropertyChangedEventHandler PropertyChanged;<br>}</pre>
+
+<p>The solution is in three steps:</p>
+
+<ol>
+
+  <li>Implementing the <code>INotifyPropertyChanged</code> interface.</li>
+
+  <li>Modifying property accessors so that they invoke the <code>PropertyChanged</code> event
+  	  of <code>INotifyPropertyChanged</code> when the value changes.</li>
+
+  <li>Assembling sub-aspects into a compound aspect.</li>
+
+</ol>
+
+<h3>Implementing INotifyPropertyChanged</h3>
+
+<p>We will implement the <code>INotifyPropertyChanged</code>
+interface <i>by composition</i>. That is, we will develop
+a class <code>(NotifyPropertyChangedImplementation</code>) that will
+implement <code>INotifyPropertyChanged</code>. This class will
+be&nbsp;<i>composed</i> into the aspected class (say
+that we the <code>Customer</code> class to be observable; we
+call this class the&nbsp;<i>aspected</i> class). The
+<code>INotifyPropertyChanged</code> interface would be exposed by the aspected class, but the
+implementation would be delegated to the class <code>NotifyPropertyChangedImplementation</code>.
+Note that this class is purely runtime. It is never instantiated at
+compile time.</p>
+
+<pre>private class <b>NotifyPropertyChangedImplementation</b> : INotifyPropertyChanged<br>{<br>&nbsp;&nbsp;&nbsp; private object instance;<br><br>&nbsp;&nbsp;&nbsp; public NotifyPropertyChangedImplementation(object instance)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.instance = instance;<br>&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; public event PropertyChangedEventHandler PropertyChanged;<br><br>&nbsp;&nbsp;&nbsp; public void OnPropertyChanged(string propertyName)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (this.PropertyChanged != null)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.PropertyChanged(this.instance, new PropertyChangedEventArgs(propertyName));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; }<br>}</pre>
+
+<p>The code is annoyingly classic. </p>
+
+<p>Class composition is supported in PostSharp Laos by the <code>CompositionAspect</code>
+class (or the <code>ICompositionAspect</code>
+interface, if you prefer). We derive from it the new class <code>AddNotifyPropertyChangedInterfaceSubAspect</code>:</p>
+
+<pre>[Serializable]<br>private class <strong>AddNotifyPropertyChangedInterfaceSubAspect</strong> : CompositionAspect<br>{<br>&nbsp;&nbsp;&nbsp; public override object CreateImplementationObject(InstanceBoundLaosEventArgs eventArgs) <br>&nbsp;&nbsp;&nbsp; { <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return new NotifyPropertyChangedImplementation(eventArgs.Instance); <br>&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; public override Type GetPublicInterface(Type containerType) <br>&nbsp;&nbsp;&nbsp; { <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return typeof(INotifyPropertyChanged); <br>&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; public override CompositionAspectOptions GetOptions()<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return CompositionAspectOptions.GenerateImplementationAccessor | 
+               CompositionAspectOptions.IgnoreIfAlreadyImplemented;<br>&nbsp;&nbsp;&nbsp; } <br>}</pre>
+
+<p>The <code>GetPublicInterface</code> method is
+called at compile time. It returns which interface should be exposed on
+the aspected type.&nbsp;The <code>CreateImplementationObject</code>
+is called at runtime to create the object that will actually implement
+the interface. We create an instance of our <code>
+   NotifyPropertyChangedImplementation</code>.</p>
+
+<h3>Modifying property accessors</h3>
+
+<p>In order to modify the write accessor of properties, we derive
+a new <code>OnPropertySetSubAspect</code> class from <code>OnMethodBoundaryAspect</code>
+and we simply override the <code>OnSuccess</code> method
+so that it calls the <code>OnPropertyChanged</code> method
+of our <code>NotifyPropertyChangedImplementation</code>. Seems pretty
+easy.</p>
+
+But how to get access to the <code>OnPropertyChanged</code>
+method? One solution would be to add this method in a public
+interface derived from <code>INotifyPropertyChanged</code>, and expose this interface. We would just have to
+cast the property instance and call the <code>OnPropertyChanged</code> 
+method. But it is not very safe: everyone could
+raise this event. <br>
+
+<br>
+
+In order to address this issue, PostSharp Laos is able to expose the
+implementation of a composed interface. When requested, Laos will
+implement the <code>IComposed</code> interface (in our
+case <code>IComposed&lt;INotifyPropertyChanged&gt;</code>) on
+the aspected type. The way to request it is to return the <code>GenerateImplementationAccessor</code>
+flag from the <code>GetOptions</code> method of the <code>CompositionAspect</code>
+(see above). This interface defines the method <code>GetImplementation</code>,
+which retrieve obviously the object implementing the composed
+interface, in our case <code>NotifyPropertyChangedImplementation</code>.<br>
+
+<br>
+
+This approach is more secure for two reasons. First, the implementation
+class does not have to be public. It can be nested private or internal.
+Additionally, this method requires credentials, named <i>instance
+credentials</i>. If you don't have them, you cannot get the
+implementation. All aspects related to this instance will get its
+credentials through the event arguments. That is, the instance and its
+aspects form a 'family' inside which exists a trust relationship, which
+justifies instance credentials to be passed to all members of this
+family.<br>
+
+<br>
+
+You will see that the implementation will be shorter than the
+explanation:<br>
+
+<br>
+
+<pre>[Serializable]<br>private class <b>OnPropertySetSubAspect</b> : OnMethodBoundaryAspect<br>{<br> string propertyName;<br><br> public OnPropertySetSubAspect( string propertyName, NotifyPropertyChangedAttribute parent )<br> {<br>  this.AspectPriority = parent.AspectPriority;<br>  this.propertyName = propertyName;<br> }<br><br> public override void OnSuccess(MethodExecutionEventArgs eventArgs)<br> {<br>   NotifyPropertyChangedImplementation implementation = <br>    (NotifyPropertyChangedImplementation)
+    ((IComposed&lt;INotifyPropertyChanged&gt;)eventArgs.Instance).
+       GetImplementation(eventArgs.InstanceCredentials);<br> <br>      implementation.OnPropertyChanged(this.propertyName);<br> }<br><br>}</pre>
+
+<h3>Assembling sub-aspects into a compound aspects</h3>
+
+<p>We now have all code transformations we need to realize the
+'notify property changed' functionality, but we need to assemble them in a single
+custom attribute that could be applied to any class. This is the role
+of <code>CompoundAspect</code>,
+from which we derive our <code>NotifyPropertyChangedAttribute</code>.</p>
+
+<pre>[MulticastAttributeUsage(MulticastTargets.Class | MulticastTargets.Struct)]<br>[Serializable]<br>public sealed class <b>NotifyPropertyChangedAttribute</b> : CompoundAspect<br>{<br><br> [NonSerialized]<br> private int aspectPriority = 0;<br><br> public override void ProvideAspects(object targetElement, 
+                                     LaosReflectionAspectCollection collection)<br> {<br> // Get the target type.<br> Type targetType = (Type) targetElement;<br><br> // On the type, add a Composition aspect to implement the INotifyPropertyChanged interface.<br> collection.AddAspect(targetType, new AddNotifyPropertyChangedInterfaceSubAspect());<br><br> // Add a OnMethodBoundaryAspect on each writable non-static property.<br> foreach (PropertyInfo property in targetType.GetProperties())<br> {<br> if (property.DeclaringType == targetType &amp;&amp; property.CanWrite )<br> {<br> MethodInfo method = property.GetSetMethod();<br><br> if (!method.IsStatic)<br> {<br> collection.AddAspect(method, new OnPropertySetSubAspect(property.Name, this));<br> }<br> }<br> }<br> }<br><br> public int AspectPriority<br> {<br> get { return aspectPriority; }<br> set { aspectPriority = value; }<br> }<br> <br>}</pre>
+
+<p>The principal method of this aspect is of course <code>ProvideAspects</code>.
+It should add sub-aspects into a collection. Here we add <code>AddNotifyPropertyChangedInterfaceSubAspect</code>
+to the aspected class. Then we select all writable properties and we
+apply&nbsp;<code>OnPropertySetSubAspect</code> to their
+write accessor, unless if the property is static.</p>
+
+<h2>The EditableObject Aspect</h2>
+
+<p>This aspect is structurally similar to the Notify Property Changed Aspect,
+but it works on field-level and not on accessor-level.&nbsp;</p>
+
+<p>Although there exists other strategies, we chose here to <i>virtualize</i>
+the field storage, that is, we will replace the instance fields by
+something else. Yes, we will <i>remove</i> the fields at
+compile-time.&nbsp;</p>
+
+<p>Instead of the instance fields, we will have two
+dictionaries: one with the working copy of fields, the second with the
+backup copy. Instead of reading from and writing to instance fields, we
+will read from and write to the dictionary of working values. The <code>BeginEdit</code>,
+<code>EndEdit</code> and <code>CancelEdit</code>
+methods will simply copy the dictionary of working values into the
+dictionary of backup values or conversely.</p>
+
+<p>Both dictionaries will be instance fields of the <code>EditableImplementation</code>
+class, which is the composed object implementing <code>IEditableObject</code>.
+Additionally to this interface, this class will have the semantics <code>SetValue</code>
+and <code>GetValue</code>.</p>
+
+<p>Please refer to the code for more details. If you have
+understood the Notify Propetrty Changed sample, EditableObject should not be
+problematic.</p>
+
+<p></p>
+
+<p></p>
+
+</body>
+</html>

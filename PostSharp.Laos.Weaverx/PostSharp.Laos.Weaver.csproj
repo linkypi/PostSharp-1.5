@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB3DB314-10DE-46B7-8C04-A29E478DA48E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PostSharp.Laos.Weaver</RootNamespace>
+    <AssemblyName>PostSharp.Laos.Weaver</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AspectSerializationData.cs" />
+    <Compile Include="AspectTargetPair.cs" />
+    <Compile Include="BuiltInAspectWeaverFactory.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="CompositionAspectWeaver.cs" />
+    <Compile Include="CompoundAspectWeaver.cs" />
+    <Compile Include="CustomAttributeInjectorAspectWeaver.cs" />
+    <Compile Include="DelegateMapper.cs" />
+    <Compile Include="EventArgsBuilders.cs" />
+    <Compile Include="ExternalAspectWeaver.cs" />
+    <Compile Include="FieldLevelAspectWeaver.cs" />
+    <Compile Include="GetInstanceCredentialAdvice.cs" />
+    <Compile Include="IFieldLevelAdvice.cs" />
+    <Compile Include="ILaosAspectWeaverFactory.cs" />
+    <Compile Include="ILaosAwareness.cs" />
+    <Compile Include="IMethodLevelAdvice.cs" />
+    <Compile Include="ImplementMethodAspectWeaver.cs" />
+    <Compile Include="InitializeCurrentAspectsAdvice.cs" />
+    <Compile Include="InstanceCredentialsManager.cs" />
+    <Compile Include="InstanceInitializationManager.cs" />
+    <Compile Include="InstanceTagManager.cs" />
+    <Compile Include="IntendManager.cs" />
+    <Compile Include="ITypeLevelAdvice.cs" />
+    <Compile Include="LaosAspectWeaver.cs" />
+    <Compile Include="LaosExceptionHelper.cs" />
+    <Compile Include="LaosMessageSource.cs" />
+    <Compile Include="LaosTask.cs" />
+    <Compile Include="LaosTrace.cs" />
+    <Compile Include="MethodLevelAspectWeaver.cs" />
+    <Compile Include="OnExceptionAspectWeaver.cs" />
+    <Compile Include="OnFieldAccessAspectWeaver.cs" />
+    <Compile Include="OnMethodBoundaryAspectWeaver.cs" />
+    <Compile Include="OnMethodInvocationAspectWeaver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyVersion.cs" />
+    <Compile Include="TypeLevelAspectWeaver.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="#revision" />
+    <None Include="PostSharp.Laos.psplugin" />
+    <None Include="PostSharp.Laos.Weaver.build" />
+    <None Include="PostSharp.Laos.Weaver.pidb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Exceptions.resx" />
+    <EmbeddedResource Include="Messages.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\PostSharp.Public\PostSharp.Public.csproj">
+      <Project>{481ce092-840c-401f-964d-76cc2f47e012}</Project>
+      <Name>PostSharp.Public</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Laos\PostSharp.Laos\PostSharp.Laos.csproj">
+      <Project>{31373f37-00ad-459e-a10d-8edaacae2731}</Project>
+      <Name>PostSharp.Laos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PostSharp.Corex\PostSharp.Core.csproj">
+      <Project>{5f5509fc-717a-4cc4-90f7-45dafc8eb46f}</Project>
+      <Name>PostSharp.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

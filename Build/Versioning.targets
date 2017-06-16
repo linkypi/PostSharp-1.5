@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<!-- Import the definition of what is a source file. -->
+	<Import Project="SourceDef.targets" />
+
+
+	<ItemGroup>
+		<VersionedComponent Include="$(PostSharpDirectory)">
+			<Name>PostSharp</Name>
+			<PropertyName>PostSharp</PropertyName>
+			<GenerateAssemblyVersion>False</GenerateAssemblyVersion>
+		</VersionedComponent>
+		<VersionedComponent Include="$(PostSharpDirectory)\Core\PostSharp.Core">
+			<Name>PostSharp.Core</Name>
+			<PropertyName>PostSharp_Core</PropertyName>
+			<GenerateAssemblyVersion>True</GenerateAssemblyVersion>
+		</VersionedComponent>
+    <VersionedComponent Include="$(PostSharpDirectory)\Core\PostSharp.AspNet">
+      <Name>PostSharp.AspNet</Name>
+      <PropertyName>PostSharp_AspNet</PropertyName>
+      <GenerateAssemblyVersion>True</GenerateAssemblyVersion>
+    </VersionedComponent>
+		<VersionedComponent Include="$(PostSharpDirectory)\Core\PostSharp.Public">
+			<Name>PostSharp.Public</Name>
+			<PropertyName>PostSharp_Public</PropertyName>
+			<GenerateAssemblyVersion>True</GenerateAssemblyVersion>
+		</VersionedComponent>
+		<VersionedComponent Include="$(PostSharpDirectory)\Core\PostSharp.Console">
+			<Name>PostSharp.Console</Name>
+			<PropertyName>PostSharp_Console</PropertyName>
+			<GenerateAssemblyVersion>True</GenerateAssemblyVersion>
+		</VersionedComponent>
+		<VersionedComponent Include="$(PostSharpDirectory)\Core\PostSharp.MSBuild">
+			<Name>PostSharp.MSBuild</Name>
+			<PropertyName>PostSharp_MSBuild</PropertyName>
+			<GenerateAssemblyVersion>True</GenerateAssemblyVersion>
+		</VersionedComponent>
+		<VersionedComponent Include="$(PostSharpDirectory)\Laos\PostSharp.Laos">
+			<Name>PostSharp.Laos</Name>
+			<PropertyName>PostSharp_Laos</PropertyName>
+			<GenerateAssemblyVersion>True</GenerateAssemblyVersion>
+		</VersionedComponent>
+		<VersionedComponent Include="$(PostSharpDirectory)\Laos\PostSharp.Laos.Weaver">
+			<Name>PostSharp.Laos.Weaver</Name>
+			<PropertyName>PostSharp_Laos_Weaver</PropertyName>
+			<GenerateAssemblyVersion>True</GenerateAssemblyVersion>
+		</VersionedComponent>
+	</ItemGroup>
+
+	<!-- Get Revision Number from SVN -->
+	<Target
+	  Name="MakeRevisionFiles" 
+	  Inputs="@(SourceFile)" 
+	  Outputs="%(VersionedComponent.Identity)\#dummy" 
+	  Condition=" Exists('$(PostSharpDirectory)\Build\#InSourceControl' ) And '$(SkipSvn)'=='' " 
+	  DependsOnTargets="RequiresSubversion;RequiresMSBuildCommunityTasks">
+
+		<Message Text="Getting revision number from SVN for component %(VersionedComponent.Name)."/>
+
+		<SvnVersion LocalPath="%(VersionedComponent.Identity)" ToolPath="$(SvnPath)">
+			<Output TaskParameter="Revision" PropertyName="ThisComponentRevision" />
+			<Output TaskParameter="Modifications" PropertyName="ThisComponentHasModifications" />
+		</SvnVersion>
+
+		<CreateProperty Value="$(MajorVersion).$(MinorVersion).$(ThisComponentRevision)">
+			<Output TaskParameter="Value" PropertyName="RequestedRevisionLine"/>
+		</CreateProperty>
+
+		<!-- Detects whether the #revision file does not already contains the
+         same revision -->
+
+		<ReadLinesFromFile File="%(VersionedComponent.Identity)\#revision">
+			<Output TaskParameter="Lines" PropertyName="ExistingRevisionLine"/>
+		</ReadLinesFromFile>
+
+		<Message Text="The revision has not changed, revision files shall not be updated."
+            Condition="'$(RequestedRevisionLine)'=='$(ExistingRevisionLine)'"/>
+
+
+		<Message Text="The revision has changed, writing #revision."
+				Condition="'$(RequestedRevisionLine)'!='$(ExistingRevisionLine)'"/>
+
+		<WriteLinesToFile
+			Overwrite="true" 
+			File="%(VersionedComponent.Identity)\#revision"
+			Lines="$(MajorVersion).$(MinorVersion).$(ThisComponentRevision)"
+			Condition="'$(RequestedRevisionLine)'!='$(ExistingRevisionLine)'" />
+
+		<Message Text="The revision has changed, writing AssemblyVersion.cs."
+				Condition="'%(VersionedComponent.GenerateAssemblyVersion)'=='True' AND '$(RequestedRevisionLine)'!='$(ExistingRevisionLine)'"/>
+
+		<WriteLinesToFile
+			Overwrite="true"
+			File="%(VersionedComponent.Identity)\Properties\AssemblyVersion.cs"
+			Lines="[assembly: System.Reflection.AssemblyVersion( &quot;$(MajorVersion).0.0&quot; )]"
+			Condition="'%(VersionedComponent.GenerateAssemblyVersion)'=='True' AND ('$(RequestedRevisionLine)'!='$(ExistingRevisionLine)' OR '$(OverwriteVersionFile)'=='True') "
+        />
+    <WriteLinesToFile
+			Overwrite="false"
+			File="%(VersionedComponent.Identity)\Properties\AssemblyVersion.cs"
+			Lines="#if !SMALL"
+			Condition="'%(VersionedComponent.GenerateAssemblyVersion)'=='True' AND ('$(RequestedRevisionLine)'!='$(ExistingRevisionLine)' OR '$(OverwriteVersionFile)'=='True') "
+        />
+    <WriteLinesToFile
+			Overwrite="false"
+			File="%(VersionedComponent.Identity)\Properties\AssemblyVersion.cs"
+			Lines="[assembly: System.Reflection.AssemblyFileVersion( &quot;$(MajorVersion).$(MinorVersion).$(ThisComponentRevision)&quot; )]"
+			Condition="'%(VersionedComponent.GenerateAssemblyVersion)'=='True' AND ('$(RequestedRevisionLine)'!='$(ExistingRevisionLine)' OR '$(OverwriteVersionFile)'=='True') "
+        />
+    <WriteLinesToFile
+			Overwrite="false"
+			File="%(VersionedComponent.Identity)\Properties\AssemblyVersion.cs"
+			Lines="#endif"
+			Condition="'%(VersionedComponent.GenerateAssemblyVersion)'=='True' AND ('$(RequestedRevisionLine)'!='$(ExistingRevisionLine)' OR '$(OverwriteVersionFile)'=='True') "
+        />
+
+
+
+    <CreateProperty Value="$(ThisComponentHasModifications)" Condition=" '%(VersionedComponent.Name)' == 'PostSharp' ">
+			<Output TaskParameter="Value" PropertyName="RootHasModifications"/>
+		</CreateProperty>
+
+    <!-- Finally make the revision file shipped with binaries. -->
+    <Copy SourceFiles="$(PostSharpDirectory)\#revision"
+      DestinationFiles="$(PostSharpDirectory)\PostSharp-$(MajorVersion).version"/>
+
+
+  </Target>
+
+  <Target Name="DoNotMakeRevisionFiles" Condition=" !Exists('$(PostSharpDirectory)\Build\#InSourceControl' ) Or '$(SkipSvn)'!='' "  >
+    <Message Text="Do not generate revision files because the current working copy is not in source control."
+				 Condition="!Exists('$(PostSharpDirectory)\Build\#InSourceControl' )"/>
+    <Message Text="Do not generate revision files because the SkipSvn property has been set."
+				 Condition="'$(SkipSvn)'!=''"/>
+
+  </Target>
+
+  <Target Name="TestModifications"
+	 Inputs="@(SourceFiles)"
+	 Outputs="$(PostSharpDirectory)\#revision"
+	 Condition="!(Exists('#InSourceControl') And '$(SkipSvn)'!='') ">
+
+    <!-- If this task is executed, there are modifications w.r.t. source control -->
+    <CreateProperty Value="True">
+      <Output TaskParameter="Value" PropertyName="RootHasModifications"/>
+    </CreateProperty>
+
+	</Target>
+
+
+	<Target Name="ReadRevisionFiles" 
+	  Inputs="%(VersionedComponent.Identity)\#revision"
+	  Outputs="%(VersionedComponent.Identity)\#dummy"        
+	  DependsOnTargets="MakeRevisionFiles;DoNotMakeRevisionFiles;TestModifications">
+
+		<ReadLinesFromFile File="%(VersionedComponent.Identity)\#revision">
+			<Output TaskParameter="Lines" PropertyName="ThisComponentRevision"/>
+		</ReadLinesFromFile>
+
+		<CreateProperty Value="$(ThisComponentRevision)" Condition=" '%(VersionedComponent.Name)' == 'PostSharp' ">
+			<Output TaskParameter="Value" PropertyName="Version"/>
+		</CreateProperty>
+
+		<CreateProperty Value="$(ThisComponentRevision)">
+			<Output TaskParameter="Value" PropertyName="%(VersionedComponent.PropertyName)_Version"/>
+		</CreateProperty>
+
+		<Message Text="Version of component '%(VersionedComponent.Name)' is $(ThisComponentRevision)."/>
+
+
+	</Target>
+
+	<Target Name="GetRevisionNumber" DependsOnTargets="ReadRevisionFiles;TestModifications">
+
+		<Error Text="Could not get the revision number." Condition="'$(Version)'==''"/>
+		<Message Text="Current version is $(Version)."/>
+
+		<Warning Text="The source code has been modified since it has been committed to source control."
+			Condition=" '$(RootHasModifications)'=='True' " />
+
+		<CreateProperty Value="$(PostSharpDirectory)\Build\releases\v$(Version)">
+			<Output TaskParameter="Value" PropertyName="ReleaseDir"/>
+		</CreateProperty>
+
+	</Target>
+
+
+
+</Project>

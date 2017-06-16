@@ -1,0 +1,77 @@
+<Project DefaultTargets="Help" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<PropertyGroup>
+		<PostSharpDirectory>.</PostSharpDirectory>
+	</PropertyGroup>
+
+	<!-- Import targets -->
+	<Import Project="$(PostSharpDirectory)\Build\Common.targets" />
+	<Import Project="$(PostSharpDirectory)\Build\Versioning.targets"/>
+
+
+	<!-- Project for unit tests -->
+	<ItemGroup>
+		<BuildProject Include="Samples\PostSharp.Samples.Binding\PostSharp.Samples.Binding.sln"/>
+		<BuildProject Include="Samples\PostSharp.Samples.Cache\PostSharp.Samples.Cache.sln"/>
+		<BuildProject Include="Samples\PostSharp.Samples.Composition\PostSharp.Samples.Composition.sln"/>
+		<BuildProject Include="Samples\PostSharp.Samples.DbInvoke\PostSharp.Samples.DbInvoke.sln"/>
+		<BuildProject Include="Samples\PostSharp.Samples.Explorer\PostSharp.Samples.Explorer.sln"/>
+		<BuildProject Include="Samples\PostSharp.Samples.Host\PostSharp.Samples.Host.sln"/>
+		<BuildProject Include="Samples\PostSharp.Samples.Librarian\PostSharp.Samples.Librarian.sln"/>
+		<BuildProject Include="Samples\PostSharp.Samples.Trace\PostSharp.Samples.Trace.sln"/>
+		<BuildProject Include="Samples\PostSharp.Samples.Transaction\PostSharp.Samples.Transaction.sln"/>
+		<BuildProject Include="Samples\PostSharp.Samples.XTrace\PostSharp.Samples.XTrace.sln"/>
+		<BuildProject Include="Laos\PostSharp.Laos.Test\PostSharp.Laos.Test.sln"/>
+	</ItemGroup>
+	
+	<!-- Projects for NUnit -->
+	<ItemGroup>
+		<NUnitProject Include="Laos\PostSharp.Laos.Test\PostSharp.Laos.Test.nunit"/>
+		<NUnitProject Include="Core\Test\PostSharp.Core.Test\PostSharp.Core.Test.nunit"/>
+	</ItemGroup>
+
+
+	<Target Name="Binaries">
+		<MsBuild  Projects="$(PostSharpDirectory)\Core\PostSharp-Core.sln" 
+				  Targets="Build" 
+				  Properties="Configuration=Debug"
+				  ContinueOnError="false"/>
+	</Target>
+
+	<Target Name="BuildProjects" Inputs="%(BuildProject.Identity)" Outputs="dummy" DependsOnTargets="Binaries">
+		<Message Importance="high" Text="Building project %(BuildProject.Filename)..."/>
+		<MSBuild Projects="%(BuildProject.Identity)" 
+				 Properties="Configuration=Debug" 
+				 StopOnFirstFailure="true"
+				 ContinueOnError="false"/>
+	</Target>
+
+	<Target Name="NUnitTests" Inputs="%(NUnitProject.Identity)" Outputs="dummy" DependsOnTargets="BuildProjects;RequiresNUnit">
+		<Message Importance="high" Text="NUnit testing %(NUnitProject.Filename)..."/>
+		<Exec Command="&quot;$(NUnitPath)\nunit-console.exe&quot; &quot;%(NUnitProject.Identity)&quot;" />
+	 </Target>
+
+	<!-- Samples -->
+	<ItemGroup>
+		<SampleFile Include="$(PostSharpDirectory)\Samples\**" Exclude="@(NotSourceFile)"/>
+	</ItemGroup>
+
+
+	<!-- Help - list of available targets -->
+	<Target Name="Help">
+		<Message Text="
+
+Usage: msbuild PostSharp.proj /t:&lt;Target&gt; (/p:&lt;PropertyName&gt;=&lt;PropertyValue&gt;)*
+
+*&lt;Target&gt; is one of the following:
+	
+	Prepare        - Builds AssemblyVersion.cs files.
+	
+		"/>
+
+
+	</Target>
+	
+	<Target Name="Prepare" DependsOnTargets="GetRevisionNumber"/>
+	
+</Project>

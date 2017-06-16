@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<!-- Files for source distribution -->
+	<ItemGroup>
+		<IntermediateFile Include="$(PostSharpDirectory)\Build\intermediate\**"/>
+		<IntermediateFile Include="$(PostSharpDirectory)\**\bin\**"/>
+		<IntermediateFile Include="$(PostSharpDirectory)\**\obj\**"/>
+    <IntermediateFile Include="$(PostSharpDirectory)\**\ClientBin\**"/>
+		<SvnFile Include="$(PostSharpDirectory)\**\.svn\**"/>
+		<SvnFile Include="$(PostSharpDirectory)\**\*.svn-base"/>
+		<SvnFile Include="$(PostSharpDirectory)\**\*.svn-work"/>
+		<NotSourceFile Include="@(IntermediateFile)"/>
+		<NotSourceFile Include="@(SvnFile)"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\Build\releases\**"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\Build\Config.targets"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\Build\#InSourceControl"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\Core\Test\NUnit\**"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\**\*.suo"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\**\*.user"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\**\*.bak"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\**\*.log"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\**\*.duo"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\**\*.il"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\**\*.res"/>
+    <NotSourceFile Include="$(PostSharpDirectory)\**\*.cache"/>
+    <NotSourceFile Include="$(PostSharpDirectory)\**\*.ncb"/>
+    <NotSourceFile Include="$(PostSharpDirectory)\**\*.gpState"/>
+    <NotSourceFile Include="$(PostSharpDirectory)\**\*.resharper"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\**\~*"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\**\Ankh.Load"/>
+		<NotSourceFile Include="$(PostSharpDirectory)\Private\**\*"/>
+    <NotSourceFile Include="$(PostSharpDirectory)\**\_ReSharper*\**\*"/>
+		<SourceFile Include="$(PostSharpDirectory)\**" Exclude="@(NotSourceFile)"/>
+		<SourceFile Include="$(PostSharpDirectory)\*.html"/>
+	</ItemGroup>
+	
+</Project>	
+

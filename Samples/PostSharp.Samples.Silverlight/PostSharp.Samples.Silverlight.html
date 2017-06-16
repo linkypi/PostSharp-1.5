@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+
+  
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+
+
+  
+
+
+  
+  
+  
+  <title>Silverlight Sample</title>
+  <link rel="stylesheet" type="text/css" href="../UserGuide.css">
+	</head>
+
+
+<body>
+
+
+
+<h1>Silverlight Sample</h1>
+<span class="openfloat"><a href="PostSharp.Samples.Silverlight.sln"><img src="../vs.png" border="0" alt="">Open this sample in Visual Studio</a> </span>
+
+
+<p>The <code>PostSharp.Samples.Silverlight</code> contains three aspects that 
+can be applied on projects targeting Silverlight 2:</p>
+<ul>
+	<li><code>NotifyPropertyChangedAttribute</code> implements automatically the <code>INotifyPropertyChanged</code> interface.</li>
+	<li><code>OnWorkerThreadAttribute</code> executes a method in a worker thread instead of in the current thread.</li>
+	<li><code>RequiredAttribute</code> validates that a field is not set to a null reference or an empty string.</li>
+</ul>
+<p>Aspects are defined in the project <code>PostSharp.Samples.Silverlight.Aspects</code> and applied to the project
+<code>PostSharp.Samples.Silverlight.Test</code>. These projects reference the assemblies <code>PostSharp.Public.SL.dll</code> 
+and <code>PostSharp.Laos.SL.dll</code></p>
+
+<p><code>NotifyPropertyChangedAttribute</code> is the only non-trivial aspect. Since it requires code to be executed at
+build time, it is implemented as an external aspect. Indeed, the <code>NotifyPropertyChangedAttribute</code> class contains no
+implementation. The aspect is implemented in another project, <code>PostSharp.Samples.Silverlight.Impl</code>, which is not a
+Silverlight class library but is linked to the full .NET Framework.</p>
+</body>
+</html>

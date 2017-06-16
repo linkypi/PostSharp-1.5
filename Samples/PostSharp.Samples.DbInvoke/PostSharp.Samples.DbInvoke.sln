@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C# Express 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Samples.DbInvoke", "PostSharp.Samples.DBInvoke\PostSharp.Samples.DbInvoke.csproj", "{AC3050F3-7E09-4BA8-A245-1AC50665DFEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.Samples.DbInvoke.Test", "PostSharp.Samples.DbInvoke.Test\PostSharp.Samples.DbInvoke.Test.csproj", "{A87EC63D-03ED-4B20-9E66-58884C5AA55D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		SkipPostSharp|Any CPU = SkipPostSharp|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC3050F3-7E09-4BA8-A245-1AC50665DFEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3050F3-7E09-4BA8-A245-1AC50665DFEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC3050F3-7E09-4BA8-A245-1AC50665DFEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC3050F3-7E09-4BA8-A245-1AC50665DFEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC3050F3-7E09-4BA8-A245-1AC50665DFEA}.SkipPostSharp|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3050F3-7E09-4BA8-A245-1AC50665DFEA}.SkipPostSharp|Any CPU.Build.0 = Debug|Any CPU
+		{A87EC63D-03ED-4B20-9E66-58884C5AA55D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A87EC63D-03ED-4B20-9E66-58884C5AA55D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A87EC63D-03ED-4B20-9E66-58884C5AA55D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A87EC63D-03ED-4B20-9E66-58884C5AA55D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A87EC63D-03ED-4B20-9E66-58884C5AA55D}.SkipPostSharp|Any CPU.ActiveCfg = SkipPostSharp|Any CPU
+		{A87EC63D-03ED-4B20-9E66-58884C5AA55D}.SkipPostSharp|Any CPU.Build.0 = SkipPostSharp|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

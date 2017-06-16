@@ -1,0 +1,63 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AssemblyName>PostSharp.Public.MF</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PostSharp</RootNamespace>
+    <ProjectTypeGuids>{b69e3092-b931-443c-abe7-7e7b65f2a37f};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{97E7CB84-EC5B-4CC5-8805-053290054C9C}</ProjectGuid>
+    <TinyCLR_ClientOnly>true</TinyCLR_ClientOnly>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug.MF\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SMALL;MF</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release.MF\</OutputPath>
+    <DefineConstants>TRACE;SMALL;MF</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\.NET Micro Framework\$(TargetFrameworkVersion)\CSharp.Targets" />
+  <ItemGroup>
+    <Compile Include="BoolWithDefault.cs" />
+    <Compile Include="CodeModel\IAssemblyName.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\IAssemblyWrapper.cs" />
+    <Compile Include="CodeModel\ReflectionWrapper\IReflectionWrapper.cs" />
+    <Compile Include="CodeModel\SymbolSequencePoint.cs" />
+    <Compile Include="Extensibility\BackwardCompatibleAssemblyAttribute.cs" />
+    <Compile Include="Extensibility\CompileTimeSemanticAttribute.cs" />
+    <Compile Include="Extensibility\DisablePostSharpMessageAttribute.cs" />
+    <Compile Include="Extensibility\EscalatePostSharpMessageAttribute.cs" />
+    <Compile Include="Extensibility\FrameworkVariants.cs" />
+    <Compile Include="Extensibility\HasInheritedAttributeAttribute.cs" />
+    <Compile Include="Extensibility\IMessageSink.cs" />
+    <Compile Include="Extensibility\ImplementationBoundAttributeAttribute.cs" />
+    <Compile Include="Extensibility\Message.cs" />
+    <Compile Include="Extensibility\MessageException.cs" />
+    <Compile Include="Extensibility\MessageSource.cs" />
+    <Compile Include="Extensibility\MulticastAttribute.cs" />
+    <Compile Include="Extensibility\PostSharpEnvironment.cs" />
+    <Compile Include="Extensibility\RequirePostSharpAttribute.cs" />
+    <Compile Include="Post.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\CustomReflectionBinder.cs" />
+    <Compile Include="Reflection\GenericArgs.cs" />
+    <Compile Include="Reflection\IObjectConstruction.cs" />
+    <Compile Include="Reflection\ObjectConstruction.cs" />
+    <Compile Include="Reflection\ReflectionHelper.cs" />
+    <Compile Include="Reflection\ReflectionTypeComparer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SPOT.Native" />
+  </ItemGroup>
+</Project>

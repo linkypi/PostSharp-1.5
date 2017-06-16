@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+
+
+  
+  <link rel="stylesheet" type="text/css" href="../UserGuide.css">
+
+  
+  <title>Host Sample</title>
+</head>
+
+
+<body>
+
+
+<h1>
+Runtime Host Sample</h1>
+
+<span class="openfloat"><a href="PostSharp.Samples.Host.sln"><img src="../vs.png" border="0" alt="">Open this sample in Visual Studio</a> </span>
+
+<p>This sample demonstrates how to host PostSharp in an
+application
+that performs runtime weaving. This would be the case for instance of
+an application server that weaves components before loading them in the
+server.</p>
+
+
+<p>The sample explains how different application domain interact.
+It
+shows how to work with deep-first assembly processing and assembly name
+overwriting.</p>
+
+
+<p>The characteristics of this sample host are:</p>
+
+
+<ul>
+
+
+  <li>Only assemblies present in the same directory as the entry
+point assembly (typically the <code>.exe</code>) are woven.</li>
+
+
+  <li>Assemblies are processed in deep-first order of references.
+That is, <i>referenced</i> assemblies are processed before
+    <i>referencing</i> ones. That means also that
+assemblies are not <i>lazily</i> woven, which would be
+another design decision (yet possible as well).</li>
+
+
+</ul>
+
+
+<h2>Concept</h2>
+
+
+<p>When you develop an aspect or a plug-in, your code is
+instantiated
+and invoked by PostSharp. However, when you develop a PostSharp Host,
+your code instantiate and invoke PostSharp.</p>
+
+
+<p>PostSharp comes with two hosts: the MSBuild task and the
+command-line utility. This sample illustrates how to develop a host
+that weaves assemblies at runtime, that is, to be precise, just before
+they are loaded in the application domain (<code>AppDomain</code>).</p>
+
+
+<h3>Application Domains</h3>
+
+
+<p>Three application domains live in the host process:</p>
+
+
+<ul>
+
+
+  <li>The <b>system application domain</b> is
+initially created when the process started. It creates and controls
+both other application domains.</li>
+
+
+  <li>The <b>client application domain</b> contains
+the client
+application. Assemblies forming the client application are loaded in
+this application domain after having been transformed by PostSharp.</li>
+
+
+  <li>The <b>PostSharp application domain</b> is
+where PostSharp resides and where transformations are executed.</li>
+
+
+</ul>
+
+
+<h3>The Host Class</h3>
+
+
+<p>An application that hosts PostSharp should implement the <code>IPostSharpHost</code>
+interface. PostSharp calls back this interface when it needs to resolve
+an assembly reference (<code>ResolveAssemblyReference</code>
+method) or to know how an assembly should be processed (i.e. with which
+PostSharp project and which parameters; <code>GetProjectInvocationParameters</code>
+method), or when a message is emitted (<code>OnMessage</code>
+method).</p>
+
+
+<p>In our sample, the <code>IPostSharpHost</code>
+interface is implemented by the <code>Host</code> class.
+Additionally, this class has an <code>Execute</code>
+method that sets up the client application domain and invoke PostSharp.</p>
+
+
+<h3>The LocalHost Class</h3>
+
+
+PostSharp offers the possibility to have a host-defined class laying
+between PostSharp and the system application domain. This is useful if
+you want to react to some events, or perform assembly reference
+resolving, in the application domain of PostSharp. This enables you to
+have access to the complete object model of PostSharp. This host object
+is called <i>local</i> because it resides in the same
+application domain as PostSharp. The default implementation is <code>PostSharpLocalHost</code>.
+In this sample, we demonstrated how to override it. We defined the
+class <code>LocalHost</code> that registers to some event
+and simply log to the console. Event handlers are registered in the <code>Initialize</code>
+method.<br>
+
+
+<h3>The ClientDomainManager class</h3>
+
+
+<p>The <code>ClientDomainManager</code> class
+manages the client application domain. An instance of this object is
+created by the <code>Host</code> object just after it
+creates the client application domain. The principal role of this
+object is to handle the <code>AppDomain.AssemblyResolve</code>
+event so that it provides the assembly transformed by PostSharp instead
+of the unmodified assembly.&nbsp;</p>
+
+
+<p>In order to achieve this, there is a close cooperation between
+the <code>Host</code> and the <code>ClientDomainManager</code>
+objects. The <code>ClientDomainManager</code> object
+maintains a dictionary that associates an <code>AssemblyName</code>
+to a location on the file system. This file could be transformed by
+PostSharp or not; it is not relevant for <code>ClientDomainManager</code>.
+The <code>Host</code> object should call the <code>ClientDomainManager.SetAssemblyLocation</code>
+method after the assembly.&nbsp;Because
+we chose to weave all assemblies present in the same directory as the
+entry point assembly, and only them, it is sufficient to call the <code>SetAssemblyLocation</code>
+method once we have ordered the transformation of the assembly, that
+is, in the <code>Host.GetInvocationParameters</code>
+method.</p>
+
+
+<p>Another role of the <acronym>ClientDomainManager</acronym>
+class it
+to invoke the entry point of the method level. This is nearly trivial,
+but one should not forget to set up the proper thread apartment. This
+is done by the <code>Execute</code> method.</p>
+
+
+<h3>Renaming Woven Assemblies</h3>
+
+
+<p>Remember that we use the <code>AppDomain.AssemblyResolve</code>
+event to tell the runtime engine to load our woven assembly instead of
+the initial, unmodified assembly. However, this even is only a <i>fallback</i>
+mechanism. That is, it is called only when the required assembly is not
+found using the default probing mechanism. So we cannot know with
+certitude that we will get the chance to have our event handler called.</p>
+
+
+<p>In order to circumvent this issue, PostSharp renames woven
+assemblies (this feature is named <i>assembly name overwriting</i>).
+The result is that the default probing algorithm of the runtime engine
+always fails, so the <code>AssemblyResolve</code> event is
+always raised and we get always the opportunity to load our woven
+version of the assembly.</p>
+
+
+<p>When PostSharp renames an assembly, it calls the <code>RenameAssembly</code>
+method of the <code>Host</code> object. This method, in
+turn, propagates the renaming in the <code>ClientDomainManager</code>
+object.</p>
+
+
+<p></p>
+
+
+<p></p>
+
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<element name="c" displayName="This is the element C"/>
+	<element name="d" displayName="This is the element D"/>
+
+</root>
+

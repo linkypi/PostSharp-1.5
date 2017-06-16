@@ -1,0 +1,146 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{27616583-96EE-432E-9F4F-A30037919470}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PostSharp.Laos</RootNamespace>
+    <AssemblyName>PostSharp.Laos.CF</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <PlatformID>3C41C503-53EF-4c2a-8DD4-A8217CAD115E</PlatformID>
+    <OSVersion>4.20</OSVersion>
+    <DeployDirSuffix>PostSharp.Laos.CF</DeployDirSuffix>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FormFactorID>
+    </FormFactorID>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\Private\PostSharp-Private.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <NativePlatformName>Pocket PC 2003</NativePlatformName>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug.CF\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SMALL;CF</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release.CF\</OutputPath>
+    <DefineConstants>SMALL;CF</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AspectSpecification.cs" />
+    <Compile Include="EnableLaosAwarenessAttribute.cs" />
+    <Compile Include="ExternalAspect.cs" />
+    <Compile Include="ICustomAttributeInjectorAspect.cs" />
+    <Compile Include="IExternalAspect.cs" />
+    <Compile Include="ILaosWeavableAspect.cs" />
+    <Compile Include="LaosSerializer.cs" />
+    <Compile Include="CompositionAspect.cs" />
+    <Compile Include="CompoundAspect.cs" />
+    <Compile Include="ExceptionHandlerAspect.cs" />
+    <Compile Include="FieldAccessEventArgs.cs" />
+    <Compile Include="FlowBehavior.cs" />
+    <Compile Include="ICombinedAspect.cs" />
+    <Compile Include="IComposed.cs" />
+    <Compile Include="ICompositionAspect.cs" />
+    <Compile Include="IExceptionHandlerAspect.cs" />
+    <Compile Include="IImplementMethodAspect.cs" />
+    <Compile Include="IInstanceBoundLaosAspect.cs" />
+    <Compile Include="ILaosAspect.cs" />
+    <Compile Include="ILaosFieldLevelAspect.cs" />
+    <Compile Include="ILaosMethodLevelAspect.cs" />
+    <Compile Include="ILaosReflectionAspectProvider.cs" />
+    <Compile Include="ILaosTypeLevelAspect.cs" />
+    <Compile Include="ImplementMethodAspect.cs" />
+    <Compile Include="InstanceBoundLaosEventArgs.cs" />
+    <Compile Include="InstanceCredentials.cs" />
+    <Compile Include="IOnExceptionAspect.cs" />
+    <Compile Include="IOnFieldAccessAspect.cs" />
+    <Compile Include="IOnMethodBoundaryAspect.cs" />
+    <Compile Include="IOnMethodInvocationAspect.cs" />
+    <Compile Include="IProtectedInterface.cs" />
+    <Compile Include="LaosAspect.cs" />
+    <Compile Include="LaosEventArgs.cs" />
+    <Compile Include="LaosFieldLevelAspect.cs" />
+    <Compile Include="LaosMethodLevelAspect.cs" />
+    <Compile Include="LaosNotInitializedException.cs" />
+    <Compile Include="LaosReflectionAspectCollection.cs" />
+    <Compile Include="LaosTypeLevelAspect.cs" />
+    <Compile Include="LaosUtils.cs" />
+    <Compile Include="LaosWeavableAspect.cs" />
+    <Compile Include="MethodExecutionEventArgs.cs" />
+    <Compile Include="MethodInvocationEventArgs.cs" />
+    <Compile Include="OnExceptionAspect.cs" />
+    <Compile Include="OnFieldAccessAspect.cs" />
+    <Compile Include="OnMethodBoundaryAspect.cs" />
+    <Compile Include="OnMethodInvocationAspect.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyVersion.cs" />
+    <Compile Include="Serializers\BinaryLaosSerializationBinder.cs" />
+    <Compile Include="Serializers\BinaryLaosSerializer.cs" />
+    <Compile Include="Serializers\IStateBagSerializable.cs" />
+    <Compile Include="Serializers\MsilLaosSerializer.cs" />
+    <Compile Include="Serializers\StateBag.cs" />
+    <Compile Include="Serializers\StateBagSerializer.cs" />
+    <Compile Include="Serializers\StateBagSerializerException.cs" />
+    <Compile Include="Serializers\XmlLaosSerializer.cs" />
+    <Compile Include="TypeIdentity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\PostSharp.Public\PostSharp.Public.CF.csproj">
+      <Project>{58A1CA72-D34F-4195-9D8A-A523D5476BE3}</Project>
+      <Name>PostSharp.Public.CF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v1.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.v1.targets" />
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v2.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v3.5'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+</Project>
