@@ -383,11 +383,15 @@
     <Compile Include="XmlSerializers\XmlSerializerContract.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Default.psproj" />
+    <None Include="Default.psproj">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="PostSharp-AppDomain.config" />
     <None Include="PostSharp-Library-Release.config" />
     <None Include="PostSharp-Library.config" />
-    <None Include="PostSharp-Platform.config" />
+    <None Include="PostSharp-Platform.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="PostSharp.Core.build" />
     <None Include="PostSharp.Core.pidb" />
     <None Include="PostSharp.Core.tlb" />
@@ -422,7 +426,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Exceptions.resx" />
-    <EmbeddedResource Include="Resources\Messages.resx" />
+    <EmbeddedResource Include="Resources\Messages.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

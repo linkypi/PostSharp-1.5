@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Default project used when PostSharp is detected according to project references. -->
+<Project xmlns="http://schemas.postsharp.org/1.0/configuration" 
+  ReferenceDirectory="{$ReferenceDirectory}">
+	
+	<SearchPath Directory="D:\projects\Aop\PostSharp-1.5\Samples\PostSharp.Samples.XTrace" />
+  
+    <PropertyGroup>
+      <ResolvedReferences>D:\projects\Aop\PostSharp-1.5\Laos\PostSharp.Laos\bin\Debug\PostSharp.Laos.dll;D:\projects\Aop\PostSharp-1.5\Laos\PostSharp.Laos\bin\Debug\PostSharp.Public.dll;</ResolvedReferences>
+    </PropertyGroup>
+    <CreateItem Include="
+              ResolvedReferences=$(ResolvedReferences);">
+    </CreateItem>
+
+	<!-- Set of tasks -->
+	<Tasks>
+		<!-- All other tasks should be automatically detected by this one. -->
+		<AutoDetect />
+
+		<!-- Compiles back the file. -->
+		<Compile TargetFile="D:\projects\Aop\PostSharp-1.5\Samples\PostSharp.Samples.XTrace\PostSharp.Samples.XTrace.Test\bin\Debug\test.exe" 
+				 IntermediateDirectory="{$IntermediateDirectory}" 
+				 CleanIntermediate="{$CleanIntermediate}"
+				 SignAssembly="{$SignAssembly}"
+				 PrivateKeyLocation="{$PrivateKeyLocation}"/>
+	</Tasks>
+</Project>

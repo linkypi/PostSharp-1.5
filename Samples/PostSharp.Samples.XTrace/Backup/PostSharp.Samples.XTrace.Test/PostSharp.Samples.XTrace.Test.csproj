@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -14,11 +14,9 @@
     </StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
+    <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,7 +38,15 @@
     <PostSharpConfiguration>Release</PostSharpConfiguration>
   </PropertyGroup>
   <ItemGroup>
-    <!--     <Reference Include="PostSharp.Samples.XTrace">
+    <Reference Include="PostSharp.Laos">
+     <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\..\Laos\PostSharp.Laos\bin\$(PostSharpConfiguration)\PostSharp.Laos.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp.Public">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\..\Core\PostSharp.Public\bin\$(PostSharpConfiguration)\PostSharp.Public.dll</HintPath>
+    </Reference>
+<!--     <Reference Include="PostSharp.Samples.XTrace">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PostSharp.Samples.XTrace\bin\$(PostSharpConfiguration)\PostSharp.Samples.XTrace.dll</HintPath>
     </Reference> -->
@@ -57,30 +63,19 @@
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="PostSharp.Samples.XTrace.Test.build" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\PostSharp.Public\PostSharp.Public.csproj">
-      <Project>{481ce092-840c-401f-964d-76cc2f47e012}</Project>
-      <Name>PostSharp.Public</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Laos\PostSharp.Laos\PostSharp.Laos.csproj">
-      <Project>{31373f37-00ad-459e-a10d-8edaacae2731}</Project>
-      <Name>PostSharp.Laos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\PostSharp.Laos.Weaverx\PostSharp.Laos.Weaver.csproj">
-      <Project>{db3db314-10de-46b7-8c04-a29e478da48e}</Project>
-      <Name>PostSharp.Laos.Weaver</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PostSharp.Samples.XTrace\PostSharp.Samples.XTrace.csproj">
-      <Project>{a83a36a8-51e4-4793-a51f-697644aed84a}</Project>
+    <ProjectReference Include="PostSharp.Samples.XTrace">
+      <Project>{CAB646BD-69B4-4a15-AA75-AD3487E74049}</Project>
       <Name>PostSharp.Samples.XTrace</Name>
     </ProjectReference>
   </ItemGroup>
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SkipPostSharp|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\SkipPostSharp\</OutputPath>

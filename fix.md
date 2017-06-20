@@ -16,4 +16,6 @@
 4. ConfigurationHelper.cs 70行改动，暂时不制定publictoken 强命名程序集
 5. 增加反编译项目 PostSharp.Core.XmlSerializers，因为此项目引用到Core项目，而core项目的configurationhelper又引用到此项目会造成循环引用故将此项目直接放到Core项目中
 6. 获取 {$ResolvedReferences} 属性失败
+7. postsharp特有项目 psproject，参考Default.psproj，其命名空间一定是：
+    xmlns="http://schemas.postsharp.org/1.0/configuration"
 

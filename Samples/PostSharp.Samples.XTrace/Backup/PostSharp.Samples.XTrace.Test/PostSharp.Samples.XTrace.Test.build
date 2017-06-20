@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- NAnt build file  -->
+<project name="PostSharp.Samples.XTrace.Test" default="build">
+
+  <property name="rootDir" value="../../.." />
+  <include buildfile="${rootDir}/Build/Common.include"/>
+
+  <property name="references" value="System.dll"/>
+  <property name="postsharp" value="true"/>
+  <property name="target" value="exe"/>
+
+  <fileset id="dependencies">
+    <include name="../PostSharp.Samples.XTrace/PostSharp.Samples.XTrace.build"/>
+  </fileset>
+
+  <fileset id="outputfiles"/>
+
+  <target name="_build" depends="standard-build"/>
+  
+</project>

@@ -1,18 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B59A8963-71DC-4293-9611-255C6CAAC920}</ProjectGuid>
+    <ProjectGuid>{B18AB651-9052-4582-82C2-EB860F069469}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PostSharp.Console</RootNamespace>
-    <AssemblyName>PostSharp.Console</AssemblyName>
+    <RootNamespace>Test</RootNamespace>
+    <AssemblyName>Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,28 +33,35 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExceptionAttribute.cs" />
+    <Compile Include="LogAttribute.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="PostSharp-Library.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PostSharp-Platform.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PostSharp.Console.build" />
-    <None Include="PostSharp.Laos.psplugin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Test.psproj" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\PostSharp.Public\PostSharp.Public.csproj">
       <Project>{481ce092-840c-401f-964d-76cc2f47e012}</Project>
       <Name>PostSharp.Public</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Laos\PostSharp.Laos\PostSharp.Laos.csproj">
+      <Project>{31373f37-00ad-459e-a10d-8edaacae2731}</Project>
+      <Name>PostSharp.Laos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PostSharp.Consolex\PostSharp.Console.csproj">
+      <Project>{b59a8963-71dc-4293-9611-255c6caac920}</Project>
+      <Name>PostSharp.Console</Name>
     </ProjectReference>
     <ProjectReference Include="..\PostSharp.Corex\PostSharp.Core.csproj">
       <Project>{5f5509fc-717a-4cc4-90f7-45dafc8eb46f}</Project>
@@ -66,9 +71,10 @@
       <Project>{db3db314-10de-46b7-8c04-a29e478da48e}</Project>
       <Name>PostSharp.Laos.Weaver</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DebuggingCommandLine.txt" />
+    <ProjectReference Include="..\PostSharp.MSBuildx\PostSharp.MSBuild.csproj">
+      <Project>{ebb91be2-adb2-43b1-9266-b9b154a873ea}</Project>
+      <Name>PostSharp.MSBuild</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

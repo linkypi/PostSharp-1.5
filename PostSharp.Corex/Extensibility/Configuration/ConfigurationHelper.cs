@@ -68,7 +68,7 @@ namespace PostSharp.Extensibility.Configuration
 
                     if ( Platform.Current.Identity == PlatformIdentity.Microsoft)
                     {
-                        Assembly assembly = Assembly.Load("PostSharp.Core.XmlSerializers");
+                        //Assembly assembly = Assembly.Load("PostSharp.Core.XmlSerializers");
                         //使用强命名程序集
                         //Assembly.Load(typeof (ConfigurationHelper).Assembly.FullName.Replace("PostSharp.Core", "PostSharp.Core.XmlSerializers"));
                         
